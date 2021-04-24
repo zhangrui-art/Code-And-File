@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        window.onload = function() {
+            let checkAll = document.getElementById("checkAll");
+            let selAll = document.getElementById("sleAll");
+            let selNo = document.getElementById("sleNo");
+            let selRev = document.getElementById("sleRev");
+            let sub = document.getElementById("submit");
+            let sport = document.getElementsByName("sports"); //获取四个多选框sports
+            selAll.onclick = function() {
+                // alert(sport.length);
+                //遍历sports
+                for (let i = 0; i < sport.length; i++) {
+                    //设置四个多选框变成选中状态
+                    sport[i].checked = true;
+                }
+                checkAll.checked = true;
+                // if (selAll) {
+                //     checkAll.checked = true;
+                // }
+            }
+            selNo.onclick = function() {
+                // alert(sport.length);
+                //遍历sports
+                for (let i = 0; i < sport.length; i++) {
+                    //设置四个多选框变成不选中状态
+                    sport[i].checked = false;
+                }
+                checkAll.checked = false
+                    // if (selNo) {
+                    //     checkAll.checked = false;
+                    // }
+            }
+            selRev.onclick = function() {
+                for (let i = 0; i < sport.length; i++) {
+                    // 下面的简化写法： sport[i].checked = !sport[i].checked;
+                    if (sport[i].checked) {
+                        sport[i].checked = false;
+                    } else {
+                        sport[i].checked = true;
+                    }
+                }
+                checkAll.checked = !checkAll.checked;
+                // if (selAll) {
+                //     checkAll.checked = true
+                // }
+                // if (selNo)
+                //     checkAll.checked = false
+            }
+            submit.onclick = function() {
+                for (let i = 0; i < sport.length; i++) {
+
+                    if (sport[i].checked == true) {
+                        console.log(sport[i].value);
+                    }
+                }
+            }
+            checkAll.onclick = function() {
+                    //设置最上面的全选，如果设置全选，点一个其他都选中，如果设置全不选，点一个其他都不选中
+                    // alert(this.value);
+                    //在事件的响应函数中，响应函数是给谁绑定的，this就是谁
+                    for (let i = 0; i < sport.length; i++) {
+                        // sport[i].checked = checkAll.checked; 可以把checkAll 换成this
+                        sport[i].checked = this.checked;
+
+                    }
+                }
+                //为四个多选框分别绑定响应函数，使最上面的和下面的全选、全不选同步
+                // for (let i = 0; i < sport.length; i++) {
+                //     sport[i].onclick = function() {
+                //         let flag = 0;
+                //         for (let j = 0; j < sport.length; j++) {
+                //             if (sport[j].checked) {
+                //                 flag++;
+                //             }
+                //         }
+                //         if (flag == 4) {
+                //             checkAll.checked = true;
+                //         } else {
+                //             checkAll.checked = false;
+                //         }
+                //     }
+                // }
+            for (let i = 0; i < sport.length; i++) {
+                sport[i].onclick = function() {
+                    checkAll.checked = true
+                    for (let j = 0; j < sport.length; j++) {
+
+                        if (!sport[j].checked) {
+                            checkAll.checked = false
+                                //一旦进入判断，就已经得到结果了，没必要再继续执行循环
+                            break
+                        }
+                    }
+                }
+            }
+
+        };
+    </script>
+</head>
+
+<body>
+    <form method="post" action="">
+        <br>
+        <label>你最喜欢的运动是什么</label>
+        <input name="select" type="checkbox" id="checkAll" value="oho">全选/全不选
+        <br>
+        <br>
+        <input name="sports" type="checkbox" value="足球" /> 足球
+        <input name="sports" type="checkbox" value="篮球" /> 篮球
+        <input name="sports" type="checkbox" value="羽毛球" /> 羽毛球
+        <input name="sports" type="checkbox" value="乒乓球" /> 乒乓球
+        <br>
+        <br>
+        <input type="button" id="sleAll" value="全选" />
+        <input type="button" id="sleNo" value="全不选" />
+        <input type="button" id="sleRev" value="反选" />
+        <input type="button" id="submit" value="提交" />
+    </form>
+</body>
+
+</html>

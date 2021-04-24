@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        // var func = getStartTime(stime) {
+        //     if ((stime - 900) === new Date().getTime()) {
+        //         return true
+        //     } else
+        //         return false;
+        // }
+        var getStime = function(stime) {
+            let nowTime = new Date().getTime()
+            console.log(nowTime)
+            if ((stime - 900) * 1000 <= nowTime) {
+                return true
+            } else
+                return false;
+        }
+        console.log(getStime(1619125500))
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

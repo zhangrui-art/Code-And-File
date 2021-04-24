@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        function findObjectTrue() {
+            let flag = new Array()
+            for (let i = 0; i < arguments.length; i++) {
+                Object.keys(arguments[i]).forEach((key) => {
+                    if (arguments[i][key] === true) {
+                        flag[i] = true
+                        continue
+                    }
+                })
+            }
+            for (let i = 0; i < arguments.length; i++) {
+                if (flag[i] === false) return false
+                return true
+            }
+        }
+
+        // function findObjectTrue() {
+        //     let flag = new Array()
+        //     let flagAll = 0
+        //     for (let i = 0; i < arguments.length; i++) {
+        //         flag[i] = 0
+        //         for (let key in arguments[i]) {
+        //             if (arguments[i][key] === true) {
+        //                 flag[i] = 1
+        //                 return
+        //             }
+        //         }
+        //     }
+        //     for (let i = 0; i < arguments.length; i++) {
+        //         if (flag[i] === 1) {
+        //             flagAll = 1
+        //             return
+        //         }
+        //     }
+        //     if (flagAll === 1) return true
+        //     return false
+        // }
+        // function test() {
+        //     let flagAll = 0;
+        //     for (let i = 0; i < arguments.length; i++) {
+        //         let flag = 0;
+        //         Object.keys
+        //     }
+        // }
+        // test(1, 2, 3, 4)
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        function createPerson(name, age, gender) {
+            var obj = {
+                name: name,
+                age: age,
+                gender: gender,
+                sayName: function() {
+                    console.log(this.name);
+                }
+            }
+            return obj;
+        }
+        var per = createPerson("bajie", "19", "男");
+        per.sayName();
+        console.log(per);
+
+        function dog(name, age, gender) {
+            var obj = {
+                name: name,
+                age: age,
+                gender: gender,
+                sayHello: function() {
+                    console.log(this.name);
+                }
+            }
+            return obj;
+        }
+        var do1 = dog("旺财", "3", "公")
+        do1.sayHello();
+
+        function review(number, learn) {
+            var rz = {
+                number: number,
+                learn: learn,
+                sayNumber: function() {
+                    console.log(this.number);
+                }
+            }
+            return rz;
+        }
+        var me = review("3", "much");
+        me.sayNumber();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

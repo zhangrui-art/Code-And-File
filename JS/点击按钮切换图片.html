@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #outer {
+            width: 500px;
+            text-align: center;
+            padding: 50px;
+            height: 600px;
+            margin: auto;
+            border: 1px solid rgb(97, 236, 206);
+        }
+        
+        img {
+            width: 300px;
+            left: 100px;
+            position: relative;
+            display: block;
+        }
+        
+        #btn1 {
+            width: 120px;
+            height: 30px;
+            background-color: aqua;
+            border: none;
+            outline: none;
+            display: inline-block;
+        }
+        
+        #btn2 {
+            width: 120px;
+            height: 30px;
+            background-color: aqua;
+            border: none;
+            margin: 20px;
+            /* margin-top: 100px; */
+            outline: none;
+            position: relative;
+        }
+        
+        #btn2:focus {
+            background-color: rgb(184, 25, 112);
+        }
+        
+        a:visited {
+            background-color: blue;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            let imgArr = ["img/about.jpg", "img/about.png", "img/add.png", "img/addMeeting.png"];
+            let img = document.getElementsByTagName("img")[0];
+            let index = 0;
+            let pre = document.getElementById("btn1");
+            let next = document.getElementById("btn2");
+            let txt = document.getElementsByTagName("p");
+            pre.onclick = function() {
+
+                index--;
+                if (index < 0) {
+                    index = index + 4;
+                }
+                img.src = imgArr[index];
+            }
+            next.onclick = function() {
+                index++;
+                if (index > 3) {
+                    index = index - 4;
+                }
+                img.src = imgArr[index];
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <div id="outer">
+        <img src="img/about.jpg">
+        <button id="btn1">上一张</button>
+        <button id="btn2">下一张</button>
+        <p>共5张图片，当前是第1张</p>
+    </div>
+</body>
+
+</html>
