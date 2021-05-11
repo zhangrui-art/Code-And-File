@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            let judgeMultipleEqual = function() {
+                for (let i = 1; i < arguments.length; i++) {
+                    if (arguments[i - 1] !== arguments[i]) {
+                        return false
+                    }
+                    console.log(arguments[i])
+                    console.log(arguments[i - 1])
+                }
+                return true
+            }
+            let ex = judgeMultipleEqual(1, 1, 1, 1, 1, 2, 1)
+            console.log(ex)
+                //         judgeAllTrue({ str1, str2, str3 }) {
+                //     return str1 && str2 && str3
+                //   },     //sdk中判断全为真值
+        }
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

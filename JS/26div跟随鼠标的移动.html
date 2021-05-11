@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: #30b354;
+            /*
+             * 开启box1的绝对定位
+             */
+            position: absolute;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            /*
+             *使div可以跟随鼠标移动
+             *
+             */
+            let box1 = document.getElementById("box1")
+            document.onmousemove = function(event) {
+                //解决兼容问题
+                event = event || window.event;
+                /* 
+                 *  clientX 可以获取鼠标在当前的可见窗口水平坐标
+                 * 但是pageX 和 pageY 可以获取鼠标相对于当前页面的坐标
+                 * 但是pageX 在IE8 中不支持
+                 */
+                // 获取鼠标的坐标
+                let x = event.pageX;
+                let y = event.pageY;
+
+                //设置div的坐标
+                box1.style.left = x + "px";
+                box1.style.top = y + "px";
+            }
+
+        }
+    </script>
+</head>
+
+<body style="height: 1500px;">
+    <div id="box1"></div>
+</body>
+
+</html>
