@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            let btn = document.getElementById("btn")
+                // btn.onclick = function() {
+                //     alert(1)
+                // };
+                /* 
+                 * 使用 对象.事件 = 函数  的形式绑定响应函数
+                 *  它只能同时为一个元素的一个事件绑定一个响应函数
+                 */
+                // btn.onclick = function() {
+                //     alert(2)
+                // }
+
+            /*
+             * addEventListener()
+             *   - 通过这个方法也可以为元素绑定响应函数
+             *   - 参数
+             *       1. 事件的字符串，不要on
+             *       2. 回调函数，当事件触发时该函数会被调用
+             *       3. 是否在捕获阶段触发事件，需要一个布尔值，一般都传false 
+             * 
+             *  使用addEventListener()可以同时为一个元素的相同事件同时绑定多个响应函数
+             *   这样当事件被触发时，响应函数会按照函数的绑定顺序执行
+             */
+
+            btn.addEventListener("click", function() {
+                alert(1);
+            }, false);
+            btn.addEventListener("click", function() {
+                alert(2);
+            }, false);
+            btn.addEventListener("click", function() {
+                alert(3);
+            }, false);
+        };
+    </script>
+</head>
+
+<body>
+    <button id="btn">摸摸头</button>
+</body>
+
+</html>
