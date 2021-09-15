@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            // function compareTime(
+            //     startTime,
+            //     endTime
+            // ) {
+            //     var date = new Date();
+            //     let stTime = startTime.split(/[A-Z]{2}/)[0].split(":")
+            //     let edTime = endTime.split(/[A-Z]{2}/)[0].split(":")
+            //     console.log(stTime);
+            //     // stTime = stTime[0].split(":")
+            //     // edTime = edTime[0].split(":")
+            //     console.log(date.setHours(stTime[0], stTime[1]) < date.setHours(edTime[0], edTime[1]))
+            //     return date.setHours(stTime[0], stTime[1]) < date.setHours(edTime[0], edTime[1])
+            // };
+            let bt = document.getElementById("bid");
+            bt.onclick = shuchu("wori ni gegege gegegegeg")
+
+            function shuchu(st) {
+                console.log(st.toLocaleLowerCase().replace(/\s*/g, "").substring(0, 16));
+            }
+            // bt.onclick = compareTime("07:00AM", "09:00PM");
+
+        }
+    </script>
+</head>
+
+<body>
+    <button id="bid">click</button>
+</body>
+
+</html>
