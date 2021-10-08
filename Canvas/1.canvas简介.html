@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+    <script type="text/javascript">
+        /** @type{HTMLCanvasElement}*/
+        window.onload = function() {
+            //1.找到画布对象
+            var cas = document.getElementById("canvas1");
+            console.log([cas]);
+            //2.找到上下文对象（画笔对象）
+            var ctx = cas.getContext("2d");
+            console.log(ctx);
+            //3.绘制路径
+            ctx.rect(50, 50, 300, 300);
+            //4.填充
+            ctx.fillStyle = "aqua";
+            ctx.fill();
+            //5.渲染路径
+            ctx.lineWidth = 20;
+            ctx.strokeStyle = "green";
+            ctx.stroke();
+        }
+    </script>
+</head>
+
+<body>
+    <!--
+      canvas三要素： 
+      id： 唯一标识
+      width：
+      height：
+      canvas仅仅只是一个画布标签，要绘制内容，必须用js绘制
+    -->
+    <canvas id="canvas1" width="600" height="600">
+        这里的内容，正常的画布不显示的
+    </canvas>
+</body>
+
+</html>
