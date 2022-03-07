@@ -13,7 +13,10 @@
         /** @type{HTMLCanvasElement}*/
         window.onload = function() {
             //1.找到画布对象
-            var cas = document.getElementById("canvas1");
+            // var cas = document.getElementById("canvas1");
+            let cas = document.querySelector("#canvas1");
+
+            console.log(cas);
             console.log([cas]);
             //2.找到上下文对象（画笔对象）
             var ctx = cas.getContext("2d");
