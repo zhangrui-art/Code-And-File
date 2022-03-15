@@ -11,7 +11,13 @@
     <script src="../js/react-dom.development.js"></script>
     <script src="../js/babel.min.js"></script>
     <script type="text/babel">
-        
+        //创建函数式组件
+        function Demo(){
+            console.log(this)  
+            return <h2>我是函数式定义组件【适用于简单组件的定义】</h2>
+        }
+        //渲染组件到页面
+        ReactDOM.render(<Demo/>,document.getElementById("frontLi"))
     </script>
 </head>
 
