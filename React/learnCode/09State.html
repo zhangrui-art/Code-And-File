@@ -15,15 +15,16 @@
             constructor(props){
                 super(props)
                 this.state = {isHot: false}
+                that = this
             }
             render(){
-                function clickOn(){
-                    !state.isHot
-                }
-                let text = "炎热"
+                
                 console.log(this);
-                text=this.state.isHot?"炎热":"寒冷"
-                return (<h1 id ="title" onClick={clickOn()}>今天天气很{text}</h1>)
+                return <h1 id ="title" onClick={clickOn}>今天天气很{this.state.isHot?"炎热":"寒冷"}</h1>
+            }
+            clickOn(){
+                //clickOn 放在Text的原型对象上，供实例使用
+                !this.state.isHot
             }
         }
         ReactDOM.render(<Text/>,document.getElementById("frontLi"))
