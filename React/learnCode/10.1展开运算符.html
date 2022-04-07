@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            let arr1 = [1,2,3,4,5]
+            let arr2 = [6,7,8,9,10]
+            console.log(...arr1); //将数组展开
+            let arr3 = [...arr1,...arr2]
+            console.log(arr3);  //连接数组
+            //在函数中使用
+            function sum(...numbers){
+                return numbers.reduce((pre,cur)=>{
+                    return pre+cur
+                })
+            }
+            console.log(sum(1,2,3,4));
+
+            // 复制一个对象
+            let person = {name: "Tom",age:18}
+            let person1 = {...person}  // 和react 里不同，这里是定义好的写法，react里的{}表示的是引用js表达式，是一种分隔符
+            console.log(person1);
+
+            //复制对象的同时修改了它的属性(合并)
+            let person2 = {...person,name:"Jack",address: "Affrica"}
+            console.log(person2);
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
