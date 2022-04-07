@@ -12,19 +12,31 @@
     <script src="../js/babel.min.js"></script>
     <script type="text/babel">
         class Text extends React.Component {
+            //构造器调用了几次？ --- 1次
             constructor(props){
                 super(props)
-                this.state = {isHot: false}
-                that = this
+                //初始化状态
+                this.state = {isHot: false,wind: "微风"}
+                // 解决方法(clickOn)中的this指向问题
+                this.clickOn = this.clickOn.bind(this)
             }
+            //render调用几次？----- 1+n次 1是初始化的那次，n是状态更新的次数
             render(){
                 
-                console.log(this);
-                return <h1 id ="title" onClick={clickOn}>今天天气很{this.state.isHot?"炎热":"寒冷"}</h1>
+                // console.log(this);
+                return <h1 id ="title" onClick={this.clickOn}>今天天气很{this.state.isHot ? "炎热" : "寒冷"},{this.state.wind}</h1>
             }
             clickOn(){
-                //clickOn 放在Text的原型对象上，供实例使用
-                !this.state.isHot
+                //clickOn 放在Text的原型对象上，供实例使用，通过Text实例调用clickOn时，clickOn中的this 就是Text实例
+                // 由于clickOn是作为onclick的回调，所以不是通过实例调用的，是直接调用
+                // 类中的方法默认开启了局部的严格模式，所以clickOn中的this 为 undefined
+                // console.log(this);
+
+                //状态不可以直接更改，要借助一个内置的api ,setState
+                // this.state.isHot=!this.state.isHot  //这是错误的更改
+                //状态必须通过setState进行更新，且更新是一种合并
+                this.setState({isHot:!this.state.isHot})
+                console.log(this.state.isHot);
             }
         }
         ReactDOM.render(<Text/>,document.getElementById("frontLi"))
