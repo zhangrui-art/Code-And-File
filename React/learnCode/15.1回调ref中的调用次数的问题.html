@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>回调ref中的调用次数的问题</title>
+    <style type="text/css">
+        #test {
+            top:100px;
+            left: 50px;
+            width: 600px;
+            position: absolute;
+        }
+        input {
+            margin-right: 20px;
+            margin-left: 20px;
+        }
+    </style>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+    <script src="../js/prop-types.js"></script>
+    <script type="text/babel">
+        class Demo extends React.Component {
+            state = {
+                isHot: true 
+            }
+            render(){
+                return (
+                    <div>
+                        {/*<input ref= {c => { this.input1 = c; console.log("@:"+c);}} type="text" placeholder="点击按钮提示数据"/>*/}
+                        <input ref= {this.saveInput} type="text" placeholder="点击按钮提示数据"/>
+                        <button onClick={this.showData}>点我提示输入框的数据</button> <br/>
+                        <h2>今天的天气很{this.state.isHot?"炎热":"寒冷"}</h2>
+                    </div>
+                )
+            }
+            saveInput = (c)=>{
+                this.input1 = c
+                console.log("@:"+c)
+            }
+            showData = ()=>{
+                this.setState({isHot: !this.state.isHot})   
+                // alert(this.input1.value)
+            }
+            showDt = ()=>{
+                alert(this.input2.value)
+            }
+        }
+        ReactDOM.render(<Demo/>,document.getElementById("test"))
+    </script>
+</head>
+
+<body>
+    <div id="test"></div>
+</body>
+
+</html>
