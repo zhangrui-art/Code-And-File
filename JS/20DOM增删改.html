@@ -37,9 +37,11 @@
 
             //使用广州节点替换#bj节点
             myClick("bt3", function() {
-                let liT = document.createElement("li");
-                let gztext = document.createTextNode("广州");
-                liT.appendChild(gztext);
+                // let liT = document.createElement("li");
+                // let gztext = document.createTextNode("广州");
+                // liT.appendChild(gztext);
+                let liT = document.createElement("li")
+                liT.innerHTML = "广州"
                 let bj = document.getElementById("bj");
                 let city = document.getElementById("city");
                 //replaceChild() 可以使用指定的子节点替换原有的子节点
