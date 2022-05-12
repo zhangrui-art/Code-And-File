@@ -11,6 +11,7 @@
             height: 100px;
             display: block;
             border: 1px solid #000;
+            box-sizing: border-box;
         }
         
         #showMsg {
@@ -19,6 +20,7 @@
             border: 1px solid #000;
             margin-top: 20px;
             display: block;
+            box-sizing: border-box;
         }
     </style>
     <script type="text/javascript">
@@ -38,6 +40,7 @@
              *    在事件对象中封装了当前事件相关的一切信息，比如，鼠标的坐标，键盘哪个按键被按下， 鼠标滚轮的方向。
              */
             areaDiv.onmousemove = function(event) {
+                event = window.event || event
                 //在showMsg中显示鼠标的坐标
                 /* 
                  *  clientX 可以获取鼠标指针的水平坐标

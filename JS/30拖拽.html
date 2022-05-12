@@ -10,6 +10,7 @@
             width: 100px;
             height: 100px;
             background-color: #30b354;
+            position: absolute;
         }
     </style>
     <script type="text/javascript">
@@ -20,16 +21,24 @@
              *  2. 当鼠标移动时被拖拽元素跟随鼠标移动 onmousemove
              *  3. 当鼠标松开时，被拖拽元素固定在当前位置 onmouseup
              */
-            let box = document.getElementById("box")
-            box.onmousedown = function() {
+            var box = document.getElementById("box")
+            box.onmousedown = function(event) {
+                event = event || window.event
+                var ol = event.clientX - box.offsetLeft
+                var ot = event.clientY -box.offsetTop
                 document.onmousemove = function(event) {
                     event = event || window.event;
-                    let left = event.clientX;
-                    let top = event.clientY;
+                    var left = event.clientX-ol;
+                    var top = event.clientY-ot;
                     box.style.left = left + "px"
                     box.style.top = top + "px"
                 }
+                document.onmouseup = function() {
+                    document.onmousemove = null
+                    document.onmouseup = null
+                }                
             }
+
         }
     </script>
 </head>
