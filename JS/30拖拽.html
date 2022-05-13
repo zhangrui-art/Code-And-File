@@ -12,6 +12,14 @@
             background-color: #30b354;
             position: absolute;
         }
+        #box1 {
+            top: 200px;
+            left: 200px;
+            width: 100px;
+            height: 100px;
+            background-color: #bfa;
+            position: absolute;
+        }        
     </style>
     <script type="text/javascript">
         window.onload = function() {
@@ -36,15 +44,24 @@
                 document.onmouseup = function() {
                     document.onmousemove = null
                     document.onmouseup = null
-                }                
+                }     
+                /*
+                    当拖拽一个网页的内容时，浏览器会默认去搜索引擎中搜索内容
+                    此时导致拖拽功能异常，这个是浏览器的默认行为
+                    如果不希望发生这个行为，则可以通过return false来取消默认行为
+                 */
+                return false           
             }
+
 
         }
     </script>
 </head>
 
 <body>
+    <p>五呼呼呼呼呼呼呼呼</p>
     <div id="box"></div>
+    <div id="box1"></div>
 </body>
 
 </html>
