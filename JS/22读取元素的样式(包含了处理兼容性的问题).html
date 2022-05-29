@@ -46,7 +46,7 @@
                     //上面那段等同于
                     return window.getComputedStyle ? getComputedStyle(obj, null)[name] : obj.currentStyle[name]
                 }
-
+                console.log(getComputedStyle(box1)["width"]); 
 
             }
         }
