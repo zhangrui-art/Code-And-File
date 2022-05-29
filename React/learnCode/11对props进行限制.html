@@ -41,7 +41,7 @@
         const p = {name:"Tom",age:15,sex:"male"}
         ReactDOM.render(<Person {...p}/>,document.getElementById("test"))
         ReactDOM.render(<Person name="Jerry"  age={19} speak={speak}/>,document.getElementById("test1"))
-        ReactDOM.render(<Person name="Alice" sex="女" />,document.getElementById("test2"))
+        ReactDOM.render(<Person name="Alice" sex="女" age={20} />,document.getElementById("test2"))
         function speak(){
             console.log("I fuck you");
         }

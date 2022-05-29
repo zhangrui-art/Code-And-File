@@ -33,9 +33,10 @@
              *  使用addEventListener()可以同时为一个元素的相同事件同时绑定多个响应函数
              *   这样当事件被触发时，响应函数会按照函数的绑定顺序执行
              */
-
+        
             btn.addEventListener("click", function() {
                 alert(1);
+                
             }, false);
             btn.addEventListener("click", function() {
                 alert(2);
@@ -49,6 +50,7 @@
 
 <body>
     <button id="btn">摸摸头</button>
+    
 </body>
 
 </html>
