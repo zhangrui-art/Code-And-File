@@ -15,6 +15,12 @@
                 onkeyup
                 键盘事件一般都会绑定给一些可以获取到焦点的对象或者document
              */
+            
+
+            // 开启一个定时器，来控制div的移动
+            setInterval(() => {
+                
+            }, 30);
             document.onkeydown = function(event) {
                 event = window.event || event
                 if(event.keyCode === 89 && event.ctrlKey){
