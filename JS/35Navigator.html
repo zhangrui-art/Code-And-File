@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            /*
+             * Navigator
+             * - 由于历史原因，Navigator对象中的大部分属性都不能帮助我们识别浏览器了
+             * - 一般我们只会使用userAgent来判断浏览器的信息
+             * - userAgent是一个字符串，这个字符串中包含有用来描述浏览器信息的内容
+             *   不同的浏览器有不同的userAgent
+             */
+            // console.log(navigator.userAgent);
+            // ua = navigator.userAgent
+            // if(/firefox/i.test(ua)){
+            //     alert("火狐")
+            // }else{
+            //     alert("chrome")
+            // }
+
+
+            // UserAgent 不能判断时，通过其他比如ActiveXObject(IE独有)
+            if(ActiveXObject in window){
+                alert("IE")
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <a href="36History.html"   id="id">去36</a>
+</body>
+
+</html>

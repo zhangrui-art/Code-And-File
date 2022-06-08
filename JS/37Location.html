@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            // Location
+            //  - 代表当前浏览器的地址栏信息，通过location可以获取地址栏信息，或者操作浏览器跳转页面
+            /* 
+             *  如果直接将location属性修改为一个完整的路径或相对路径
+             *  则页面会自动跳转到该路径，并且会生成相应的历史记录
+             */
+            let btn = document.getElementById("btn")
+            btn.onclick = function(){
+                // location = "http://www.baidu.com"
+                // assign() 用来跳转其他页面，作用同直接改location
+                // location.assign("http://www.baidu.com")
+
+                // reload() 重新加载当前页面，作用同刷新按钮,传入true 会强制清空缓存
+                // location.reload(true)
+
+                // replace() 可以使用新的页面替换当前页面，调用完毕也会跳转页面，并且不会生成历史记录
+
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <input type="text" id="input">
+    <button id="btn">点我</button>
+</body>
+
+</html>

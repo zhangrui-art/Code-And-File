@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        #box {
+            width: 200px;
+            height: 50px;
+            background-color: aqua;
+            position: absolute;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            let box = document.getElementById("box")
+            document.onkeydown = function(event){
+                event = event || window.event
+                let speed = 10
+                //当用户按了ctrl 加速
+                if(event.ctrlKey){
+                    speed = speed+100
+                }
+                if(event.keyCode == 37 && box.offsetLeft>10) box.style.left = box.offsetLeft - speed + "px"
+                else if(event.keyCode == 39) box.style.left = box.offsetLeft + speed + "px"
+                else if(event.keyCode == 38 && box.offsetTop>10) box.style.top = box.offsetTop - speed + "px"
+                else if(event.keyCode == 40) box.style.top = box.offsetTop + speed + "px"
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box"></div>
+</body>
+
+</html>

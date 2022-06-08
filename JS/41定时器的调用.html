@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #btnView{
+            top: 150px;
+            position: absolute;
+        }
+        #box {
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: #bdc;
+            position: absolute;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            let box = document.getElementById("box")
+            let btn = document.getElementById("btn")
+            let btn01 = document.getElementById("btn01")
+            let timer
+            btn.onclick = function(){
+                move(box,800,"left",10)
+            }
+            btn01.onclick = function(){
+                move(box,0,"left",10)
+            }
+            btn02.onclick = function(){
+                move(box,0,"top",10)
+            }            
+            btn03.onclick = function(){
+                move(box,800,"top",10)
+            }     
+            //创建可以执行简单动画的函数
+            function move(obj,target,pos,speed){
+                clearInterval(timer)
+                let current = parseInt(getComputedStyle(obj)[pos])
+                if(current > target) speed=-speed
+                
+                timer = setInterval(() => {
+                    let oldValue = parseInt(getComputedStyle(obj)[pos])
+                    let newValue = oldValue + speed
+                    if((speed<0 && newValue<target)||(speed>0 && newValue>target)) newValue=target
+                    obj.style[pos] = newValue+"px"
+                    if(newValue==target) clearInterval(timer)
+                }, 30);
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+
+    <div id="box"></div>
+    <br/>
+    <br/>    
+    <div id="btnView">
+        <button id="btn">右移</button>
+        <button id="btn01">左移</button>
+        <button id="btn02">上移</button>
+        <button id="btn03">下移</button>     
+    </div>
+   
+    <div style="height: 1000px;width: 0;left:800px;top: 0;border-left: 1px solid #bdc;position: absolute;"></div>
+
+</body>
+
+</html>
