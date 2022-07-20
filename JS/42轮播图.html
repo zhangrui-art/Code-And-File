@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #outer {
+            margin: 50px auto;
+            width: 220px;
+            height: 190px;
+            overflow: hidden;
+            padding: 10px 0;
+            background-color: rgb(24, 233, 62);
+            position: relative;
+        }
+        img {
+            width: 200px;
+            height: 190px;
+        }
+        #imgList {
+            list-style: none;
+            /* width: 880px; */
+            position: absolute;
+            left: 0px;
+        }
+        #imgList li{
+            float: left;
+            margin: 0 10px;
+        }
+        #nav{
+            
+            position: absolute;
+            bottom: 10px;
+            /* width: 220px; */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        #nav a{
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            float: left;
+            margin: 0 5px;
+            opacity: 0.5;
+        }
+        #nav a:hover{
+            background-color: black;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            let imgList = document.getElementById("imgList")
+            let imgArr = document.getElementsByTagName("img")
+            imgList.style.width = 220*imgArr.length+"px"
+            let timer = setInterval(()=>{
+                if(imgList.offsetLeft==-660){
+                    imgList.style.left = 0 + "px"
+                }else{
+                    imgList.style.left = imgList.offsetLeft-220 + "px"
+                }
+                console.error(index);
+                index<3 ? index++:index=0
+                setA()
+            },1000)
+            let index  = 0
+            let allA = document.getElementsByTagName("a")
+            allA[index].style.backgroundColor = "black"
+            for (let i = 0; i < allA.length; i++) {
+                allA[i].onclick = function(){
+                    index = i
+                    imgList.style.left = -220*index + "px"
+                    setA()
+                    console.error(index);
+                }
+            }
+            function setA(){
+                for (let i = 0; i < allA.length; i++) {
+                    allA[i].style.backgroundColor  = ""
+                }
+                allA[index].style.backgroundColor = "black"
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="outer">
+        <ul id="imgList">
+            <li>
+                <img src="img/about.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/about.png" alt="">
+            </li>
+            <li>
+                <img src="img/add.png" alt="">
+            </li>
+            <li>
+                <img src="img/addMeeting.png" alt="">
+            </li>
+        </ul>
+        <div id="nav">
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
+    </div>
+</body>
+
+</html>
