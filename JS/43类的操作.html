@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .b1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        .b2{
+            /* width: 200px; */
+            height: 200px;
+            background-color: yellow;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            let btn1 = document.getElementById("btn1")
+            let box = document.getElementById("box")
+            let btn2 = document.getElementById("btn2")
+            let btn3 = document.getElementById("btn3")
+            btn1.onclick = function(){
+                //  继承的话就用+= " "
+                // box.className += " b2"
+                hasClass(box,"b2")? "" :addClass(box,"b2")
+            }
+            btn2.onclick = function() {
+                remove(box,"b2")
+            }
+            btn3.onclick = function() {
+                toggleClass(box,"b2")
+            }
+            //定义一个函数，用来向一个元素添加指定的class属性值
+            function addClass(obj, cn){
+                obj.className += " "+cn
+            }
+            // 定义是否含有指定class属性值
+            function hasClass(obj,cn){
+                let reg = new RegExp("\\b"+cn+"\\b")
+                return reg.test(obj.className)
+            }
+            // 删除一个元素指定的class属性
+            function remove(obj,cn){
+                let reg = new RegExp("\\b "+cn+"\\b")
+                obj.className = obj.className.replace(reg,"")
+            }
+            // toggle 用来切换一个类，有该类就删除，没有就添加
+            function toggleClass(obj,cn){
+                hasClass(obj,cn)?remove(obj,cn):addClass(obj,cn)
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <button id="btn1">点击按钮以后修改box的样式</button>
+    <button id="btn2">删除样式</button>
+    <button id="btn3">切换样式</button>
+    <br><br/>
+    <div id="box" class="b1"></div>
+</body>
+
+</html>
