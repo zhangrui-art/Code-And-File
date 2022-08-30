@@ -22,12 +22,13 @@
             position: absolute;
         }
     </style>
+    <script src="./js/tools.js"></script>
     <script type="text/javascript">
         window.onload = function() {
             let box = document.getElementById("box")
             let btn = document.getElementById("btn")
             let btn01 = document.getElementById("btn01")
-            let timer
+            // let timer
             btn.onclick = function(){
                 move(box,800,"left",10)
             }
@@ -40,20 +41,14 @@
             btn03.onclick = function(){
                 move(box,800,"top",10)
             }     
-            //创建可以执行简单动画的函数
-            function move(obj,target,pos,speed){
-                clearInterval(timer)
-                let current = parseInt(getComputedStyle(obj)[pos])
-                if(current > target) speed=-speed
-                
-                timer = setInterval(() => {
-                    let oldValue = parseInt(getComputedStyle(obj)[pos])
-                    let newValue = oldValue + speed
-                    if((speed<0 && newValue<target)||(speed>0 && newValue>target)) newValue=target
-                    obj.style[pos] = newValue+"px"
-                    if(newValue==target) clearInterval(timer)
-                }, 30);
-            }
+            btn04.onclick = function(){
+                move(box,800,"width",10,function(){
+                    move(box,800,"height",10,()=>{
+
+                    })
+                })
+            }               
+
         }
     </script>
 </head>
@@ -69,6 +64,7 @@
         <button id="btn01">左移</button>
         <button id="btn02">上移</button>
         <button id="btn03">下移</button>     
+        <button id="btn04">测试按钮</button>     
     </div>
    
     <div style="height: 1000px;width: 0;left:800px;top: 0;border-left: 1px solid #bdc;position: absolute;"></div>
