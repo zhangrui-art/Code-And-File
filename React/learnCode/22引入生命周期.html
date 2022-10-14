@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生命周期</title>
+    <style type="text/css">
+        #test {
+            top:100px;
+            left: 50px;
+            width: 600px;
+            position: absolute;
+        }
+        input {
+            margin-right: 20px;
+            margin-left: 20px;
+        }
+    </style>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+    <script src="../js/prop-types.js"></script>
+    <script type="text/babel">
+        class Life extends React.Component {
+            death = ()=>{
+                
+            }
+            render(){
+                return (
+                    <div>
+                        <h2>学不会React怎么办</h2>
+                        <button>不活了</button>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<Life/>,document.getElementById("test"))
+    </script>
+</head>
+
+<body>
+    <div id="test"></div>
+</body>
+
+</html>
