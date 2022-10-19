@@ -23,11 +23,44 @@
     <script src="../js/prop-types.js"></script>
     <script type="text/babel">
         class Count extends React.Component {
+            constructor(props) {
+                console.log("count---constructor");
+                super(props)
+                this.state = {
+                    count: 0,
+                }
+            }
+            
+            // +1 按钮的回调
+            add = ()=>{
+                let {count} = this.state
+                count +=1
+                this.setState({count})
+            }
+            death = ()=>{
+                ReactDOM.unmountComponentAtNode(document.getElementById("test"))
+            }
+
+            // 组件将要挂载的钩子
+            componentWillMount(){
+                console.log("count---componentWillMount");
+            }
+            // 组件挂载完毕的钩子
+            componentDidMount(){
+                console.log("count---componentDidMount");
+            }
+            // 组件将要卸载的钩子
+            componentWillUnmount(){
+                console.log("count---componentWillUnmount");
+            }
             render(){
+                console.log("count---ren der");
+                let {count} = this.state
                 return (
                     <div>
-                        <h2>当前求和为？？？？</h2>
-                        <button>点我+1</button>
+                        <h2>当前求和为{count}</h2>
+                        <button onClick={this.add}>点我+1</button>
+                        <button onClick={this.death}>卸载组件</button>
                     </div>
                 )
             }
