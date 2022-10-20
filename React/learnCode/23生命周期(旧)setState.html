@@ -53,8 +53,21 @@
             componentWillUnmount(){
                 console.log("count---componentWillUnmount");
             }
+            // 控制组件更新的阀门
+            shouldComponentUpdate(){
+                console.log("count---shouldComponentUpdate");
+                return true
+            }
+            // 组件将要更新的钩子
+            componentWillUpdate(){
+                console.log("count---componentWillUpdate");
+            }
+            // 组件更新完毕的钩子
+            componentDidUpdate(){
+                console.log("count---componentDidUpdate");
+            }
             render(){
-                console.log("count---ren der");
+                console.log("count---render");
                 let {count} = this.state
                 return (
                     <div>
