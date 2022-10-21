@@ -30,7 +30,18 @@
             death = ()=>{
                 ReactDOM.unmountComponentAtNode(document.getElementById("test"))
             }
-
+            
+            // 若state的值在任何时候都取决于props,那么可以使用
+            static getDerivedStateFromProps(props,state){
+                console.log("getDerivedStateFromProps",props,state);
+                // return props
+                return null
+            }
+            // 在更新之前获取快照
+            getSnapshotBeforeUpdate(){
+                console.log("count---getSnapshotBeforeUpdate");
+                return  "handsome boy"
+            }
             // 组件挂载完毕的钩子
             componentDidMount(){
                 console.log("count---componentDidMount");
@@ -46,8 +57,8 @@
             }
 
             // 组件更新完毕的钩子
-            componentDidUpdate(){
-                console.log("count---componentDidUpdate");
+            componentDidUpdate(preProps,preState,snapShotValue){
+                console.log("count---componentDidUpdate",preProps,preState,snapShotValue);
             }
             render(){
                 console.log("count---render");
@@ -61,7 +72,10 @@
                 )
             }
         }
-        ReactDOM.render(<Count/>,document.getElementById("test"))
+        ReactDOM.createRoot(test).render(<Count count={199}/>)
+        // const root = ReactDOM.createRoot(test)
+        // root.render(<Count/>)
+        // ReactDOM.render(<Count/>,document.getElementById("test"))
     </script>
 </head>
 
