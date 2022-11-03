@@ -8,8 +8,8 @@ app.use(cors())
 // 能解析urlencode格式的post请求参数
 app.use(express.urlencoded())
 // 能解析json格式的请求参数
-app.use(express.json)
-app.get('/products1',(req,res)=>{
+app.use(express.json())
+app.get('/products1',(req,res) => {
     setTimeout(() => {
         res.send([
             {id:1, name: 'product1.1'},
