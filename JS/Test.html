@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            function test(dateStamp) {
+                let date = new Date()
+                let todayStampStart = Date.parse(date.toLocaleDateString())
+                if (dateStamp > todayStampStart) {
+                    return "Today"
+                } else {
+                    let dateCtime = new Date(dateStamp)
+                    let year = dateCtime.getFullYear()
+                    let month = dateCtime.getMonth() + 1
+                    let day = dateCtime.getDate()
+                    let dateCtimeStart = Date.parse(year + "/" + month + "/" + day)
+                    let dayNumber = Math.trunc((todayStampStart - dateCtimeStart) / 1000 / 60 / 60 / 24)
+                    return dayNumber > 1 ? `${dayNumber} days` : `${dayNumber} day`
+                }
+            }
+            console.error(test(1665158399000));
+            console.error(new Date());
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
