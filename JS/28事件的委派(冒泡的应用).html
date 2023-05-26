@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            let allA = document.getElementsByTagName("a");
+            let btn = document.getElementById("btn")
+            let ul = document.getElementById("ul")
+
+            btn.onclick = function() {
+                    let li = document.createElement("li")
+                    li.innerHTML = "<a href='javascript:;'class='link'>新建超链接</a>"
+                    ul.appendChild(li)
+                }
+                //遍历
+                // for (let i = 0; i < allA.length; i++) {
+                //     allA[i].onclick = function() {
+                //         alert("我是a的单击响应函数")
+                //     }
+                // }
+            ul.onclick = function(event) {
+                event = event || window.event;
+                /*
+                 * target
+                 *  - event中的target表示的触发事件的对象，比如点击的对象（点谁就是谁）
+                 */
+                // alert(event.target);
+
+                //如果触发事件的对象是我们期望的元素，则执行，否则不执行
+                if (event.target.className == "link") alert("我是ul的单击响应函数")
+                else alert("拉给")
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <button id="btn">添加超链接</button>
+    <ul id="ul">
+        <li>
+            <a href="javascript:;" class="link">超链接1</a>
+        </li>
+        <li>
+            <a href="javascript:;">超链接2</a>
+        </li>
+        <li>
+            <a href="javascript:;">超链接3</a>
+        </li>
+        <li>
+            <a href="javascript:;">超链接4</a>
+        </li>
+        <li>
+            <a href="javascript:;">超链接5</a>
+        </li>
+
+
+    </ul>
+</body>
+
+</html>

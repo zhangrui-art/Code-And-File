@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        #box1 {
+            width: 200px;
+            height: 200px;
+            background-color: #30b354;
+        }
+        
+        #box3 {
+            width: 200px;
+            height: 200px;
+            background: #2988e6;
+            overflow: auto;
+        }
+        
+        #box4 {
+            width: 150px;
+            height: 300px;
+            background: #fac;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            let box1 = document.getElementById("box1")
+            let btn1 = document.getElementById("btn1")
+            let box3 = document.getElementById("box3")
+            btn1.onclick = function() {
+                /*clientWidth 和 clientHeight 这两个属性可以获取元素的可见高度和宽度,
+                 *这些属性不带px，返回都是数字，可以直接计算，包括内容区和内边距
+                 *这些属性只读
+                 */
+                // let wid = box1.clientWidth
+                // alert(wid)
+
+                /*offsetWidth 和 offsetHeight 这两个属性可以获取元素的整个高度和宽度,
+                 *包括内容区和内边距和边框
+                 */
+                // alert(box1.offsetHeight)
+
+                /*
+                 * offsetParent 可以用来获取当前元素的定位父元素
+                 *  - 会获取到当前元素最近的开启了定位的祖先元素
+                 *  - 只要position 不是默认的static
+                 */
+                // let op = box1.offsetParent
+                // alert(op.id)
+
+                /*
+                 * offsetLeft  
+                 *  - 当前元素相对于其定位父元素的水平偏移量
+                 * offsetTop..
+                 */
+                // alert(box1.offsetLeft)
+
+                /*
+                 * scrollHeight
+                 *  - 可以获取整个滚动区域的高度
+                 * scrollWidth..
+                 */
+                // alert(box3.scrollHeight)
+
+                /*
+                 * scrollTop
+                 *  - 可以获取垂直滚动条移动的距离
+                 * scrollLeft..
+                 */
+                // alert(box3.scrollTop)
+                // alert(box3.scrollHeight - box3.scrollTop)
+                // alert(box3.clientHeight)
+                // 当满足scrollHeight - scrollTop = clientHeight时，说明垂直滚动条滚动到底了
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <button id="btn1"> 点我一下</button>
+    <br /><br />
+    <div id="box3">
+        <div id="box4">dad</div>
+    </div>
+    <br />
+    <div id="box2" style="position: relative;">
+        <div id="box1">
+        </div>
+    </div>
+
+</body>
+
+</html>

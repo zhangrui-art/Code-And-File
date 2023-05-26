@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+    <script>
+        function axios({
+            url,
+            method="GET",
+            params={},
+            data={}
+        }) {
+            // 返回一个promise对象
+            return new Promise((resolve, reject)=>{
+                method = method.toUpperCase()
+                // 处理query参数（拼接到url上）  id=1&xxx=abc
+                let queryString = ''
+                let queryArr = [] 
+                Object.keys(params).forEach(key => {
+                    queryArr.push(`${key}=${params[key]}`)
+                })
+                queryString = queryArr.join("&")
+                url += '?' + queryString
+                // 执行异步ajax请求
+                // 创建xhr对象
+                const xhrRequest = new XMLHttpRequest()
+                // 打开连接（初始化请求，没有请求）
+                xhrRequest.open(method,url,true)
+                // 发送请求
+                if(method === "GET" || method === "DELETE") {
+                    xhrRequest.send()
+                }else if(method === "POST" || method === "PUT"){
+                    // 如果发送json格式的请求体参数， 必须加请求头
+                    xhrRequest.setRequestHeader('Content-Type','application/json;charset=utf-8')
+                    xhrRequest.send(JSON.stringify(data))    // 发送json格式的请求体参数 
+                }
+                
+                // 绑定状态改变的监听
+                xhrRequest.onreadystatechange = function () {
+                    // 如果请求没有完成，直接结束
+                    if (xhrRequest.readyState !== 4) return
+                    // 如果响应状态码在 [200, 300) 代表成功，否则失败
+                    const { status, statusText } = xhrRequest
+                    console.error(status);
+                    // 如果请求成功了，resolve
+                    if (status >= 200 && status <= 299) {
+                        // 准备结果数据对象response
+                        const response = {
+                            data: JSON.parse(xhrRequest.response),
+                            status,
+                            statusText
+                        }
+                        resolve(response)
+                    } else {  // 如果请求失败了，reject
+                        reject(new Error('request error status is ' + status))
+                    }
+                }
+
+            })
+        }      
+        function testGet() {
+            axios({
+                url: 'http://localhost:3000/posts',
+                method: 'GET',
+                params: {
+                    id: 1,
+                    xxx: "abc"
+                }
+            }).then(
+                response =>{
+                    console.log(response);
+                },
+                error =>{
+                    alert(error.message)
+                }
+            )
+        }       
+        function testPost() {
+            axios({
+                url: 'http://localhost:3000/posts',
+                method: 'POST',
+                data: {
+                    "title": "json-server--",
+                    "author": "typicode3"
+                }
+            }).then(
+                response =>{
+                    console.log(response);
+                },
+                error =>{
+                    alert(error.message)
+                }
+            )
+        }         
+        function testPut() {
+            axios({
+                url: 'http://localhost:3000/posts/1',
+                method: 'PUT',
+                data: {
+                    "title": "json-server--",
+                    "author": "typicode1111"
+                }
+            }).then(
+                response =>{
+                    console.log(response);
+                },
+                error =>{
+                    alert(error.message)
+                }
+            )
+        }   
+        function testDelete() {
+            axios({
+                url: 'http://localhost:3000/posts/3',
+                method: 'DELETE'
+            }).then(
+                response =>{
+                    console.log(response);
+                },
+                error =>{
+                    alert(error.message)
+                }
+            )
+        }             
+    </script>
+</head>
+
+<body>
+    <div>
+        <button onclick="testGet()">GET请求</button>
+        <button onclick="testPost()">POST请求</button>
+        <button onclick="testPut()">PUT请求</button>
+        <button onclick="testDelete()">DELETE请求</button>
+    </div>
+</body>
+
+</html>

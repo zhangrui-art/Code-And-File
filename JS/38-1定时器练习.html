@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            let imgArr = ["img/about.jpg", "img/about.png", "img/add.png", "img/addMeeting.png"];
+            let img = document.getElementById("img")
+            let btn = document.getElementById("bt")
+            let btn02 = document.getElementById("bt01")
+            let num = 0
+            let timer;
+            btn.onclick = function(){
+                    // 在开启定时器之前，需要将当前元素的其他定时器关闭
+                    clearInterval(timer)
+                    timer = setInterval(() => {
+                    img.src = imgArr[num]
+                    num++
+                    // if(num==4) num = 0
+                    num = num % imgArr.length
+                }, 1000);
+            }
+            btn02.onclick = function(){
+                // clearInterval 可以接受任何参数，包括undefined 和 null
+                clearInterval(timer)
+            }            
+
+        }
+    </script>
+</head>
+
+<body>
+    <img src="img/about.jpg" alt="" id="img"/>
+    <br>
+    <button id="bt">开始</button>
+    <button id="bt01">停止</button>
+</body>
+
+</html>

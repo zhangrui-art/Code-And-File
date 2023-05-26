@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+    <script type="text/javascript">
+        class Person{
+            //构造器方法
+            constructor(name,age){
+                // 构造器中的this - 类的实例对象
+                this.name =name 
+                this.age = age
+            }
+            //一般方法
+            speak(){
+                // speak方法放在 - 类的原型对象上，供实例使用，
+                // 通过Person实例调用speak时，speak中的this就是Person实例
+                console.log(`我是${this.name},我的年龄是${this.age}`)
+            }
+        }
+        class Student extends Person{
+            constructor(name,age,grade){
+                super(name,age)
+                this.grade = grade 
+            }
+            study(){
+                console.log("我很努力的学习");
+            }
+        }
+        // class Dog{
+
+        // }
+        const s1 = new Student("Jet", 19,"大二")
+        console.log(s1);
+        const p1 = new Person("Tom","18");
+        p1.speak()
+        // const d1 = new Dog();
+        console.log(p1);
+        // console.log(d1);
+        class Car{
+            constructor(name,price){
+                this.name = name
+                this.price = price
+            }
+            // 类中可以直接写赋值语句，如下代码的含义是：给Car的实例对象添加一个属性，名为a,值为1
+            a=1
+            wheel=4
+            // 给Car自身增加一个属性
+            static demo = 100
+        }
+        let c1 = new Car("Mesadese","199")
+        console.log(c1);
+        console.log(Car.demo);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

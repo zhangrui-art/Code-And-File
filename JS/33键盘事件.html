@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            /*
+                onkeydown 
+                onkeyup
+                键盘事件一般都会绑定给一些可以获取到焦点的对象或者document
+             */
+            
+
+            // 开启一个定时器，来控制div的移动
+            setInterval(() => {
+                
+            }, 30);
+            document.onkeydown = function(event) {
+                event = window.event || event
+                if(event.keyCode === 89 && event.ctrlKey){
+                    alert("你真牛逼")
+                }
+
+            }         
+            let input = document.getElementById("inputBox")
+            input.onkeydown = function(event){
+                event = window.event || event
+                //使文本框不能输入数字
+                console.log(event.keyCode);
+                if((event.keyCode>=48 && event.keyCode<=57) || (event.keyCode>=96 && event.keyCode<=105)){ 
+                    return false
+                }
+
+                // 如果在文本框中输入内容，属于onkeydown默认行为
+                // 如果在onkeydown 取消了默认行为，则输入的内容，不会出现在文本框中
+                // return false
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <input type="text" id="inputBox"/>
+</body>
+
+</html>

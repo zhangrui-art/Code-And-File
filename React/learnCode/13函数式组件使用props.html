@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello React</title>
+    <style type="text/css">
+    </style>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+    <!-- 引入prop-types,用于对组件标签属性进行限制-->
+    <script src="../js/prop-types.js"></script>
+    <script type="text/babel">
+        function Person(props){
+            return (
+                    <ul>
+                        <li>姓名:{props.name}</li>
+                        <li>性别:{props.sex}</li>
+                        <li>年龄:{props.age+1}</li>
+                    </ul>
+                )
+        }
+        // 对标签属性进行类型、必要性的限制
+        Person.propTypes = {
+            name: PropTypes.string.isRequired,
+            sex: PropTypes.string,
+            age: PropTypes.number,
+            speak: PropTypes.func
+        }
+        // 指定默认标签属性值
+        Person.defaultProps = {
+            sex: "不男不女",
+            age: 19
+        }         
+        ReactDOM.render(<Person name="Jerry"/>,document.getElementById("test1"))
+        
+    </script>
+</head>
+
+<body>
+    <div id="test"></div>
+    <div id="test1"></div>
+    <div id="test2"></div>
+</body>
+
+</html>

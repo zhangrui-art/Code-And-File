@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello React</title>
+    <style type="text/css">
+        .title{
+            background-color: aqua;
+            width: 200px;
+        }
+        .input{
+            background-color: tan;
+            color:teal;
+            width: 400px;
+            height: 50px;
+            font-size: 25px;
+            text-align: center;
+        }
+    </style>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+    <script type="text/babel">
+        const data=["Angular","React","Vue"]
+        const dataResult=""
+        const VDOM =(
+            <div>
+                <h1>前端框架列表</h1>
+                <ul>
+                    {
+                        data.map((item,index)=>{
+                            return <li key={index}>{item}</li>
+                        })
+                    }
+                </ul>
+            </div>
+        )
+        ReactDOM.render(VDOM,document.getElementById("frontLi"))
+    </script>
+</head>
+
+<body>
+    <div id="frontLi"></div>
+</body>
+
+</html>

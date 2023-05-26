@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生命周期</title>
+    <style type="text/css">
+        #test {
+            top:100px;
+            left: 50px;
+            width: 600px;
+            position: absolute;
+        }
+        input {
+            margin-right: 20px;
+            margin-left: 20px;
+        }
+    </style>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+    <script src="../js/prop-types.js"></script>
+    <script type="text/babel">
+        class Life extends React.Component {
+            //  生命周期回调函数 <=> 生命周期钩子函数 <=> 生命周期函数 <=> 生命周期钩子
+
+            state = {
+                opacity: "1"
+            }
+            death = ()=>{
+                // // 清除定时器
+                // clearInterval(this.timer)
+                // 卸载组件
+                ReactDOM.unmountComponentAtNode(document.getElementById("test"))
+            }
+            // 组件将要卸载时调用
+            componentWillUnmount(){
+                // 清除定时器
+                clearInterval(this.timer)
+            }
+            // 组件挂载完成之后调用
+            componentDidMount(){
+                this.timer = setInterval(() => {
+                    let {opacity} = this.state
+                    opacity>0? opacity -= 0.1 : opacity=1
+                    this.setState({opacity})
+                }, 200);                
+            }
+            render(){
+                return (
+                    <div>
+                        <h2 style={{opacity: this.state.opacity}}>学不会React怎么办</h2>
+                        <button onClick={this.death}>不活了</button>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<Life/>,document.getElementById("test"))
+    </script>
+</head>
+
+<body>
+    <div id="test"></div>
+</body>
+
+</html>

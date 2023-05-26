@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            /*
+             * Json 
+             *   - JS 中的对象只有JS自己认识，其他语言不认识
+             *   - JSON就是一个特殊格式的字符串，这个字符串可以被任意语言识别
+             *      并且可以转换成任意语言的对象，JSON在开发中主要用来数据的交互
+             *   - JSON
+             *      - JSON和JS对象的格式一样，只不过JSON字符串中的属性名必须加双引号
+             *          其他的JS语法一致
+             *   - JSON分类
+             *      1.对象{} 
+             *      2.数组[]
+             *   - JSON中允许的值： 
+             *      1.字符串
+             *      2.数值
+             *      3.布尔值
+             *      4.null
+             *      5.对象
+             *      6.数组
+             */
+            let obj = '{"name":"hah","age":18}'
+            let obj1 = {name:"hah",age:18}
+            let arr = '[1,2,"hello"]'
+            // 将JSON字符串转换成JS中的对象
+            // JS中提供了一个工具类，就叫JSON
+            // 可以将JSON转换为JS对象，也可以将JS对象转换成JSON
+
+            // json --> js对象 
+            let o = JSON.parse(arr)
+            console.error(o);
+
+            // js对象 --> json
+            let k = JSON.stringify(obj1)
+            console.error(k);
+
+            /* eval()
+             *  - 可以用来执行一段字符串形式的JS代码，并将执行结果返回
+             *  - 如果使用eval()执行的字符串中含有{}，它会将{}当成代码块
+             *    如果不希望当成代码块解析，需要在字符串前后各加一个() 
+             *  - 功能很强大，但是开发中尽量不要使用，首先它的执行性能比较差，然后它还具有安全隐患
+             */
+            let str = "alert('hello')"
+            eval(str)
+            let objEval = eval("("+obj+")")
+            console.error(objEval);
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

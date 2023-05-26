@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        #box1 {
+            width: 200px;
+            height: 200px;
+            background-color: #30b354;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            //使用style只能操作内联样式，但是有些时候还是需要操作样式表
+            let box1 = document.getElementById("box1")
+            let btn1 = document.getElementById("btn1")
+            btn1.onclick = function() {
+                /**获取元素的当前显示的样式
+                 * 语法： 元素.currentStyle.样式名 ,只有IE支持
+                 * 它可以用来读取当前元素正在显示的样式
+                 **/
+                // alert(box1.currentStyle.width);
+                /*其他浏览器可使用 getComputedStyle()获取元素当前的样式，这个方法是windows的方法，可以直接使用
+                 * 需要两个参数：
+                 *  第一个： 要获取样式的元素
+                 *  第二个： 可以传递一个伪元素，一般都传null
+                 * 该方法会返回一个对象，对象中封装了当前元素对应的样式
+                 */
+                // let obj = getComputedStyle(box1, null)
+                // alert(obj.width)
+
+                /*
+                 * 定义一个函数，获取当前指定元素的当前的样式
+                 * 兼容IE8和其他的正常浏览器
+                 */
+                function getStyle(obj, name) {
+                    if (window.getComputedStyle) { // 没加window是变量，加了变成window对象的属性了，变量没找到会报错，属性没找到只会返回undefined
+                        return getComputedStyle(obj, null)[name]
+                    } else {
+                        return obj.currentStyle[name]
+                    }
+                    //上面那段等同于
+                    return window.getComputedStyle ? getComputedStyle(obj, null)[name] : obj.currentStyle[name]
+                }
+                console.log(getComputedStyle(box1)["width"]); 
+
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <button id="btn1"> 点我一下</button>
+    <div id="box1">
+    </div>
+</body>
+
+</html>

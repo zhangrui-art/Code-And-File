@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滚轮事件</title>
+    <style type="text/css">
+        #box {
+            width: 500px;
+            height: auto;
+            background-color: #bfa;
+            text-align: center;
+        }
+        #img {
+            width: auto;
+            /* height: 200px; */
+            margin: auto;
+            position: relative;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            let box = document.getElementById("box")
+            let pole = document.getElementById("img")
+            pole.onwheel = function(event){
+                if(event.wheelDelta>0){
+                    pole.style.height = pole.clientHeight + 10 +"px"
+                }else{
+                    pole.style.height = pole.clientHeight -  10 +"px"
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box">
+        <img src="./img/pole.jpeg" alt="金箍棒" id="img">
+    </div>
+</body>
+
+</html>

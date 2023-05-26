@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串形式的ref</title>
+    <style type="text/css">
+        #test {
+            top:100px;
+            left: 50px;
+            width: 600px;
+            position: absolute;
+        }
+        input {
+            margin-right: 20px;
+            margin-left: 20px;
+        }
+    </style>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+    <script src="../js/prop-types.js"></script>
+    <script type="text/babel">
+        class Demo extends React.Component {
+            render(){
+                return (
+                    <div>
+                        <input ref= "input1" type="text" placeholder="点击按钮提示数据"/> 
+                        <button ref= "btn" onClick={this.showData}>点我提示左边的数据</button>
+                        <input ref= "input2" type="text"onBlur = {this.showDt} placeholder="失去焦点提示数据"/>
+                    </div>
+                )
+            }
+            showData = ()=>{
+                // 原生写法
+                // let input1 = document.getElementById("input1")
+                // alert(input1.value)
+
+                console.log(this);
+                alert(this.refs.input1.value)
+                if(this.refs.btn.innerHTML=="点我提示左边的数据") console.log("caonima");
+            }
+            showDt = ()=>{
+                console.log(this);
+                console.log(this.refs);
+                const {input2} = this.refs
+                console.log(input2);
+                alert(input2.value)
+            }
+        }
+        ReactDOM.render(<Demo/>,document.getElementById("test"))
+    </script>
+</head>
+
+<body>
+    <div id="test"></div>
+</body>
+
+</html>

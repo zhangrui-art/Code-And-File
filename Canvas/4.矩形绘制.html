@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+
+    <canvas id="canvas1" width="600" height="600">
+
+    </canvas>
+    <script type="text/javascript">
+        /** @type {HTMLCanvasElement} */
+        let c1 = document.getElementById("canvas1")
+        let ctx = c1.getContext("2d")
+        // 路径模式
+        ctx.strokeRect(100,100,200,100)
+        // 填充模式
+        ctx.fillRect(200,150,200,100)
+        
+        //清除模式
+        // ctx.clearRect(0,0,c1.clientWidth,c1.clientHeight)
+        let height = 0 
+        let interval = setInterval(() => {
+            height++
+            ctx.clearRect(99,99,c1.clientWidth,height)
+            if(height>c1.clientHeight){
+                clearInterval(interval)
+            }
+        }, 100);
+    </script>
+</body>
+
+</html>

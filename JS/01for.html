@@ -1,0 +1,31 @@
+<html>
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <script type="text/javascript">
+        for (i = 0; i < 9; i++) {
+            for (j = 0; j < i + 1; j++) {
+                document.write("<span>" + (i + 1) + "*" + (j + 1) + "=" + (j + 1) * (i + 1) + "</span>");
+                document.write("&nbsp;&nbsp;");
+            }
+            document.write("<br />");
+        }
+        let k = 13,
+            bb = 12;
+        document.write("<br />");
+        //模板字符串``
+        document.write(`<span>${k+bb}食屎啦你</span>`)
+    </script>
+    <style type="text/css">
+        span {
+            width: 100px;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+</body>
+
+</html>

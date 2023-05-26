@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas1" width="600" height="600">
+        这里的内容，正常的画布不显示的
+    </canvas>
+    <script type="text/javascript">
+        /** @type {HTMLCanvasElement} */
+        var cas = document.getElementById("canvas1");
+        var ctx = cas.getContext("2d");
+        ctx.beginPath();
+        //绘制起始点
+        ctx.moveTo(50, 50);
+        ctx.lineTo(50, 300);
+        ctx.lineTo(300, 100);
+        ctx.lineTo(300, 300);
+        ctx.closePath();
+        ctx.lineCap = "round"; //起始的路径圆角样式
+        // ctx.lineJoin = "round"; //
+        ctx.miterLimit = 2;
+        ctx.lineWidth = 20;
+        ctx.strokeStyle = "aqua";
+        ctx.stroke();
+    </script>
+</body>
+
+</html>

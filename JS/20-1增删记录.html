@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        table {
+            margin: auto;
+            margin-top: 90px;
+            border: 1px solid #000000;
+            border-collapse: collapse;
+        }
+        
+        th {
+            width: 100px;
+            margin: 0;
+            padding: 0;
+            border: 1px solid #000000;
+            text-align: center;
+        }
+        
+        td {
+            width: 100px;
+            margin: 0;
+            padding: 0;
+            border: 1px solid #000000;
+            text-align: center;
+        }
+        
+        #newTb {
+            margin: auto;
+            margin-top: 40px;
+            border: 1px solid #000000;
+            width: 500px;
+            height: auto;
+        }
+    </style>
+    <script type="text/javascript">
+        function deleteA() {
+            let tr = allA[i].parentNode.parentNode
+            confirm("确认删除嘛？") ? tr.parentNode.removeChild(tr) : ""
+
+            return false
+        }
+        window.onload = function() {
+            // 删除一个记录
+            allA = document.getElementsByTagName("a")
+            for (let i = 0; i < allA.length; i++) {
+                allA[i].onclick = deleteA
+            }
+            /*
+             * 添加员工
+             */
+            var btn = document.getElementById("addBtn")
+
+            btn.onclick = function() {
+                var empName = document.getElementById("empName").value
+                var email = document.getElementById("email").value
+                var salary = document.getElementById("salary").value
+                let tr = document.createElement("tr")
+                let table = document.getElementById("employeeTable")
+                let td1 = document.createElement("td")
+                td1.innerHTML = empName
+                let td2 = document.createElement("td")
+                td2.innerHTML = email
+                let td3 = document.createElement("td")
+                td3.innerHTML = salary
+                let atd = document.createElement("td")
+                atd.innerHTML = "<a href=\"javascipt:;\">Delete</a>"
+                tr.appendChild(td1)
+                tr.appendChild(td2)
+                tr.appendChild(td3)
+                tr.appendChild(atd)
+                table.children[0].appendChild(tr)
+
+            }
+
+
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+<table id="employeeTable">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Salary</th>
+        <th>&nbsp;</th>
+    </tr>
+    <tr>
+        <td>Tom</td>
+        <td>Tom@tom.com</td>
+        <td>5000</td>
+        <td><a href="deleteEmp?id=001">Delete</a></td>
+    </tr>
+    <tr>
+        <td>Jerry</td>
+        <td>jerry@jerry.com</td>
+        <td>7000</td>
+        <td><a href="deleteEmp?id=002">Delete</a></td>
+    </tr>
+    <tr>
+        <td>Bob</td>
+        <td>bob@bob.com</td>
+        <td>1000</td>
+        <td><a href="deleteEmp?id=003">Delete</a></td>
+    </tr>
+</table>
+<div id="newTb">
+    <h2>添加新成员</h2>
+    <table>
+        <tr>
+            <td class="word">name: </td>
+            <td class="inp">
+                <input type="text" name="empName" id="empName" />
+            </td>
+        </tr>
+        <tr>
+            <td class="word">email: </td>
+            <td class="inp">
+                <input type="text" name="email" id="email" />
+            </td>
+        </tr>
+        <tr>
+            <td class="word">salary: </td>
+            <td class="inp">
+                <input type="text" name="salary" id="salary" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button id="addBtn" value="abc">submit</button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+</html>

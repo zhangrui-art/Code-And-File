@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+
+    <canvas id="canvas1" width="600" height="600">
+
+    </canvas>
+    <script type="text/javascript">
+        /** @type {HTMLCanvasElement} */
+        var canvas1 = document.querySelector("#canvas1");
+        var ct = canvas1.getContext("2d");
+        ct.beginPath()
+        ct.moveTo(300,200)
+        ct.lineTo(500,400)
+        ct.lineTo(300,400)
+        ct.lineTo(300,200)
+        ct.stroke()
+        ct.fill()
+        ct.closePath()
+        
+        // // 线段爱心
+        // ct.beginPath()
+        // ct.moveTo(100,100)
+        // ct.lineTo(150,50)
+        // ct.lineTo(230,50)
+        // ct.lineTo(300,100)
+        // ct.lineTo(370,50)
+        // ct.lineTo(450,50)
+        // ct.lineTo(500,100)
+        // ct.lineTo(300,350)
+        // ct.lineTo(100,100)
+        // ct.closePath()
+        // ct.lineCap = "round"; //起始的路径圆角样式
+        // // ctx.lineJoin = "round"; //
+        // ct.miterLimit = 2;
+        // ct.lineWidth = 5;
+        // ct.strokeStyle = "aqua";  
+        // ct.stroke()
+        // ct.fillStyle = "#05f2ab"     
+        // ct.fill()         
+    </script>
+</body>
+
+</html>
