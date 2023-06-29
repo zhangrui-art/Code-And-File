@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+
+    <canvas id="canvas1" width="800" height="600">
+
+    </canvas>
+    <script type="text/javascript">
+        /** @type {HTMLCanvasElement} */
+        var canvas1 = document.querySelector("#canvas1");
+        var ct = canvas1.getContext("2d");
+        // 设置全局透明度
+        ct.globalAlpha = 0.3
+        var heartPath = new Path2D() 
+        console.error("DIO",heartPath);
+        // 封装绘制路径
+        heartPath.moveTo(300,300)
+        heartPath.bezierCurveTo(400,200,600,350,300,550)
+        heartPath.bezierCurveTo(0,350,200,200,300,300)
+
+        // 画笔绘制
+        ct.strokeStyle = "#f00"
+        ct.stroke(heartPath)
+        ct.fillStyle = "#05f2ab"
+        ct.fill(heartPath)
+
+        // 创建一条折线
+        var polyLine = new Path2D("M200 400 v50 h50 v80 h80 z")
+        ct.strokeStyle = "#dbdbdb"
+        ct.stroke(polyLine)
+        ct.fillStyle = "#ff0"
+        ct.fill(polyLine)
+
+    </script>
+</body>
+
+</html>
