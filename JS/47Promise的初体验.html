@@ -20,29 +20,36 @@
     </style>
     <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.21/lodash.js"></script>
     <script type="text/javascript">
-        window.onload = function() {
+        window.onload = function () {
             let btn = document.getElementById("btn")
             let rand = function () {
                 return Math.ceil(Math.random() * 100 + 1)
-            }            
-            btn.onclick = function(){
-                const p = new Promise((resolve,reject)=>{
+            }
+            btn.onclick = function () {
+                // setTimeout(() => {
+                //     if (rand() <= 30) {
+                //         alert("恭喜中奖了，操你么的")
+
+                //     } else {
+                //         alert("真傻逼，这都中不了")
+                //     }
+                // }, 1000);
+                const p = new Promise((resolve, reject) => {
                     setTimeout(() => {
                         let n = rand()
-                        if(n<30){
+                        if (n <= 30) {
                             resolve(n)
-                        }else{
+                        } else {
                             reject(n)
                         }
                     }, 1000);
-
                 })
                 p.then(
-                    (value)=>{
-                        alert("中奖了"+value)
+                    (value) => {
+                        alert("恭喜中奖了，操你么的"+value)
                     },
-                    (reason)=>{
-                        alert("叼你妈的"+reason)
+                    (reason) => {
+                        alert("真傻逼，这都中不了"+reason)
                     }
                 )
             }
@@ -51,7 +58,7 @@
 </head>
 
 <body>
-    <button id="btn">点击体验</button>
+    <button id="btn">点击抽奖</button>
 </body>
 
 </html>
