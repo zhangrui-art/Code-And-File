@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+
+    <canvas id="canvas1" width="800" height="600">
+
+    </canvas>
+    <script type="text/javascript">
+        /** @type {HTMLCanvasElement} */
+        var canvas1 = document.querySelector("#canvas1");
+        var ct = canvas1.getContext("2d");
+        let radGradient = ct.createRadialGradient(250,150,20,300,200,100)
+        radGradient.addColorStop(0,"#ffcccc")
+        // radGradient.addColorStop(0.4,"#ffcccc")
+        radGradient.addColorStop(1,"red")
+        ct.fillStyle = radGradient
+        ct.arc(300,200,100,0,Math.PI*2)
+        ct.fill()
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+
+    <canvas id="canvas1" width="600" height="400">
+
+    </canvas>
+    <script type="text/javascript">
+        /** @type {HTMLCanvasElement} */
+        var canvas1 = document.querySelector("#canvas1");
+        var ct = canvas1.getContext("2d");
+        // let lineGradient = ct.createLinearGradient(100,100,300,250)
+        // lineGradient.addColorStop(0,"red")
+        // lineGradient.addColorStop(0.5,"#ffcccc")
+        // lineGradient.addColorStop(1,"blue")
+        // ct.fillStyle = lineGradient
+        // ct.fillRect(100,100,200,150)
+        let index = 0
+        function render() {
+            ct.clearRect(100,100,200,150)
+            index += 0.005
+            if(index>1){
+                index = 0
+            }
+            let lineGradient = ct.createLinearGradient(100,100,300,250)
+            lineGradient.addColorStop(0,"red")
+            lineGradient.addColorStop(index,"#ffcccc")
+            lineGradient.addColorStop(1,"blue")
+            ct.fillStyle = lineGradient
+            ct.fillRect(100,100,200,150)
+            console.error("index",index);
+            requestAnimationFrame(render)
+        }
+        requestAnimationFrame(render)
+    </script>
+</body>
+
+</html>
