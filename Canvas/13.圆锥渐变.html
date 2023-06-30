@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+
+    <canvas id="canvas1" width="800" height="600">
+
+    </canvas>
+    <script type="text/javascript">
+        /** @type {HTMLCanvasElement} */
+        var canvas1 = document.querySelector("#canvas1");
+        var ct = canvas1.getContext("2d");
+        let index = 0
+        function render() {
+            ct.clearRect(0, 0, 600, 400)
+            index += 0.005
+            if (index > 1) {
+                index = 0
+            }
+            // 角度， 位置x， 位置y 
+            let coneGradient = ct.createConicGradient(0, 300, 200)
+            coneGradient.addColorStop(0, "red")
+            coneGradient.addColorStop(index, "yellow")
+            coneGradient.addColorStop(1, "blue")
+            ct.fillStyle = coneGradient
+            ct.fillRect(0, 0, 600, 400)
+            requestAnimationFrame(render)
+        }
+        requestAnimationFrame(render)
+
+    </script>
+</body>
+
+</html>

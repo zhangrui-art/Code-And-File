@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+
+    <canvas id="canvas1" width="800" height="600">
+
+    </canvas>
+    <script type="text/javascript">
+        /** @type {HTMLCanvasElement} */
+        var canvas1 = document.querySelector("#canvas1");
+        var ct = canvas1.getContext("2d");
+        let img = new Image() 
+        img.src = './forPattern.svg'
+        img.onload = function() {
+            //(图片对象-可以是Canvas对象也可以是image对象，重复方式repeat/no-repeat/repeat-x/repeat-y)
+            let pattern = ct.createPattern(img,"repeat-x")
+            ct.fillStyle = pattern
+            ct.fillRect(0,0,600,400)
+        }
+    </script>
+</body>
+
+</html>

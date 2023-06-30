@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+
+    <canvas id="canvas1" width="600" height="400">
+
+    </canvas>
+    <script type="text/javascript">
+        /** @type {HTMLCanvasElement} */
+        var canvas1 = document.querySelector("#canvas1");
+        var ct = canvas1.getContext("2d");
+        ct.moveTo(300,200)
+        ct.lineTo(400,300)
+        ct.lineTo(500,200)
+        ct.strokeStyle = "#fcd"
+        // 设置粗细，默认1px
+        ct.lineWidth = "40"
+        ct.stroke()
+    </script>
+</body>
+
+</html>

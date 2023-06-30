@@ -32,7 +32,9 @@
 
 > miterLimit 设置lineTo的拐点样式
 >
-> lineCap设置起始路径样式
+> lineCap设置线段端点样式
+>
+> lineJoin 设置线段连接处的样式
 >
 > lineWidth 设置线宽
 >
@@ -105,3 +107,78 @@
 > > ```
 
 > 径向渐变
+>
+> ​        // let radGradient = ct.createRadialGradient(300,200,0,300,200,200)
+>
+> ​        // radGradient.addColorStop(0,"red")
+>
+> ​        // radGradient.addColorStop(0.5,"#ffcccc")
+>
+> ​        // radGradient.addColorStop(1,"blue")        
+>
+> ​        // ct.fillStyle = radGradient
+>
+> ​        // ct.fillRect(0,0,600,400)
+>
+> > 径向渐变小动画-> 
+> >
+> > ```js
+> >     let index = 0 
+> >     function render(){
+> >         ct.clearRect(0,0,600,400)
+> >         index += 0.005
+> >         if(index>1){
+> >             index = 0
+> >         }
+> >         let radGradient = ct.createRadialGradient(300,200,0,300,200,200)
+> >         radGradient.addColorStop(0,"red")
+> >         radGradient.addColorStop(index,"#ffcccc")
+> >         radGradient.addColorStop(1,"blue")        
+> >         ct.fillStyle = radGradient
+> >         ct.fillRect(0,0,600,400)
+> >         requestAnimationFrame(render)
+> >     }
+> >     requestAnimationFrame(render)
+> > ```
+> > 
+> >
+> > 径向渐变模拟3D小球
+> >
+> > ```js
+> >     let radGradient = ct.createRadialGradient(250,150,20,300,200,100)
+> >     radGradient.addColorStop(0,"#ffcccc")
+> >     // radGradient.addColorStop(0.4,"#ffcccc")
+> >     radGradient.addColorStop(1,"red")
+> >     ct.fillStyle = radGradient
+> >     ct.arc(300,200,100,0,Math.PI*2)
+> >     ct.fill()
+> > ```
+
+###### 7. 圆锥渐变
+
+> ​        // 角度， 位置x， 位置y 
+>
+> ​        let coneGradient = ct.createConicGradient(0, 300, 200)
+>
+> ​        coneGradient.addColorStop(0,"red")
+>
+> ​        coneGradient.addColorStop(1,"blue")
+>
+> ​        ct.fillStyle = coneGradient
+>
+> ​        ct.fillRect(0,0,600,400)
+
+###### 8. 印章——pattern
+
+> 通过印章可以填充图案
+>
+> ```js
+>         let img = new Image() 
+>         img.src = './forPattern.svg'
+>         img.onload = function() {
+>             //(图片对象-可以是Canvas对象也可以是image对象，重复方式repeat/no-repeat/repeat-x/repeat-y)
+>             let pattern = ct.createPattern(img,"repeat-x")
+>             ct.fillStyle = pattern
+>             ct.fillRect(0,0,600,400)
+>         }
+> ```
