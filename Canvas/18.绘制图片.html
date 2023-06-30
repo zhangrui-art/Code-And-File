@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+
+    <canvas id="canvas1" width="800" height="600">
+
+    </canvas>
+    <script type="text/javascript">
+        /** @type {HTMLCanvasElement} */
+        var canvas1 = document.querySelector("#canvas1");
+        var ct = canvas1.getContext("2d");
+        let img = new Image()
+        img.src = "./assets/提拉米苏甜甜圈.svg"
+        img.onload = function(){
+            //1. 图片对象，水平位置，垂直位置
+            // ct.drawImage(img, 0, 0)
+            //2. 图片对象，水平位置，垂直位置，长度，高度
+            // ct.drawImage(img,0,0,600,580)
+            //3. 图片对象，裁剪起始点x，裁剪起始点y，裁剪长度，裁剪高度
+            // 水平位置，垂直位置，长度，高度
+            ct.drawImage(img,100,0,100,200,0,0,100,200)
+        }
+    </script>
+</body>
+
+</html>
