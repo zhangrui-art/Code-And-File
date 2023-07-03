@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+
+    <canvas id="canvas1" width="800" height="600">
+
+    </canvas>
+    <button id="btn">播放/暂停</button>
+    <video id="video" src="./assets/video.mp4" controls></video>    
+    <script type="text/javascript">
+        /** @type {HTMLCanvasElement} */
+        var canvas1 = document.querySelector("#canvas1");
+        var ct = canvas1.getContext("2d");
+        let video = document.querySelector("video")
+        // let video = document.createElement("video")
+        // video.src = './assets/video.mp4'
+        let btn = document.getElementById("btn")
+        btn.onclick = function(){
+            if(video.paused){
+                // cancelAnimationFrame(render)
+                video.play()
+                index = 0
+                render()
+            }else{
+                video.pause()
+            }
+
+            
+        }
+        let img = new Image()
+        img.src = "./assets/提拉米苏甜甜圈.svg"
+        let index = 0
+        function render() {
+            console.error(index<580);
+            if(index< 580){
+                index += 1
+            }else{
+                index = 0
+            }
+            // index = index <= 580 ? index+10 : 0
+            console.error(index);
+            ct.drawImage(video,0,0,600,400)
+            ct.drawImage(img,index,0,20,20)
+            requestAnimationFrame(render)
+        }
+        
+    </script>
+</body>
+
+</html>
