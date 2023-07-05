@@ -39,6 +39,24 @@
 > lineWidth 设置线宽
 >
 > 设置全局透明度： ct.globalAlpha = 0.3 （要放在最前面）
+>
+> ```js
+>         ct.moveTo(380,200)
+>         ct.lineTo(400,300)
+>         ct.lineTo(420,200)
+>         ct.strokeStyle = "#fcd"
+>         // 设置粗细，默认1px
+>         ct.lineWidth = "40"
+>         // 设置线条端点样式,butt平齐，round半圆,square正方形
+>         ct.lineCap = "square"
+>         // 设置2个线段连接处样式,miter外侧相连的角，round角被磨圆了，bevel角被磨平了
+>         ct.lineJoin = "miter"
+>         // 对衔接面进行设置
+>         ct.miterLimit = 5
+>         ct.stroke()
+> ```
+>
+> 
 
 ###### 4. 贝塞尔曲线
 
@@ -140,7 +158,7 @@
 > >     }
 > >     requestAnimationFrame(render)
 > > ```
-> > 
+> >
 > >
 > > 径向渐变模拟3D小球
 > >
@@ -182,3 +200,73 @@
 >             ct.fillRect(0,0,600,400)
 >         }
 > ```
+
+###### 9.虚线设置 
+
+> 两个参数，实线长，虚线长
+> setLineDash([])
+>
+> lineDashOffset虚线偏移量
+>
+> > 动态虚线实例
+> >
+> > ```js
+> >         let index = 0
+> >         function render(){
+> >             ct.clearRect(0,0,800,600)
+> >             index += 1
+> >             index = index>100 ? 0 : index
+> >             ct.moveTo(300,200)
+> >             ct.lineTo(400,300)
+> >             ct.lineTo(500,200)
+> >             ct.strokeStyle = "#fcd"
+> >             // 设置粗细，默认1px
+> >             ct.lineWidth = "1"
+> >             // 设置线条端点样式,butt平齐，round半圆,square正方形
+> >             ct.lineCap = "square"
+> >             // 设置2个线段连接处样式,miter外侧相连的角，round角被磨圆了，bevel角被磨平了
+> >             ct.lineJoin = "miter"
+> >             // 对衔接面进行设置
+> >             ct.miterLimit = 5
+> >             // 设置虚线
+> >             ct.setLineDash([40,5])
+> >             ct.lineDashOffset = index
+> >             ct.stroke()
+> >             requestAnimationFrame(render)
+> >         }
+> >         requestAnimationFrame(render)
+> > ```
+
+###### 10. 阴影设置
+
+> ```js
+>         ct.beginPath()
+>         ct.moveTo(300,300)
+>         ct.bezierCurveTo(400,200,600,350,300,550)
+>         ct.bezierCurveTo(0,350,200,200,300,300)
+>         ct.shadowOffsetX = 40 
+>         ct.shadowOffsetY = 5 
+>         ct.shadowBlur = 5
+>         ct.shadowColor = "#fcd"        
+>         ct.strokeStyle = "#f00"
+>         ct.stroke();
+>         ct.fillStyle = "#f00"
+>         ct.fill()
+>         ct.closePath()
+> ```
+
+###### 11. 绘制图片
+
+> 通过传入drawImage的参数个数不同，进行对应的设置
+>
+> 1. 图片对象，水平位置，垂直位置
+>
+>    ct.drawImage(img, 0, 0)
+>
+> 2. 图片对象，水平位置，垂直位置，长度，高度
+>
+>    ct.drawImage(img,0,0,600,580)
+>
+> 3. 图片对象，裁剪起始点x，裁剪起始点y，裁剪长度，裁剪高度，水平位置，垂直位置，长度，高度
+>
+>    ct.drawImage(img,100,0,100,200,0,0,100,200)

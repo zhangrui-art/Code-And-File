@@ -19,12 +19,18 @@
         /** @type {HTMLCanvasElement} */
         var canvas1 = document.querySelector("#canvas1");
         var ct = canvas1.getContext("2d");
-        ct.moveTo(300,200)
+        ct.moveTo(380,200)
         ct.lineTo(400,300)
-        ct.lineTo(500,200)
+        ct.lineTo(420,200)
         ct.strokeStyle = "#fcd"
         // 设置粗细，默认1px
         ct.lineWidth = "40"
+        // 设置线条端点样式,butt平齐，round半圆,square正方形
+        ct.lineCap = "square"
+        // 设置2个线段连接处样式,miter外侧相连的角，round角被磨圆了，bevel角被磨平了
+        ct.lineJoin = "miter"
+        // 对衔接面进行设置
+        ct.miterLimit = 5
         ct.stroke()
     </script>
 </body>

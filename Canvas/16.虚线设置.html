@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+
+    <canvas id="canvas1" width="600" height="400">
+
+    </canvas>
+    <script type="text/javascript">
+        /** @type {HTMLCanvasElement} */
+        var canvas1 = document.querySelector("#canvas1");
+        var ct = canvas1.getContext("2d");
+        let index = 0
+        function render(){
+            ct.clearRect(0,0,800,600)
+            index += 1
+            index = index>100 ? 0 : index
+            ct.moveTo(300,200)
+            ct.lineTo(400,300)
+            ct.lineTo(500,200)
+            ct.strokeStyle = "#fcd"
+            // 设置粗细，默认1px
+            ct.lineWidth = "1"
+            // 设置线条端点样式,butt平齐，round半圆,square正方形
+            ct.lineCap = "square"
+            // 设置2个线段连接处样式,miter外侧相连的角，round角被磨圆了，bevel角被磨平了
+            ct.lineJoin = "miter"
+            // 对衔接面进行设置
+            ct.miterLimit = 5
+            // 设置虚线
+            ct.setLineDash([40,5])
+            ct.lineDashOffset = index
+            ct.stroke()
+            requestAnimationFrame(render)
+        }
+        requestAnimationFrame(render)
+    </script>
+</body>
+
+</html>

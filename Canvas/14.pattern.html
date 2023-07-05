@@ -20,7 +20,7 @@
         var canvas1 = document.querySelector("#canvas1");
         var ct = canvas1.getContext("2d");
         let img = new Image() 
-        img.src = './forPattern.svg'
+        img.src = './assets/forPattern.svg'
         img.onload = function() {
             //(图片对象-可以是Canvas对象也可以是image对象，重复方式repeat/no-repeat/repeat-x/repeat-y)
             let pattern = ct.createPattern(img,"repeat-x")
@@ -28,6 +28,25 @@
             ct.fillRect(0,0,600,400)
         }
     </script>
+    <!--下面是用Canvas对象作为pattern填充-->
+    <!-- <canvas id="canvas1" width="800" height="600">
+    </canvas>
+    <canvas id="canvas2"width="1500" height="900"></canvas>
+    <script type="text/javascript">
+        /** @type {HTMLCanvasElement} */
+        var canvas1 = document.querySelector("#canvas1");
+        var ct = canvas1.getContext("2d");
+        let heartPath = new Path2D() 
+        heartPath.moveTo(300,300)
+        heartPath.bezierCurveTo(400,200,600,350,300,550)
+        heartPath.bezierCurveTo(0,350,200,200,300,300)
+        ct.fill(heartPath)
+        var canvas2 = document.querySelector("#canvas2");
+        var ct2 = canvas2.getContext("2d");
+        let pattern = ct2.createPattern(canvas1,"repeat")
+        ct2.fillStyle = pattern
+        ct2.fillRect(0,0,1500,900)
+    </script>     -->
 </body>
 
 </html>
