@@ -270,3 +270,107 @@
 > 3. 图片对象，裁剪起始点x，裁剪起始点y，裁剪长度，裁剪高度，水平位置，垂直位置，长度，高度
 >
 >    ct.drawImage(img,100,0,100,200,0,0,100,200)
+
+###### 12. 绘制视频
+
+> 基本同绘制图片
+>
+> 案例： 
+>
+> ```js
+>         let video = document.querySelector("video")
+>         // let video = document.createElement("video")
+>         // video.src = './assets/video.mp4'
+>         let btn = document.getElementById("btn")
+>         btn.onclick = function(){
+>             if(video.paused){
+>                 // cancelAnimationFrame(render)
+>                 video.play()
+>                 index = 0
+>                 render()
+>             }else{
+>                 video.pause()
+>             }
+>         }
+>         let img = new Image()
+>         img.src = "./assets/提拉米苏甜甜圈.svg"
+>         let index = 0
+>         function render() {
+>             console.error(index<580);
+>             if(index< 580){
+>                 index += 1
+>             }else{
+>                 index = 0
+>             }
+>             // index = index <= 580 ? index+10 : 0
+>             console.error(index);
+>             ct.drawImage(video,0,0,600,400)
+>             ct.drawImage(img,index,0,20,20)
+>             requestAnimationFrame(render)
+>         }
+> ```
+
+###### 13. 绘制文字
+
+>```
+>        ct.font = "50px Microsoft YaHei"
+>        // 填充渲染文字: 文本,x,y,文本显示的最大宽度
+>        // ct.fillText("张大炮蒸的c",200,200,100)
+>        // 可以设置为渐变色
+>        // ct.strokeStyle = lineGradient
+>
+>        // 文本对齐选项textAlign(即x): start(default),end,left,right,center
+>        ct.textAlign = "center"
+>        // 文本基线对齐textBaseline(即y): top,bottom,alphabetic,middle
+>        ct.textBaseline="middle"
+>        // 文本的方向
+>        ct.direction="rtl"
+>        // 预测量文本的宽度
+>        let text = ct.measureText("!君子慎独，不欺暗室")
+>        console.log(text);
+>        ct.strokeText("!君子慎独，不欺暗室",300,200)
+>
+>        ct.arc(300,200,5,0,Math.PI*2)
+>        ct.fill()
+>```
+
+###### 14. 位移变换
+
+> translate / rotate / scale -> 变换的都是坐标系
+>
+> 1. 位移 
+>
+> ```
+>         // // 位移->translate 位移的是当前的坐标系,x,y
+>         // ct.translate(100,100)
+>         // ct.fillRect(0,0,50,50)
+>         // ct.translate(100,100)
+>         // ct.fillRect(0,0,50,50)  
+> ```
+>
+> 2. 缩放
+>
+> ```
+>         // 缩放->scale 拉伸坐标系
+>         // ct.scale(5,2)
+>         // ct.fillRect(0,0,50,50)
+> ```
+>
+> 3. 旋转
+>
+> ```
+>         // 旋转->rotate 旋转坐标系
+>         // ct.rotate(Math.PI/6)
+>         // ct.fillRect(0,0,200,50)  
+> ```
+>
+> 案例： 
+>
+> ```
+>         // translate+scale+rotate
+>         ct.translate(400,300)
+>         ct.rotate(-Math.PI/4)
+>         ct.scale(2,1)
+>         ct.fillRect(-250,-50,500,100)
+> ```
+

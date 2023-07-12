@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+
+    <canvas id="canvas1" width="800" height="600">
+
+    </canvas>
+    <script type="text/javascript">
+        /** @type {HTMLCanvasElement} */
+        var canvas1 = document.querySelector("#canvas1");
+        var ct = canvas1.getContext("2d");
+        // let lineGradient = ct.createLinearGradient(100,200,200,400)
+        // lineGradient.addColorStop(0,"#f00")
+        // lineGradient.addColorStop(1,"blue")
+        ct.font = "50px Microsoft YaHei"
+        // 填充渲染文字: 文本,x,y,文本显示的最大宽度
+        // ct.fillText("张大炮蒸的c",200,200,100)
+        // 可以设置为渐变色
+        // ct.strokeStyle = lineGradient
+
+        // 文本对齐选项textAlign(即x): start(default),end,left,right,center
+        ct.textAlign = "center"
+        // 文本基线对齐textBaseline(即y): top,bottom,alphabetic,middle
+        ct.textBaseline="middle"
+        // 文本的方向
+        ct.direction="rtl"
+        // 预测量文本的宽度
+        let text = ct.measureText("!君子慎独，不欺暗室")
+        console.log(text);
+        ct.strokeText("!君子慎独，不欺暗室",300,200)
+
+        ct.arc(300,200,5,0,Math.PI*2)
+        ct.fill()
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        #canvas1 {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="canvas1" width="800" height="600">
+
+    </canvas>
+    <script type="text/javascript">
+        /** @type {HTMLCanvasElement} */
+        var canvas1 = document.querySelector("#canvas1");
+        var ct = canvas1.getContext("2d");
+        // // 位移->translate 位移的是当前的坐标系,x,y
+        // ct.translate(100,100)
+        // ct.fillRect(0,0,50,50)
+        // ct.translate(100,100)
+        // ct.fillRect(0,0,50,50)       
+        
+        // 缩放->scale 拉伸坐标系
+        // ct.scale(5,2)
+        // ct.fillRect(0,0,50,50)    
+
+        // 旋转->rotate 旋转坐标系
+        // ct.rotate(Math.PI/6)
+        // ct.fillRect(0,0,200,50)  
+        
+        // translate+scale+rotate
+        ct.translate(400,300)
+        ct.rotate(-Math.PI/4)
+        ct.scale(2,1)
+        ct.fillRect(-250,-50,500,100)
+    </script>
+</body>
+
+</html>
