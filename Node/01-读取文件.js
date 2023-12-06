@@ -6,4 +6,14 @@
 let fs = require('fs');
 
 //2.
-fs.readFile("E:\teaching\teachingHC.html");
+fs.readFile("./test.txt", (err, data) => {
+    // <Buffer 77 72 72 72 77 65 72 20>
+    // 文件中存储的其实是二进制数据 0 1 
+    // console.log(data.toString());
+    if (err) {
+        console.log(err);
+    } else {
+        console.log(data.toString());
+    }
+});
+// console.log(test);
