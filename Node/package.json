@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "ip2region": "^2.3.0"
+  }
+}
