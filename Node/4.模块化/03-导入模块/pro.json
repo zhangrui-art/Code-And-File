@@ -1,0 +1,11 @@
+{
+  "name": "pro",
+  "displayName": "pro",
+  "description": "pro",
+  "version": "1.0.0",
+  "publisher": "ruizhang",
+  "icon": "icon.png",
+  "engines": {
+      "vscode": "^1.31.0"
+  }
+}
