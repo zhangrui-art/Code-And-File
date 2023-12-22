@@ -4,24 +4,14 @@ const express = require('express')
 const app = express()
 
 // 创建路由
-app.get('/request', (req, res) => {
-  // 原生参数
-  console.log(req.url);
-  console.log(req.method);
-  console.log(req.httpVersion);
-  console.log(req.headers)
-
-  // express操作
-  console.log(req.path);
-  console.log(req.query);
-  console.log(typeof req.query);
-  console.log(req.ip);
-
-  // 获取请求头
-  console.log(req.get('host'));
-  res.end('Hello World!')
+// :id 占位符
+app.get('/:id.html', (req, res) => {
+  // 获取路由参数 params参数
+  const id = req.params.id
+  console.log(id);
+  res.setHeader('Content-Type', 'text/html;charset=utf-8')
+  res.end('商品详情')
 })
-
 
 app.listen(8080, () => {
   console.log('Server is running on port 8080')
