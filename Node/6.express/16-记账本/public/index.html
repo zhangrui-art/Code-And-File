@@ -14,14 +14,58 @@
         background: #f5f5f5;
       }
       #mainBar {
-        width: '600px';
-        height: '300px';
-        background: #ff0;
+        width: 600px;
         position: 'relative';
-        margin: 'auto'
+        margin: auto
+      }
+      h2 {
+        margin: 30px 0;
+      }
+      hr {
+        background-color: #c8c6c6;
+        height: 1px;
+        border: none;
+        margin: 0;
+        padding: 0;
+      }
+      #listBar {
+        margin-top: 20px;
+        height: 70px;
+        border: 1px solid #c8c6c6;
+        border-radius: 3px;
+        overflow: hidden;
+      }
+      #listTitle {
+        height: 30px;
+        background-color: #e9d3d2;
+        box-sizing: border-box;
+        border-bottom: 1px solid #c8c6c6;
+        font-size: 13px;
+        padding-left: 10px;
+        display: flex;
+        align-items: center;
+        color: #b95c57;
+      }
+      #listContent {
+        height: 40px;
+        box-sizing: border-box;
+        font-size: 12px;
+        padding-left: 20px;
+        display: flex;
+        align-items: center;    
+      }
+      #account {
+        width: 300px;
+      }
+      #tag {
+        background-color: #5eb861;
+        color: white;
+        padding: 3px 5px;
+        border-radius: 3px;
+        margin-right: 100px;
       }
     </style>
-    <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.21/lodash.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/slodash.js/4.17.21/lodash.js"></script>
     <script type="text/javascript">
         window.onload = function() {
 
@@ -30,7 +74,26 @@
 </head>
 
 <body>
-  <div id="mainBar"></div>
+  <div id="mainBar">
+    <h2>记账本</h2>
+    <hr>
+    <div id="listBar">
+      <div id="listTitle">2023-04-26</div>
+      <div id="listContent">
+        <span id="account">3月份发工资</span>
+        <span id="tag">收入</span>
+        <span>1396元</span>
+      </div>
+    </div>
+    <div id="listBar">
+      <div id="listTitle">2023-04-26</div>
+      <div id="listContent">
+        <span id="account">3月份发工资</span>
+        <span id="tag">收入</span>
+        <span>1396元</span>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
