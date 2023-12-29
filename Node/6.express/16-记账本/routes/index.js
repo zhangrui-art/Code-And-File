@@ -20,7 +20,7 @@ router.post('/account', function(req, res, next) {
   var account = req.body;
   console.log(account);
   db.get('account').unshift({id: shortid(), ...req.body}).write()
-  res.render('success',{msg: '添加成功了！'})
+  res.render('success',{msg: '添加成功了！',url: '/account'})
   // res.redirect('/account');
 });
 
