@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
+const shortid = require('shortid')
 const adapter = new FileSync(__dirname + '/../data/db.json')
 const db = low(adapter)
  
@@ -18,8 +19,9 @@ router.get('/account/create', function(req, res, next) {
 router.post('/account', function(req, res, next) {
   var account = req.body;
   console.log(account);
-  db.get('account').push(req.body).write()
-  res.redirect('/account');
+  db.get('account').unshift({id: shortid(), ...req.body}).write()
+  res.render('success',{msg: '添加成功了！'})
+  // res.redirect('/account');
 });
 
 module.exports = router;
