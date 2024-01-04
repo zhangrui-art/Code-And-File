@@ -1,0 +1,28 @@
+{
+  "account": [
+    {
+      "id": "3ABUwiujJ",
+      "title": "买书",
+      "time": "2024-01-24",
+      "type": "-1",
+      "amount": "10",
+      "remark": "哈哈哈哈哈哈"
+    },
+    {
+      "id": "OQt_K5pEZ",
+      "title": "干活",
+      "time": "2023-12-07",
+      "type": "1",
+      "amount": "600",
+      "remark": "累死了"
+    },
+    {
+      "id": "Ie0HK1dzQ",
+      "title": "消费",
+      "time": "2024-01-11",
+      "type": "-1",
+      "amount": "200",
+      "remark": "爽"
+    }
+  ]
+}
