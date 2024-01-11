@@ -3,7 +3,7 @@ var router = express.Router();
 const UserModel = require('../../model/UserModel');
 const md5 = require('md5');
 const jsonwebtoken = require('jsonwebtoken');
-
+const { secret } = require('../../config/config') 
 // 登录操作
 router.post('/login', (req, res) => {
   // 查询数据库
@@ -19,7 +19,7 @@ router.post('/login', (req, res) => {
       }
       let token = jsonwebtoken.sign({
         username: result.username,
-      }, "zhangdapao", {
+      }, secret, {
         expiresIn: 60 * 60 * 24
       })
       res.json({
