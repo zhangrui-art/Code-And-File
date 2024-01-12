@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const checkToken = require('../../middlewares/checkToken')
 
 // 获取记录
-router.get('/account', checkToken, (req, res, next) => {
+router.get('/account', (req, res, next) => {
 
   AccountModel.find().sort({ time: -1 })
     .then((result) => {
