@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+      /* 
+        子串值属性选择器
+          [attr|='val'] 选择attr属性的值是val或以val-开头的元素
+          [attr^='val'] 选择attr属性的值以val开头的元素
+          [attr$='val'] 选择attr属性的值以val结尾的元素
+          [attr*='val'] 选择attr属性的值包含val的元素
+      */
+      *{
+        margin: 0;
+        padding: 0; 
+      }
+      div[name|='pao']{
+        color: deeppink;
+      }
+      div[name^='pao']{
+        border: 1px solid blue;
+      }
+    </style>
+</head>
+
+<body>
+  <div id="wrap">
+    <div name="pao-apao">蒸滴a</div>
+    <div name="pao-bpao">蒸滴b</div>
+    <div name="pao-cpao nb">蒸滴c</div>
+    <div name="pao_dpao">蒸滴d</div>
+    <div name="pao-epao">蒸滴e</div>
+  </div>
+</body>
+
+</html>

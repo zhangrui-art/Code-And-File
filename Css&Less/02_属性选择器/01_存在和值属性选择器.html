@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+      /* 
+        [attr] 属性选择器
+        [attr=val] 属性值选择器
+        [attr~=val] 选择attr属性的值包含val的元素
+      */
+      *{
+        margin: 0;
+        padding: 0; 
+      }
+      #wrap div[name]{
+        border: 1px solid;
+      }
+      #wrap div[name="pao_apao"]{
+        color: deeppink;
+      }
+      div[name~='nb']{
+        color: aqua;
+      }
+    </style>
+</head>
+
+<body>
+  <div id="wrap">
+    <div name="pao_apao">蒸滴a</div>
+    <div name="pao_bpao">蒸滴b</div>
+    <div name="pao_cpao nb">蒸滴c</div>
+    <div name="pao_dpao">蒸滴d</div>
+    <div name="pao_epao">蒸滴e</div>
+  </div>
+</body>
+
+</html>

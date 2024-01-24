@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+      /* ~ 通用兄弟选择器
+        必须是后面的兄弟，前面的不管
+      */
+      *{
+        margin: 0;
+        padding: 0; 
+      }
+      #wrap #sec ~ .inner{
+        color: deeppink;
+      }
+    </style>
+</head>
+
+<body>
+  <div id="wrap">
+    <div class="inner">1</div>
+    <div id="sec">2</div>
+    <p></p>
+    <div class="inner">3</div>
+    <div class="inner">4</div>
+    <div class="inner">5</div>
+  </div>
+</body>
+
+</html>
