@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+      label{
+        position: relative;
+        float: left;
+        width: 200px;
+        height: 200px;
+        border: 1px solid #ccc;
+        
+        border-radius: 50%;
+        overflow: hidden;
+      }
+      input{
+        position: absolute;
+        top: -50px;
+        left: -50px;
+      }
+      label > span{
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+      }
+      input:checked + span{
+        background-color: aquamarine;
+      }
+    </style>
+</head>
+
+<body>
+  <label>
+    <input type="radio" name="paopao" id="">
+    <span></span>
+  </label>
+  <label>
+    <input type="radio" name="paopao" id="">
+    <span></span>
+  </label>
+  <label>
+    <input type="radio" name="paopao" id="">
+    <span></span>
+  </label>
+</body>
+
+</html>
