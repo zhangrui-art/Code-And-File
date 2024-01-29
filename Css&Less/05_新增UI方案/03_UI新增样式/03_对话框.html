@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+      *{
+        margin: 0;
+        padding: 0;
+      }
+      html,body{
+        height: 100%;
+        overflow: hidden;
+      }
+      #wrap{
+        width: 400px;
+        height: 300px;
+        /* border: 1px solid aquamarine; */
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+      }
+      #wrap > #first{ 
+        width: 350px;
+        height: 200px;
+        border: 1px solid aquamarine;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 200px;
+      }
+      #wrap > #second{ 
+        position: relative;
+        top: -10px;
+        left: 280px;
+        width: 40px;
+        height: 40px;
+        border: 1px solid aquamarine;
+        border-radius: 50%;
+      }
+      #wrap > #third{
+        position: relative;
+        top: -10px;
+        left: 320px;
+        width: 15px;
+        height: 15px;
+        border: 1px solid aquamarine;
+        border-radius: 50%;        
+      }
+    </style>
+</head>
+
+<body>
+  <div id="wrap">
+    <div id="first">大家好，我是张大炮</div>
+    <div id="second"></div>
+    <div id="third"></div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+      html,body{
+        height: 100%;
+        width: 100%;
+      }
+      body{
+        text-align: center;
+      }
+      body::after{
+        height: 100%;
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+      }
+      div{
+        width: 200px;
+        height: 200px;
+        display: inline-block;
+        vertical-align: middle;
+        background-color: aquamarine;
+        resize: both; /* 可以是both, horizontal, vertical 需要配合overflow属性使用 */
+        overflow: auto;
+      }
+      /* img{
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        transform: rotate(90deg)
+      } */
+    </style>
+</head>
+
+<body>
+  <div></div>
+</body>
+
+</html>
