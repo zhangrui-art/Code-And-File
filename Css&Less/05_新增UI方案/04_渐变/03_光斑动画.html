@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+      overflow: hidden;
+      background-color: black;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 50px;
+      display: inline-block;
+      color: rgba(255, 255, 255, 0.3);
+      font: bold 80px "Arial";
+      background: linear-gradient(120deg, rgba(255, 255, 255, 0) 40px, rgba(255, 255, 255, 1) 100px, rgba(255, 255, 255, 0) 160px);
+      background-clip: text;
+      background-repeat: no-repeat;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>张p炮蒸滴c</h1>
+</body>
+
+<script>
+  let h1 = document.querySelector('h1')
+  let flag = -120 
+  setInterval(() => {
+    if (flag == 450) {
+      flag = -120
+    }
+    flag += 5
+    h1.style.backgroundPosition = flag + 'px';
+  }, 1000/60);
+</script>
+
+</html>
