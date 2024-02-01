@@ -6,32 +6,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style type="text/css">
-    *{
+    * {
       margin: 0;
       padding: 0;
     }
-    html,body{
-      /* height: 100%; */
-      /* overflow: hidden; */
+
+    html,
+    body {
+      height: 100%;
+      overflow: hidden;
     }
-    #wrap{
+
+    #wrap {
       position: fixed;
       bottom: 10px;
       right: 10px;
       width: 50px;
       height: 50px;
     }
-    img{
+
+    #wrap>.inner>img {
+      top: 0px;
+      left: 0px;
       position: absolute;
       padding: 5px 5px;
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
+    }
+
+    #wrap>.home,
+    #wrap>.inner {
+      position: absolute;
       border-radius: 50%;
       border: 1px solid #ccc;
+      width: 100%;
+      height: 100%;
+      transform-origin: center;
     }
-    /* #wrap > .inner > img{
+
+    #wrap>.home {
+      transition: 1s;
+      overflow: hidden;
+    }
+
+    #wrap>.home>img {
       position: absolute;
-    } */
+      position: absolute;
+      padding: 5px 5px;
+      width: 40px;
+      height: 40px;
+      z-index: 1;
+      background-color: white;
+    }
   </style>
 </head>
 
@@ -49,5 +75,57 @@
     </div>
   </div>
 </body>
+<script>
+  window.onload = function () {
+    let homeNode = document.querySelector('.home')
+    let flag = true
+    let innerNodes = document.querySelectorAll('.inner > img')
+
+    homeNode.onclick = function () {
+      if (flag) {
+        homeNode.style.transform = 'rotate(-360deg)'
+        for (let i = 0; i < innerNodes.length; i++) {
+          let innerNode = innerNodes[i]
+          innerNode.style.transition = 0.5 + i * 0.3 + 's'
+          innerNode.style.transform = 'rotate(-360deg) scale(1)'
+          innerNode.style.left = getPoint(150,i*22.5).left
+          innerNode.style.top = getPoint(150,i*22.5).top
+        }
+      } else {
+        homeNode.style.transform = 'rotate(0deg)'
+        for (let i = 0; i < innerNodes.length; i++) {
+          let innerNode = innerNodes[i]
+          innerNode.style.left = '0px'
+          innerNode.style.top = '0px'          
+          innerNode.style.transform = 'rotate(0deg) scale(1)'
+        }
+      }
+      flag = !flag
+    }
+
+    function getPoint(c, deg){
+      let x = Math.round(c * Math.sin(deg* Math.PI / 180))
+      let y = Math.round(c * Math.cos(deg* Math.PI / 180))
+      return {
+        left: -x+'px',
+        top: -y+'px'
+      }
+    }
+    function fn(){
+      this.style.transition = '0.3s'
+      this.style.transform = 'rotate(-720deg) scale(1)'
+      this.style.opacity = 1
+    }
+    for (let i = 0; i < innerNodes.length; i++) {
+      let innerNode = innerNodes[i];
+      innerNode.onclick = function () {
+        this.style.transition = '0.5s'
+        this.style.opacity = 0.1 
+        this.style.transform = "rotate(-720deg) scale(2)"
+        this.addEventListener('transitionend', fn)
+      }
+    }
+  }
+</script>
 
 </html>
