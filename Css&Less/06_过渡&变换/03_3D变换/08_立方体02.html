@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .wrap{
+        width: 300px;
+        height: 300px;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        position: absolute;
+        border: 1px solid rgb(18, 154, 154);
+        perspective: 100px;
+        transform-style: preserve-3d;
+        background-color: beige;
+      }
+      .wrap > .box{
+        transition: 1s;
+        width: 80px;
+        height: 80px;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+        margin: auto;
+        transform-style: preserve-3d;
+      }
+      .wrap > .box > div{
+        width: 80px;
+        height: 80px;
+        background-color: aquamarine;
+        line-height: 80px;
+        text-align: center;
+        font: 30px/80px Arial;
+        color: white;
+      }
+      .wrap > .box > div:nth-child(3){
+      }
+      .wrap > .box > div:nth-child(4){
+      }
+      .wrap > .box > div:nth-child(5){
+      }
+      .wrap > .box > div:nth-child(6){
+      }
+      .wrap > .box > div:nth-child(2){
+      }
+      .wrap:hover .box{
+        transform-origin: center center -50px;
+        transform: rotateX(180deg);
+      }
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+
+        }
+    </script>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="box">
+      <div>前</div>
+      <div>后</div>
+      <div>左</div>
+      <div>右</div>
+      <div>上</div>
+      <div>下</div>
+    </div>
+  </div>
+</body>
+
+</html>

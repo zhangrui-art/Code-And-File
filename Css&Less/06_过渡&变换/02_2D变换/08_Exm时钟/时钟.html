@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style type="text/css" id="css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .clock {
+      width: 200px;
+      height: 200px;
+      border: 1px solid;
+      border-radius: 50%;
+      left: 50%;
+      top: 50%;
+      margin-left: -100px;
+      margin-top: -100px;
+      position: absolute;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    ul>li {
+      width: 2px;
+      height: 10px;
+      top: 0px;
+      left: 99px;
+      background-color: black;
+      position: absolute;
+      transform-origin: center 100px;
+    }
+    .hour{
+      top: 70px;
+      left: 96.5px;
+      width: 7px;
+      height: 30px;
+      background-color: black;
+      position: absolute;
+      transform-origin: bottom;
+    }
+    .min{
+      top: 60px;
+      left: 98px;
+      width: 4px;
+      height: 40px;
+      background-color: gray;
+      position: absolute;
+      transform-origin: bottom;
+    }
+    .sec{
+      top: 30px;
+      left: 99px;
+      width: 2px;
+      height: 70px;
+      background-color: red;
+      position: absolute;
+      transform-origin: bottom;
+    }
+    .icon{
+      left: 50%;
+      top: 50%;
+      margin-left: -10px;
+      margin-top: -10px;
+      width: 20px;
+      height: 20px;
+      background-color: aquamarine;
+      border-radius: 50%;
+      position: absolute;
+    }
+  </style>
+  <script>
+    window.onload = function () {
+      let hourNode = document.querySelector('.clock > .hour')
+      let minNode = document.querySelector('.clock > .min')
+      let secNode = document.querySelector('.clock > .sec')
+      let ulNode = document.querySelector('ul')
+      let styleNode = document.querySelector('#css')
+      let liHtml = ''
+      let cssText = ''
+      for (let i = 0; i < 60; i++) {
+        liHtml += `<li></li>`
+        cssText += `
+          ul>li:nth-child(${i + 1}){
+            transform: rotate(${i * 6}deg);
+            height: ${i % 5 === 0 ? '15px' : '8px'}
+          }`
+      }
+      ulNode.innerHTML = liHtml
+      styleNode.innerHTML += cssText
+      move()
+      setInterval(move, 1000)
+      function move() {
+        let date = new Date()
+        let hour = date.getHours()
+        let min = date.getMinutes()
+        let sec = date.getSeconds()
+        hourNode.style.transform = `rotate(${(hour + min/60 + sec/3600) * 30}deg)`
+        minNode.style.transform = `rotate(${(min + sec/60) * 6}deg)`
+        secNode.style.transform = `rotate(${sec * 6}deg)`
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div class="clock">
+    <ul>
+    </ul>
+    <div class="hour"></div>
+    <div class="min"></div>
+    <div class="sec"></div>
+    <div class="icon"></div>
+  </div>
+</body>
+
+</html>
