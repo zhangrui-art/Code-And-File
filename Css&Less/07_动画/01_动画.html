@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .wrap {
+      margin: 150px auto;
+      width: 300px;
+      height: 300px;
+      position: relative;
+      border: 1px solid;
+    }
+
+    .inner {
+      left: 50%;
+      top: 50%;
+      margin-left: -50px;
+      margin-top: -50px;
+      width: 100px;
+      height: 100px;
+      background-color: aquamarine;
+      position: absolute;
+      text-align: center;
+      color: white;
+      font: 20px/100px 'Arial';
+      border-radius: 50%;
+      /* 动画内的属性 */
+      animation-name: move;
+      animation-duration: 1s;
+      animation-timing-function: ease-in-out;
+      animation-direction: reverse; /* 反转的是关键帧和animation-timing-function */
+      /* 动画外的属性 */
+      /* animation-delay: 2s; */
+      /* 只作用于动画内的属性 */
+      animation-iteration-count: 3; /* 重复的是关键帧 */
+      
+    }
+
+    @keyframes move {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(300deg);
+      }
+    }
+  </style>
+  <script type="text/javascript">
+    window.onload = function () {
+
+    }
+  </script>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="inner">Pao
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style type="text/css" id="css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    html,body{
+      overflow: hidden;
+      height: 100%;
+    }
+    .wrap {
+      width: 300px;
+      height: 300px;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      position: absolute;
+      border: 1px solid rgb(18, 154, 154);
+      perspective: 400px;
+      transform-style: preserve-3d;
+      /* background-color: beige; */
+    }
+
+    .wrap>.box {
+      transition: 10s transform;
+      width: 80px;
+      height: 150px;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      position: absolute;
+      margin: auto;
+      transform-style: preserve-3d;
+    }
+
+    .wrap>.box>div {
+      position: absolute;
+      width: 80px;
+      height: 150px;
+      background-color: aquamarine;
+      line-height: 150px;
+      text-align: center;
+      font: 30px/150px Arial;
+      color: white;
+    }
+    .wrap:hover .box {
+      transform: rotateY(270deg);
+    }   
+  </style>
+
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="box">
+    </div>
+  </div>
+</body>
+<script type="text/javascript">
+  window.onload = function () {
+    let boxNode = document.querySelector(".wrap > .box");
+    let cssNode = document.querySelector("#css");
+    const edgeLength = 10
+    let nodeTxt = ''
+    let cssText = ''
+    const rotateDeg = (360/edgeLength)
+    console.log(rotateDeg);
+    const origin = 40/Math.tan((rotateDeg/2)*Math.PI/180)
+    console.log("origin",origin);
+    for (let i = 0; i < edgeLength; i++) {
+      nodeTxt += `<div>${i+1}</div>`
+    }
+    boxNode.innerHTML = nodeTxt
+    let divNodes = document.querySelectorAll(".wrap > .box > div")
+    for (let i = 0; i < divNodes.length; i++) {
+      const divNode = divNodes[i];
+      divNode.style.transformOrigin = `center center -${origin}px`
+    }    
+    for (let i = 0; i < edgeLength; i++) {
+      cssText += `
+        .wrap > .box > div:nth-child(${i+1}){
+          transform: rotateY(${rotateDeg*i}deg);
+        }          
+        `
+    }
+    cssText += `
+    .wrap > .box > div{
+          transform-origin: center center -${origin}px;
+        }          
+    `
+    cssText += `
+    .wrap > .box{
+          transform-origin: center center -${origin}px;
+        }          
+    `
+    cssNode.innerHTML += cssText
+  
+  }
+</script>
+</html>

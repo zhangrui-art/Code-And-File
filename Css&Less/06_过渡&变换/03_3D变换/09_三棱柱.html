@@ -27,7 +27,7 @@
       .wrap > .box{
         transition: 1s;
         width: 80px;
-        height: 80px;
+        height: 150px;
         top: 0;
         left: 0;
         right: 0;
@@ -39,32 +39,24 @@
       .wrap > .box > div{
         position: absolute;
         width: 80px;
-        height: 80px;
+        height: 150px;
         background-color: aquamarine;
-        line-height: 80px;
+        line-height: 150px;
         text-align: center;
-        font: 30px/80px Arial;
+        font: 30px/150px Arial;
         color: white;
-        transform-origin: center center -40px;
+        transform-origin: center center -23.094px;
       }
-      .wrap > .box > div:nth-child(3){
-        transform: rotateY(-90deg);
-      }
-      .wrap > .box > div:nth-child(4){
-        transform: rotateY(90deg);
-      }
-      .wrap > .box > div:nth-child(5){
-        transform: rotateX(90deg);
-      }
-      .wrap > .box > div:nth-child(6){
-        transform: rotateX(-90deg);
-      }
+
       .wrap > .box > div:nth-child(2){
-        transform: rotateY(180deg);
+        transform: rotateY(120deg);
+      }      
+      .wrap > .box > div:nth-child(3){
+        transform: rotateY(240deg);
       }
       .wrap:hover .box{
         transform-origin: center center -50px;
-        transform: rotateX(180deg);
+        transform: rotateX(90deg);
       }      
     </style>
     <script type="text/javascript">
@@ -77,12 +69,9 @@
 <body>
   <div class="wrap">
     <div class="box">
-      <div>前</div>
-      <div>后</div>
-      <div>左</div>
-      <div>右</div>
-      <div>上</div>
-      <div>下</div>
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
     </div>
   </div>
 </body>
