@@ -31,19 +31,20 @@
       text-align: center;
       color: white;
       font: 20px/100px 'Arial';
+      border-radius: 50%;
       /* 动画内的属性 */
       animation-name: move;
       animation-duration: 1s;
       animation-timing-function: ease-in-out;
-      animation-direction: reverse; /* 反转的是关键帧和animation-timing-function */
+      animation-direction: alternate; /* 反转的是关键帧和animation-timing-function */
       /* 动画外的属性 */
-      animation-delay: 2s;
+      animation-delay: 1s;
       /* 只作用于动画内的属性 */
       animation-iteration-count: 3; /* 重复的是关键帧 */
 
       /* 元素在动画外的状态 */
       animation-fill-mode: both;
-      
+      animation-play-state: running;
     }
 
     @keyframes move {
@@ -54,6 +55,9 @@
       to {
         transform: translateY(-100px);
       }
+    }
+    .wrap:hover .inner{
+      animation-play-state: paused;
     }
   </style>
   <script type="text/javascript">

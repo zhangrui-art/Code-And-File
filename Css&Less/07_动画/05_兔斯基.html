@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .wrap {   
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      width: 48px;
+      height: 48px;
+      background-color: aquamarine;
+      position: absolute;
+      background: no-repeat url(rabbitBack.png);
+      background-size: cover;
+      background-position: 0 0;
+      animation-name: moveRabbit;
+      animation-timing-function: steps(11);
+      animation-duration: 1s;
+      animation-fill-mode: both;
+      animation-iteration-count: infinite;
+    }
+    @keyframes moveRabbit {
+      from{
+        background-position: 0 0;
+      }
+      to{
+        background-position: -528px 0;
+      }
+    }
+  </style>
+  <script type="text/javascript">
+    window.onload = function () {
+
+    }
+  </script>
+</head>
+
+<body>
+  <div class="wrap">
+  </div>
+</body>
+
+</html>

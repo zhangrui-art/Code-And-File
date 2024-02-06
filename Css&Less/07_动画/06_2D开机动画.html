@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    html,body{
+      height: 100%;
+      overflow: hidden;
+    }
+    .wrap {
+      height: 100%;
+      background-color: gray;
+    }
+    .wrap > .box{
+      position: relative;
+      left: 50%;
+      top: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      text-align: center;
+      font: 20px/100px 'Arial';
+    }
+    .wrap > .box > span{
+      position: relative;
+      animation: move 0.25s linear infinite alternate both;
+    }
+    @keyframes move {
+      from {
+        top: 10px;
+      }
+      to {
+        top: -10px;
+      }
+    }
+  </style>
+  <script type="text/javascript">
+    window.onload = function () {
+      let spanNodes = document.querySelectorAll('.wrap > .box > span');
+      for (let i = 0; i < spanNodes.length; i++) {
+        const spanNode = spanNodes[i];
+        spanNode.style.animationDelay = i * 50 + 'ms';
+        spanNode.style.color = '#' + Math.floor(Math.random() * 16777215).toString(16);
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="box">
+      <span>张</span>
+      <span>大</span>
+      <span>泡</span>
+      <span>泡</span>
+      <span>蒸</span>
+      <span>滴</span>
+      <span>帅</span>
+    </div>
+  </div>
+</body>
+
+</html>
