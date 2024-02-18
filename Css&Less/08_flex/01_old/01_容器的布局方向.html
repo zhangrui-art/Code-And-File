@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+      *{
+        margin: 0;
+        padding: 0;
+      }
+      .wrap {
+        width: 400px;
+        height: 300px;
+        border: 1px solid #000;
+        margin: 100px;
+        display: -webkit-box;
+        /* -webkit-box-orient 控制的是主轴 */
+        -webkit-box-orient: horizontal;
+      }
+      .wrap > .item{
+        /* float: left; */
+        width: 50px;
+        height: 50px;
+        background-color: aquamarine;
+        text-align: center;
+        line-height: 50px;
+      }
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+
+        }
+    </script>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+
+  </div>
+</body>
+
+</html>

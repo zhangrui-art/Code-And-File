@@ -15,15 +15,31 @@
       overflow: hidden;
     }
     .wrap {
-      height: 100%;
-      background-color: gray;
+      position: relative;
+      left: 50%;
+      top: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      text-align: center;
+      perspective: 300px;
+    }
+    .wrap > .inner{
+      position: relative;
+      transform-style: preserve-3d;
+    }
+    .wrap > .inner >  img{
+      width: 100px;
+      height: 100px;
+      animation: move 1s linear 0s infinite both;
+    }
+    .wrap > .inner > p{
+      margin-top: 10px;
     }
     @keyframes move {
       from {
-        top: 10px;
+        transform: rotateY(0deg);
       }
       to {
-        top: -10px;
+        transform: rotateY(360deg);
       }
     }
   </style>
@@ -35,6 +51,12 @@
 
 <body>
   <div class="wrap">
+    <div class="inner">
+      <img src="sweet.svg" alt="">
+      <p>正在加载中
+  
+      </p>
+    </div>
   </div>
 </body>
 
