@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style type="text/css">
+    .wrap {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+    }
+    /* screen all print */ 
+    /* 
+     * width 浏览器窗口尺寸 (min max) 
+     * height 
+     * device-width 设备尺寸 (min max)
+     * device-height 设备尺寸 (min max)
+     * orientation 屏幕方向 (portrait landscape)
+     * aspect-ratio 设备长宽比 (min max)
+    */
+    /* and or not only */
+    @media screen and (width:800px) {  /* 浏览器窗口尺寸必须为800 */
+      /* 规则 */
+      .wrap{
+        border: 10px solid #000;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="index.css" media="print"> <!-- media: print/screen-->
+  <script type="text/javascript">
+    window.onload = function () {
+
+    }
+  </script>
+</head>
+
+<body>
+  <div class="wrap"></div>
+</body>
+
+</html>
