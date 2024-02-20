@@ -1,0 +1,18 @@
+#wrap {
+  width: 600px;
+  height: 400px;
+  border: 1px solid;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+#wrap #sjx {
+  width: 0;
+  height: 0;
+  border-width: 30px;
+  border-style: solid;
+  border-color: transparent aquamarine transparent transparent;
+}

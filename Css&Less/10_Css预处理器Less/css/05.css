@@ -1,0 +1,6 @@
+#wrap {
+  one: 1;
+}
+#wrap #inner {
+  three: 3;
+}

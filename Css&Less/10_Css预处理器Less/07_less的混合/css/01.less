@@ -1,0 +1,25 @@
+.setCenter(@w:80px,@h:80px,@c:red){
+  margin: 10px auto;
+  position: relative;
+  width: @w;
+  height: @h;
+  background-color: @c;
+}
+
+#wrap {
+  width: 600px;
+  height: 400px;
+  border: 1px solid;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  #inner {
+    .setCenter(100px,100px,aquamarine);
+  }
+  #inner2 {
+    .setCenter();
+  }
+}

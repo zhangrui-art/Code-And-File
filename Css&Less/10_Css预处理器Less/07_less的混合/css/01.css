@@ -1,0 +1,25 @@
+#wrap {
+  width: 600px;
+  height: 400px;
+  border: 1px solid;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+#wrap #inner {
+  margin: 10px auto;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background-color: aquamarine;
+}
+#wrap #inner2 {
+  margin: 10px auto;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  background-color: red;
+}
