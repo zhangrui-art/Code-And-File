@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.setCenter,
+.wrap .inner {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  position: absolute;
+}
+.setCenter:hover,
+.wrap .inner:hover {
+  color: aliceblue;
+  background-color: yellow !important;
+}
+.wrap {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  margin: 100px auto;
+  border: 1px solid #000;
+}
+.wrap .inner:nth-child(1) {
+  width: 100px;
+  height: 100px;
+  background-color: aquamarine;
+}
+.wrap .inner:nth-child(2) {
+  width: 50px;
+  height: 50px;
+  background-color: red;
+}

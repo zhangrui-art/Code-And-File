@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+// @import './mixin.less';
+@import './extend.less';
+
+.wrap {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  margin: 100px auto;
+  border: 1px solid #000;
+
+  .inner {
+    // &:extend(.setCenter);
+    &:extend(.setCenter all);
+    &:nth-child(1) {
+      width: 100px;
+      height: 100px;
+      background-color: aquamarine;
+    }
+
+    &:nth-child(2) {
+      width: 50px;
+      height: 50px;
+      background-color: red;
+    }
+  }
+}
