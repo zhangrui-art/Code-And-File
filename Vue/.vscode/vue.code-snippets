@@ -1,0 +1,36 @@
+{
+	"html": {
+		"prefix": "vue", // 触发的关键字 输入vh按下tab键
+		"body": [
+				"<!DOCTYPE html>",
+				"<html lang=\"en\">",
+				"",
+				"<head>",
+				"    <meta charset=\"UTF-8\">",
+				"    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
+				"    <title>Document</title>",
+				"    <style type=\"text/css\">",
+				"",
+				"    </style>",
+				"</head>",
+				"",
+				"<body>",
+				"\t<div id=\"${1}\">",
+				"\t\t${3}",
+				"\t</div>"
+				"\t<script src=\"https://cdn.jsdelivr.net/npm/vue@2.7.16\"></script>",
+				"\t<script>",
+				"\t\tconst app = new Vue({",
+				"\t\t\tel: '#${1}',",
+				"\t\t\tdata: {",
+				"\t\t\t\t${2}",
+				"\t\t\t},",
+				"\t\t})",
+				"\t</script>",
+				"</body>",
+				"",
+				"</html>",
+		],
+		"description": "html structure"
+},
+}

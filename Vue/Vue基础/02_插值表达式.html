@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+  <div id="app">
+    {{ fullName }}
+    <h2>{{ fullName.toUpperCase() }}</h2>
+    <h2>{{ fullName+'今年是不是18岁了? '+ (age === 18 ? '是的' : '不是') }}</h2>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        fullName: 'big pao',
+        age: 18
+      },
+    })
+  </script>
+</body>
+
+</html>
