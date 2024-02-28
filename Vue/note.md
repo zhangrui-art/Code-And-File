@@ -12,4 +12,8 @@
 >
 >    v-on:click=""注册事件，可以简写为@click=""
 >
->    注册事件可以@click="函数名"，在methods里定义的函数名。方法中的this指向实例
+>    注册事件可以@click="函数名"，在methods里定义的函数名，函数可以传参。方法中的this指向实例。
+> 5. v-bind 动态的设置html的标签属性 -> src url title等
+>    v-bind:属性名="表达式"， 可以简写为:属性名="表达式" eg.  :src="url"
+> 6. v-for 基于数据循环，多次渲染整个元素 -> 数组、对象、数字...
+>    v-for="(item,index) in 数组"  // 数组循环

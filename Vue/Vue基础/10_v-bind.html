@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+  <div id="app">
+    <img :src="imgUrl" v-bind:title="msg" alt="">
+  </div>
+  <script src="vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        imgUrl: "./imgs/bell.svg",
+        msg: "imageTitle"
+      },
+      methods: {
+        
+      },
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+      #app > ul > li {
+        font: 20px/30px Arial;
+        font-weight: 500;
+        margin: 10px 0;
+      }
+    </style>
+</head>
+
+<body>
+  <div id="app">
+    <h2>大炮书架</h2>
+    <ul>
+      <li v-for="item in bookList" :key="item.id">{{ item.name }} {{ item.author }} <button @click="del(item.id)">删除</button></li>
+    </ul>
+  </div>
+  <script src="vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        bookList: [
+          {
+            id: "01",
+            name: "《西游记》",
+            author: "吴承恩"
+          },
+          {
+            id: "02",
+            name: "《水浒传》",
+            author: "施耐庵"
+          },
+          {
+            id: "03",
+            name: "《三国演义》",
+            author: "罗贯中"
+          }, 
+          {
+            id: "04",
+            name: "《红楼梦》",
+            author: "曹雪芹"
+          }
+        ]
+      },
+      methods: {
+        del(id) {
+          this.bookList = this.bookList.filter(item => item.id !== id)
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!-- 炮炮售货机 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+      #app {
+        margin-left: 20px;
+        margin-top: 20px;
+      }
+      #app .box {
+        width: 300px;
+        height: 130px;
+        border: 4px solid #000;
+        border-radius: 5px;
+        padding-left: 20px;
+      }
+      #app .box > div:first-child {
+        width: 200px;
+        height: 80px;
+        line-height: 80px;
+        font-size: 25px;
+        font-weight: bold;
+      }
+      #app .box div button {
+        width: 80px;
+        height: 30px;
+        margin-right: 10px;
+      }
+      #app p {
+        margin-top: 20px;
+        font-size: 18px;
+      }
+    </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="box">
+      <div>炮炮自动售货机</div>
+      <div>
+        <button @click="buy(5)">可乐5元</button>
+        <button @click="buy(10)">咖啡10元</button>
+      </div>
+    </div>
+    <p>银行卡余额： {{ money }}元</p>
+  </div>
+  <script src="vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        money: 999
+      },
+      methods: {
+        buy(price) {
+          this.money -= price
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>
