@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+      button {
+        width: 50px;
+        height: 50px;
+        color: white;
+        background-color: aquamarine;
+        border: none;
+        border-radius: 5px;
+        font: 30px/50px Arial;
+      }
+      span {
+        font: 30px/50px Arial;
+      }
+    </style>
+</head>
+
+<body>
+  <div id="app">
+    <button v-on:mouseenter="count = count - 2">-</button>
+    <span>{{count}}</span>
+    <button @mouseenter="count = count + 2">+</button>
+  </div>
+  <script src="vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        count: 100
+      }
+    })
+  </script>
+</body>
+
+</html>
