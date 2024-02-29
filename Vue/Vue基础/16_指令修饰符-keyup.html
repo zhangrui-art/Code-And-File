@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+  <div id="app">
+    <h3>@keyup.enter -> 键盘回车监听</h3>
+    <input @keyup="withoutEnter" v-model="username" type="text">
+    <!-- <input @keyup.enter="withEnter" v-model="username" type="text"> -->
+  </div>
+  <script src="vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        username: "" 
+      },
+      methods: {
+        withoutEnter(e) {
+          if(e.key === 'Enter') {
+            alert(this.username)
+          }
+        },
+        withEnter() {
+          alert(this.username)
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

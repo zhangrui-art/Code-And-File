@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html,body {
+        height: 100%;
+        overflow: hidden;
+      }
+      #app {
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        margin: auto;
+        width: 470px;
+        height: fit-content;
+        background-color: #e9e9e9;
+      }
+      #app > p {
+        margin: 20px auto;
+        text-align: center;
+        font-size: 35px;
+        font-weight: 500;
+        color: #ca6258;
+      }
+      #app > .box {
+        margin: 20px auto 40px auto;
+        width: 400px;
+        height: auto;
+        background-color: white;
+        overflow: hidden;
+      }
+      #app > .box > .inputBox {
+        margin: 10px auto 0 auto;
+        width: 360px;
+        height: 55px;
+        box-sizing: border-box;
+        border: 2px solid #ca6258;
+        border-radius: 10px;
+        overflow: hidden;
+        display: flex;
+        justify-content: space-between;
+      }
+      #app > .box > .inputBox > input {
+        height: 55px;
+        border: none;
+        padding-left: 10px;
+        font-size: 18px;
+      }
+      #app > .box > .inputBox > input:focus {
+        outline: none;
+      }
+      #app > .box > .inputBox > button {
+        width: 100px;
+        border: none;
+        background-color: #ca6258;
+        font-size: 16px;
+        color: white;
+      }
+      #app > .box > ul {
+        margin: 0 auto;
+        width: 360px;
+        height: auto;
+        list-style: none;
+        /* padding: 10px; */
+      }
+      #app > .box > ul > li {
+        font-size: 20px;
+        color: #666666;
+        line-height: 50px;
+        border-bottom: 1px solid #cccccc;
+      }
+      #app > .box > ul > li > span {
+        float: right;
+        font-size: 16px;
+        color: #ca6258;
+        display: none;
+      }
+      #app > .box > ul > li:hover span {
+        cursor: pointer;
+        display: block;
+      }
+      #app > .box > .footer {
+        margin: 10px auto;
+        width: 340px;
+        height: auto;
+        font-size: 14px;
+        color: #666666;
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
+</head>
+
+<body>
+  <div id="app">
+    <p>炮炮记事本</p>
+    <div class="box">
+      <div class="inputBox">
+        <input v-model="todo" type="text" placeholder="请输入任务" class="todo" >
+        <button @click="addTodo" type="">添加任务</button>
+      </div>
+      <ul>
+        <li v-for="(item,index) in todoList" :key="item.id">{{ index+1 }}. &nbsp;&nbsp;&nbsp;{{ item.todo }} <span @click="delTodo(item.id)">删除</span></li>
+      </ul>
+      <div class="footer">
+        <span>合计: {{ todoList.length }}</span>
+        <span @click="clearTodo">清空任务</span>
+      </div>
+    </div>
+  </div>
+  <script src="vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        todo: "",
+        todoList: [
+          {
+            id: 1,
+            todo: "跑步锻炼20分钟",
+          },
+          {
+            id: 2,
+            todo: "复习数组",
+          },
+        ]
+      },
+      methods: {
+        addTodo() {
+          if(this.todo.trim() === "") return
+          this.todoList = [{
+            id: new Date(),
+            todo: this.todo,
+          }, ...this.todoList]
+          this.todo = ""
+        },
+        delTodo(id) {
+          this.todoList = this.todoList.filter(item => item.id !== id)
+        },
+        clearTodo() {
+          this.todoList = []
+        },
+      },
+    })
+  </script>
+</body>
+
+</html>

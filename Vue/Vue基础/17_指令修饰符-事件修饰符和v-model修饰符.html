@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+      .father {
+        width: 200px;
+        height: 200px;
+        background-color: aquamarine;
+      }
+      .son {
+        width: 100px;
+        height: 100px;
+        background-color: rgba(34, 40, 156, 0.488);
+      }
+    </style>
+</head>
+
+<body>
+  <div id="app">
+    <h3>v-model修饰符.trim .number</h3>
+    姓名: <input v-model.trim="username" type="text"> <br>
+    年纪: <input v-model.number="age" type="text">
+
+
+    <h3>@事件名.stop -> 阻止冒泡</h3>
+    <div @click="father" class="father">
+      <div @click.stop="son" class="son">儿子</div>
+    </div>
+
+    <h3>@事件名.prevent -> 阻止默认事件</h3>
+    <a @click.prevent href="http://www.baidu.com">阻止默认行为</a>
+  </div>
+  <script src="vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        username: "",
+        age: "",
+      },
+      methods: {
+        father() {
+          console.log("father")
+        },
+        son() {
+          console.log("son")
+        },
+      },
+    })
+  </script>
+</body>
+
+</html>
