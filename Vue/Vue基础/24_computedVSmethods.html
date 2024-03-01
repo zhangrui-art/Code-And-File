@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+      table {
+        width: 300px;
+        /* height: 200px; */
+        border: 1px solid #000;
+      }
+      th,td {
+        width: 100px;
+        height: 30px;
+        border: 1px solid #000;
+        text-align: center;
+      }
+      .icon {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background-color: red;
+        border-radius: 50px;
+        font-size: 15px;
+        text-align: center;
+        color: white;
+      }
+    </style>
+</head>
+
+<body>
+  <div id="app">
+    <h3>泡泡的礼物清单<span class="icon">{{ totalCount }}</span></h3>
+    <h3>泡泡的礼物清单<span class="icon">{{ totalCount }}</span></h3>
+    <h3>泡泡的礼物清单<span class="icon">{{ totalCount }}</span></h3>
+    <h3>泡泡的礼物清单<span class="icon">{{ totalCount }}</span></h3>
+    <h3>泡泡的礼物清单<span class="icon">{{ totalCount }}</span></h3>
+    <table>
+      <tr>
+        <th>名字</th>
+        <th>数量</th>
+      </tr>
+      <tr v-for="(item, index) in list" :key="item.id">
+        <td>{{ item.name }}</td>
+        <td>{{ item.num }}个</td>
+      </tr>
+    </table>
+    <p>礼物总数: <span>{{ totalCount }}个</span></p>
+  </div>
+  <script src="vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        list: [
+          { id: 1, name: '篮球', num: '1'},
+          { id: 2, name: '玩具', num: '2'},
+          { id: 3, name: '模型', num: '5'},
+        ]
+      },
+      methods: {
+        
+      },
+      computed: {
+        // 计算属性： 有缓存的，一旦计算出来结果，就会立刻缓存
+        // 下一次读取 -> 直接读缓存就行 -> 性能很高
+        totalCount(){
+          console.log("total");
+          return this.list.reduce((total, item) => total + parseInt(item.num), 0)
+        } 
+      },
+    })
+  </script>
+</body>
+
+</html>

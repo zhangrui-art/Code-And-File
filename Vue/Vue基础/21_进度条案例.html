@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+      .progress {
+        width: 350px;
+        height: 22px;
+        background-color: #333;
+        border-radius: 50px;
+        box-sizing: border-box;
+        overflow: hidden;
+      }
+      .inner {
+        width: 100px;
+        height: 16px;
+        margin: 3px;
+        background-color: aquamarine;
+        border-radius: 50px;
+        box-sizing: border-box;
+        transition: linear 1s;
+      }
+      .cent {
+        margin-top: 10px;
+        width: 350px;
+        line-height: 22px;
+        text-align: center;
+        color: #333;
+        
+      }
+    </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="progress">
+      <!-- <div class="inner" :style="{ width: innerWidth + 'px'}"> -->
+      <div class="inner" :style="{ width: cent + '%'}">
+
+      </div>
+    </div>
+    <div class="cent">{{ cent }}%</div>
+    <button @click="set(25)" type="">设置25%</button>
+    <button @click="set(50)" type="">设置50%</button>
+    <button @click="set(75)" type="">设置75%</button>
+    <button @click="set(100)" type="">设置100%</button>
+    </div>
+  <script src="vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        cent: 0,
+        innerWidth: 0,
+      },
+      methods: {
+        set (cent) {
+          this.cent = cent
+          this.innerWidth = this.cent * 344 / 100
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>
