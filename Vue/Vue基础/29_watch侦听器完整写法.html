@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+      .box {
+        margin-top: 20px;
+        width: 700px;
+        height: 250px;
+        box-sizing: border-box;
+        display: flex;
+      }
+      .box .origin,.translation {
+        width: 350px;
+        height: 100%;
+        box-sizing: border-box;
+      }
+      .origin {
+        border: 1px solid #ccc;
+      }
+      .translation {
+        background-color: #f0f0f0;
+      }
+      textarea {
+        width: 320px;
+        height: 200px;
+        margin: 10px 10px 0 10px;
+        border: none;
+        outline: none;
+        resize: none;
+        font-size: 18px;
+      }
+      p {
+        margin: 0;
+        float: right;
+        margin-right: 15px;
+      }
+    </style>
+</head>
+
+<body>
+  <div id="app">
+    <div>
+      翻译成的语言: 
+      <select v-model="obj.lang" >
+        <option value="italy">意大利</option>
+        <option value="english">英语</option>
+        <option value="chinese">中文</option>
+      </select>
+    </div>
+    <div class="box">
+      <div class="origin">
+        <textarea v-model="obj.words" name="" id="" cols="43" rows="14"></textarea>
+        <p>文档翻译</p>
+      </div>
+      <div class="translation">
+        <textarea cols="43" rows="14" disabled="false">{{ result }}</textarea>
+      </div>
+    </div>
+  </div>
+  <script src="vue.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.5.0/axios.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        obj: {
+          words: "",
+          lang: 'italy',
+        },
+        result: "", 
+      },
+      methods: {
+        
+      },
+      computed: {
+        
+      },
+      watch: {
+        obj: {
+          deep: true, // 深度监听，一整个对象
+          immediate: true, // 进入页面就触发handler
+          handler (newValue) {
+            console.log(newValue);
+            clearTimeout(this.timer)
+            // 防抖： 延迟执行
+            this.timer = setTimeout(async () => {
+              const res = await axios({
+              url: 'https://applet-base-api-t.itheima.net/api/translate',
+              params: newValue
+            })
+            // console.log(res);
+            this.result = res.data.data
+            }, 500);            
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+  <div id="app">
+    <input v-model="obj.words" type="text">
+  </div>
+  <script src="vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        obj: {
+          words: "",
+        }
+      },
+      methods: {
+        
+      },
+      computed: {
+        
+      },
+      watch: {
+        /*
+         * 该方法会在数据变化时调用执行
+         * @param {any} newValue 新值
+         * @param {any} oldValue 旧值 (一般不用)
+         */
+        'obj.words' (newValue,oldValue){
+          console.log("new",newValue,"old",oldValue)
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
