@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      h3, h5{
+        margin-top: 10px;
+      }
+      input {
+        margin: 15px 0;
+        width: 40px;
+      }
+      #app {
+        width: 320px;
+        height: 230px;
+        /* background-color: antiquewhite; */
+        border: 1px solid rgb(12, 117, 101);
+        text-align: center;
+        overflow: hidden;
+      }
+      .result {
+        margin-top: 20px;
+      }
+    </style>
+</head>
+
+<body>
+  <div id="app">
+    <h3>收银系统</h3>
+    <h5>苹果10￥/斤，折扣为 <input v-model.number="account.discount" type="text"> 折</h5>
+    <div>请输入你要购买的斤数：<input v-model.number="account.num" type="text"></div>
+    <button>结账买单</button> <br>
+    <div class="result">
+      <span>总价：{{ total }} 元</span>
+      <span>折后价：{{ discount }} 元</span>
+      <span>省了：{{ save }} 元</span>
+    </div>
+  </div>
+  <script src="vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        account: {
+          discount: "",
+          num: "",
+        }
+      },
+      methods: {
+        
+      },
+      computed: {
+        total() {
+          return 10 * this.account.num
+        },
+        discount() {
+          return this.total * this.account.discount*0.1
+        },
+        save() {
+          return this.total - this.discount
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+  <div id="app">
+    <span  v-for="(item, index) in list">
+      <input 
+        @click="
+          selectList.find(it => it===item)
+          ? selectList.splice(selectList.indexOf(item), 1)
+          : selectList.push(item) " 
+        v-model="selectList.find(it => it===item)"
+        type="checkbox" name="num" id=""> {{ item }}
+    </span>
+    <h5>你选中的元素累加的值和为: {{total}}</h5>
+  </div>
+  <script src="vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        list: [9,15,19,29,31,48,57,62,79,87],
+        selectList: []
+      },
+      methods: {
+        
+      },
+      computed: {
+        total() {
+          return this.selectList.reduce((total, item) => total + item, 0)
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>
