@@ -12,19 +12,22 @@
 
 <body>
   <div id="app">
-    <img :src="imgUrl" v-bind:title="msg" alt="">
+    <button @click="switchShow()">切换显示隐藏</button>
+    <h2 v-show="isShow">张大泡泡</h2>
   </div>
-  <script src="vue.js"></script>
+  <script src="/vue.js"></script>
   <script>
     const app = new Vue({
       el: '#app',
       data: {
-        imgUrl: "./imgs/bell.svg",
-        msg: "imageTitle"
+        isShow: true
       },
       methods: {
-        
-      },
+        switchShow() {
+          console.log('%c this','background-color:aqua;color: white;font-size: 40px',this)
+          this.isShow = !this.isShow
+        }
+      }
     })
   </script>
 </body>

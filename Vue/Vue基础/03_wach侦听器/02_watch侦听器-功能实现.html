@@ -45,10 +45,10 @@
   <div id="app">
     <div>
       翻译成的语言: 
-      <select v-model="obj.lang" >
-        <option value="italy">意大利</option>
-        <option value="english">英语</option>
-        <option value="chinese">中文</option>
+      <select v-model="lan" >
+        <option value="it">意大利</option>
+        <option value="en">英语</option>
+        <option value="zh">中文</option>
       </select>
     </div>
     <div class="box">
@@ -57,21 +57,21 @@
         <p>文档翻译</p>
       </div>
       <div class="translation">
-        <textarea cols="43" rows="14" disabled="false">{{ result }}</textarea>
+        <textarea cols="43" rows="14" disabled="false">{{ obj.result }}</textarea>
       </div>
     </div>
   </div>
-  <script src="vue.js"></script>
+  <script src="/vue.js"></script>
   <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.5.0/axios.js"></script>
   <script>
     const app = new Vue({
       el: '#app',
       data: {
+        lan: 'it',
         obj: {
           words: "",
-          lang: 'italy',
-        },
-        result: "", 
+          result: "" 
+        }
       },
       methods: {
         
@@ -80,22 +80,20 @@
         
       },
       watch: {
-        obj: {
-          deep: true, // 深度监听，一整个对象
-          immediate: true, // 进入页面就触发handler
-          handler (newValue) {
-            console.log(newValue);
-            clearTimeout(this.timer)
-            // 防抖： 延迟执行
-            this.timer = setTimeout(async () => {
-              const res = await axios({
-              url: 'https://applet-base-api-t.itheima.net/api/translate',
-              params: newValue
-            })
-            // console.log(res);
-            this.result = res.data.data
-            }, 500);            
-          }
+        'obj.words' (newValue){
+          console.log(newValue);
+          clearTimeout(this.timer)
+          // 防抖： 延迟执行
+          this.timer = setTimeout(async () => {
+            const res = await axios({
+            url: 'https://applet-base-api-t.itheima.net/api/translate',
+            params: {
+              words: newValue,
+            }
+          })
+          // console.log(res);
+          this.obj.result = res.data.data
+          }, 1000);
         }
       }
     })

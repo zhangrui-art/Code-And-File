@@ -21,7 +21,7 @@
       <li v-for="item in bookList" :key="item.id">{{ item.name }} {{ item.author }} <button @click="del(item.id)">删除</button></li>
     </ul>
   </div>
-  <script src="vue.js"></script>
+  <script src="/vue.js"></script>
   <script>
     const app = new Vue({
       el: '#app',

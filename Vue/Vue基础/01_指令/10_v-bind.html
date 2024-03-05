@@ -12,20 +12,20 @@
 
 <body>
   <div id="app">
-    {{msg}}，{{wether}}
+    <img :src="imgUrl" v-bind:title="msg" alt="">
   </div>
-  <script src="vue.js"></script>
+  <script src="/vue.js"></script>
   <script>
     const app = new Vue({
-      el: '#app',  // 指定挂载元素,指定选择器
-      // 响应式数据
+      el: '#app',
       data: {
-        msg: 'Hello Vue!',
-        wether: '天气好他妈的冷啊！焯！',
-        count: 100
-      }
+        imgUrl: "./imgs/bell.svg",
+        msg: "imageTitle"
+      },
+      methods: {
+        
+      },
     })
-    app.msg = "dio"
   </script>
 </body>
 

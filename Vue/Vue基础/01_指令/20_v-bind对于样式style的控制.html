@@ -6,28 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style type="text/css">
-
+      .box {
+        width: 200px;
+        height: 200px;
+        /* border: 3px solid #000; */
+        background-color: aquamarine;
+        /* font-size: 30px; */
+        margin-top: 10px;
+      }
     </style>
 </head>
 
 <body>
   <div id="app">
-    <button @click="switchShow()">切换显示隐藏</button>
-    <h2 v-show="isShow">张大泡泡</h2>
+    <div class="box" :style="{ width: '400px', height: '400px', backgroundColor: 'aqua'}"></div>
   </div>
-  <script src="vue.js"></script>
+  <script src="/vue.js"></script>
   <script>
     const app = new Vue({
       el: '#app',
       data: {
-        isShow: true
+        
       },
       methods: {
-        switchShow() {
-          console.log('%c this','background-color:aqua;color: white;font-size: 40px',this)
-          this.isShow = !this.isShow
-        }
-      }
+        
+      },
     })
   </script>
 </body>
