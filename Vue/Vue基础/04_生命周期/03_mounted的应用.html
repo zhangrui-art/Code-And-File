@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>示例-获取焦点</title>
   <!-- 初始化样式 -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset.css@2.0.2/reset.min.css">
+  <link rel="stylesheet" href="./css/reset.css">
   <!-- 核心样式 -->
   <style>
     html,
@@ -85,6 +85,14 @@
     el: '#app',
     data: {
       words: ''
+    },
+    /**
+     * 核心思路： 
+     *  1. 等输入框渲染出来
+     *  2. 让输入框获取焦点
+     */    
+    mounted() {
+      document.getElementById('inp').focus()
     }
   })
 </script>
