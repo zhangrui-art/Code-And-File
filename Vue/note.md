@@ -111,5 +111,19 @@
 >           }
 >     ```
 >
->     ​
+> 12. 生命周期
+>
+>     四大阶段八个钩子
+>
+>     创建阶段（beforeCreate/created）
+>
+>     挂载阶段（beforeMount/mounted）
+>
+>     更新阶段（beforeUpdate/updated）
+>
+>     卸载阶段（beforeDestory/destoryed）
+>
+>     常用：created // 可以开始发送初始化渲染的请求了 
+>
+>     ​	    mounted // 可以操作dom
 
