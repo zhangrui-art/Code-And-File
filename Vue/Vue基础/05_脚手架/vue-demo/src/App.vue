@@ -1,34 +1,43 @@
 <template>
-  <div>
-    我是App组件
-    <span>{{ myTitle }}</span>
-    <!-- 1. 给组件标签，添加属性的方式传值 -->
-    <MySon :title="myTitle" @changeTitle="handleChange"></MySon>
-  </div>
+  <!-- 主体区域 -->
+  <section id="app">
+    <!-- 输入框 -->
+    <TodoHeader :list="list" @add="handle"></TodoHeader>
+    <!-- 列表区域 -->
+    <TodoMain :list="list"  @del="handle"></TodoMain>
+    <!-- 统计和清空 -->
+    <TodoFooter :list="list" @removeAll="handle"></TodoFooter>
+  </section>
 </template>
 
 <script>
-import MySon from './components/MySon.vue'
+import TodoHeader from './components/TodoHeader'
+import TodoMain from './components/TodoMain'
+import TodoFooter from './components/TodoFooter'
 export default {
   components: {
-    MySon,
+    TodoHeader,
+    TodoMain,
+    TodoFooter
   },
-  methods: {
-    handleChange(newValue) {
-      this.myTitle = newValue
+  data () {
+    return {
+      list: [
+        {
+          id: "01",
+          content: "吃饭饭",
+        }
+      ]
     }
   },
-  data() {
-    return {
-      myTitle: 'My son 长大了'
+  methods: {
+    handle (value) {
+      this.list = value
     }
   }
 }
 </script>
 
 <style>
-  div{
-    border: 2px solid #000;
-    padding:10px
-  }
+
 </style>
