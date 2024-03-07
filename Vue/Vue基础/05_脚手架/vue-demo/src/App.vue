@@ -1,21 +1,35 @@
 <template>
   <div class="app">
-    <BaseA></BaseA>
-    <BaseB></BaseB>
+    <div v-if="isShowEdit">
+      <input ref="inp" type="text" v-model="editValue" />
+      <button>确认</button>
+    </div>
+    <div v-else>
+      <span>{{ title }}</span>
+      <button @click="handleEdit">编辑</button>
+    </div>
   </div>
 </template>
 
 <script>
-import BaseA from './components/BaseA.vue'
-import BaseB from './components/BaseB.vue'
 export default {
-  components: {
-    BaseA,
-    BaseB
-  }
+  data() {
+    return {
+      title: '大标题',
+      isShowEdit: false,
+      editValue: '',
+    }
+  },
+  methods: {
+    handleEdit() {
+      this.isShowEdit = true
+      this.$nextTick(() => {
+        this.$refs.inp.focus() 
+      })
+    }
+  },
 }
 </script>
 
 <style>
-
 </style>

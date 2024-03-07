@@ -129,6 +129,96 @@
 
 #### 2. 脚手架
 
-> 1. 每个组件只能有一个根标签
-> 2. 注册全局组件需要在main.js中注册
-> 3. 组件中的style需要加上scoped属性，不然会全局生效互相影响
+> 1. 修改端口号的方式，在vue.config.js文件中
+>
+>    ```vue
+>    const { defineConfig } = require('@vue/cli-service')
+>    module.exports = defineConfig({
+>      transpileDependencies: true,
+>      // 添加该对象即可
+>      devServer: {
+>        port: 5000
+>      }
+>    })
+>    ```
+>
+> 2. 每个组件只能有一个根标签，模板中获取事件的形参 -> $event 获取
+>
+> 3. 注册全局组件需要在main.js中注册
+>
+> 4. 组件中的style需要加上scoped属性，不然会全局生效互相影响
+>
+> 5. 父子组件通信： 
+>
+>    1. 父组件传值给子组件是需要用props，简写可以是数组
+>
+>       ```vue
+>       props: ['value1','value2',...]
+>
+>       props: {
+>       	value1: Number,
+>       }
+>
+>       props: {
+>         value1: {
+>       	type: Number,
+>       	default: 12,
+>       	required: true,
+>       	// 自定义验证
+>           validator() {
+>       		return true
+>           }
+>         }
+>
+>       }
+>       ```
+>
+>    2. 自己的数据自己操作，如果子组件需要操作，需要用this.$emit('消息名', 修改的内容)去发送给父组件，从而父组件调用@'消息名'='方法' 去操作自己的数据
+>
+> 6. 兄弟通信
+>
+>    使用发布-订阅的模式，一个发布，多个订阅都可以接受到信息
+>
+>    ```vue
+>    import Vue from "vue";
+>    const Bus = new Vue();
+>    export default Bus;
+>    ```
+>
+> 7. provider-inject
+>
+>    值得注意的是，传递的值中，简单类型是非响应式的，而复杂类型是响应式的
+>
+>    ```vue
+>    // 爷爷  
+>    provide() {
+>        return {
+>          color: this.color, // 简单类型
+>          userInfo: this.userInfo // 复杂类型
+>        }
+>      },
+>    // 孙子
+>    inject: ['color', 'userInfo']
+>    ```
+>
+> 8. 表单类组件的封装
+>
+>    父传子： 通过props传递，v-model拆解（拆解）绑定数据
+>
+>    子传父：监听输入，子传父传值给父组件修改
+>
+> 9. 获取dom元素
+>
+>    设置ref属性，通过this.$refs.myChart来获取dom元素或者组件实例
+>
+> 10. $nextTick
+>
+>     vue中的dom更新是异步的。会等所有的操作结束后再操作dom。所以如果需要同步更新，则需要用$nextTick
+>
+>     ```vue
+>     $nextTick(()=>{
+>
+>     })
+>     ```
+>
+>     ​

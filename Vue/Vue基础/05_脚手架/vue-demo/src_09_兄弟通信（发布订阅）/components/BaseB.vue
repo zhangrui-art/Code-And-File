@@ -1,13 +1,18 @@
 <template>
   <div class="boxB">
     我是B组件（发布方）
-    <button>发布通知</button>
+    <button @click="publish">发布通知</button>
   </div>
 </template>
 
 <script>
+import Bus from '../utils/EventBus'
 export default {
-
+  methods: {
+    publish () {
+      Bus.$emit('sendMsg', '我是B组件发的通知') 
+    }
+  }
 }
 </script>
 
