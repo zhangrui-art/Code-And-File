@@ -13,9 +13,9 @@
           <th>操作</th>
         </tr>
       </thead>
-      <Item :dataArray="showRecords" @showPop="showDetails" :controlPop.sync="isPopUp"></Item>
+      <Item :dataArray="showRecords" @showPop="showDetails"></Item>
     </table>
-    <PopUp v-show="isPopUp" :curItem="cur" :controlPop.sync="isPopUp"></PopUp>
+    <PopUp v-show="isPopUp" :curItem="cur" @close = 'closePop'></PopUp>
   </div>
 </template>
 

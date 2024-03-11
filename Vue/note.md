@@ -221,4 +221,102 @@
 >     })
 >     ```
 >
+> 11. 自定义指令
+>
+>     全局注册------main.js中定义
+>
+>     ```vue
+>     Vue.directive('focus', {
+>       // inserted会在 指令所在的元素，被插入到页面中时触发
+>       inserted (el) {
+>         // el就是指令绑定的元素
+>         el.focus()
+>       }
+>     })
+>     ```
+>
+>     局部注册-----每个组件内部定义
+>
+>     ```vue
+>       directives: {
+>         // 指令名： 指令的配置项
+>         focus: {
+>           inserted(el) {
+>             el.focus()
+>           }
+>         }
+>       }
+>     ```
+>
+>     自定义指令还可以传值，使用的时候通过=去拿到，也可以通过update函数去更新
+>
+>     ```vue
+>     // 使用 v-color='变量'
+>       directives: {
+>         color: {
+>           inserted(el, binding) {
+>             console.log(binding)
+>             el.style.color = binding.value
+>           },
+>           update(el, binding) {
+>             el.style.color = binding.value
+>           }
+>         }
+>       }
+>     ```
+>
+> 12. 插槽
+>
+>     可以使用插槽占位，从而在传入的时候传入对应的结构或内容
+>
+>     同时<slot></slot>标签内可以写内容，会被当做后备内容（默认值）
+>     具名插槽： v-slot:head  -> 简写成 #head
+>
+>     eg.
+>
+>     ```vue
+>     父组件： 
+>         <MyDialog>
+>           <template #head>友情提示</template>
+>           <template #content>确认要删除吗？</template>
+>           <template #footer>      
+>             <button>取消</button>
+>             <button>确认</button>
+>           </template>
+>         </MyDialog>
+>     子组件：
+>         <div class="dialog-header">
+>           <h3><slot name="head">警告</slot></h3>
+>           <span class="close">✖️</span>
+>         </div>
+>         <div class="dialog-content">
+>           <slot name="content">
+>             <p>这是一段内容</p>
+>           </slot>
+>         </div>
+>         <div class="dialog-footer">
+>           <slot name="footer">
+>             <button>取消</button>
+>             <button>确认</button>
+>           </slot>
+>         </div>
+>
+>     ```
+>
+>     作用域插槽：可以通过给slot标签添加属性的方式传值，且所有的属性会收集到一个对象中。可以通过插槽名值去使用
+>
+>     eg. 
+>
+>     ```vue
+>     父组件： 
+>         <MyTable :data="list2">
+>           <template #default="{ curItem }">
+>             <button @click="show(curItem)">查看</button>
+>           </template>
+>         </MyTable>
+>     子组件： 
+>               <slot :curItem="item" msg="测试"></slot>
+>
+>     ```
+>
 >     ​

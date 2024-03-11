@@ -13,15 +13,16 @@
           <th>操作</th>
         </tr>
       </thead>
-      <Item :dataArray="showRecords" @showPop="showDetails" :controlPop.sync="isPopUp"></Item>
+      <Item :dataArray="showRecords" ></Item>
     </table>
-    <PopUp v-show="isPopUp" :curItem="cur" :controlPop.sync="isPopUp"></PopUp>
+    <PopUp v-show="isPopUp"></PopUp>
   </div>
 </template>
 
 <script>
 import Item from "./components/MedicalItem.vue";
 import PopUp from "./components/PopUp.vue";
+import Bus from "./EventBus";
 export default {
   components: {
     Item,
@@ -51,7 +52,6 @@ export default {
       ],
       showRecords: [],
       isPopUp: false,
-      cur: {}
     };
   },
   methods: {
@@ -63,16 +63,12 @@ export default {
       });        
       }, 500);
     },
-    showDetails(item) {
-      this.isPopUp = true
-      this.cur = item;
-    },
-    closePop() {
-      this.isPopUp = false
-    }
   },
   created() {
     this.showRecords = this.records;
+    Bus.$on('showPop', (value) => {
+      this.isPopUp = value
+    })
   }
 };
 </script>

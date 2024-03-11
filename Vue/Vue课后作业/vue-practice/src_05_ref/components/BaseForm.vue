@@ -6,6 +6,7 @@
      <div>
       密码: <input v-model="password" type="text">
     </div>
+
   </div>
 </template>
 
@@ -37,5 +38,8 @@ export default {
 }
 .app div{
   margin: 10px 0;
+}
+.app div button{
+  margin-right: 8px;
 }
 </style>
