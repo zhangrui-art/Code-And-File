@@ -1,105 +1,98 @@
 <template>
   <div class="app">
-    <!-- search组件 -->
-    <input @input="search" type="text" placeholder="输入关键词搜索"/>
-    <!-- 表格 -->
-    <table>
-      <thead>
-        <tr>
-          <th>就诊日期</th>
-          <th>医生姓名</th>
-          <th>诊断结果</th>
-          <th>处方信息</th>
-          <th>操作</th>
-        </tr>
-      </thead>
-      <Item :dataArray="showRecords" @showPop="showDetails" :controlPop.sync="isPopUp"></Item>
-    </table>
-    <PopUp v-show="isPopUp" :curItem="cur" :controlPop.sync="isPopUp"></PopUp>
+    <MyContent :dataArray="tagList">
+      <template #header>
+        <label for="">本周热搜 TOP5</label>
+      </template>
+      <template #content="{dataArray}">
+        <div v-for="item in dataArray" :key="item.id" class="tag-wrapper">
+          <div class="tag">#{{ item.name }}</div>
+          <div class="icon">🔥 {{ item.hot  }}</div>
+        </div>
+      </template>
+    </MyContent>
+    <MyContent :dataArray="humanList">
+      <template #header>
+        <label for="">可能感兴趣的人</label>
+        <span>👀 换一批</span>
+      </template>
+      <template #content="{dataArray}">
+        <div v-for="item in dataArray" :key="item.id" class="human-wrapper">
+          <div class="human">
+            <div>
+              <span style="font: 20px sans-serif; font-weight: 600; color: #333"
+                >{{ item.name  }}</span
+              >&nbsp;<span>{{ item.sex }} {{ item.age }}岁</span>
+            </div>
+            <div>研究领域： {{ item.field }}</div>
+            <div>{{ item.school }} · {{  item.position }}</div>
+          </div>
+          <button class="lookup">+ 关注</button>
+        </div>
+      </template>
+    </MyContent>
   </div>
 </template>
 
 <script>
-import Item from "./components/MedicalItem.vue";
-import PopUp from "./components/PopUp.vue";
 export default {
   components: {
-    Item,
-    PopUp
+    MyContent: () => import("./components/MyContent.vue"),
   },
   data() {
     return {
-      records: [
-        {
-          date: "2022-01-01",
-          doctor: "张三",
-          diagnosis: "感冒",
-          prescription: "感冒药",
-        },
-        {
-          date: "2022-02-01",
-          doctor: "李四",
-          diagnosis: "头疼",
-          prescription: "止疼药",
-        },
-        {
-          date: "2022-03-01",
-          doctor: "王五",
-          diagnosis: "腰痛",
-          prescription: "止痛贴",
-        },
+      tagList: [
+        { id: 1, name: "区块链" , hot: 96 },
+        { id: 2, name: "数据挖掘" , hot: 91 },
+        { id: 3, name: "无人机" , hot: 87 },
+        { id: 4, name: "生命科学" , hot: 73 },
+        { id: 5, name: "生物技术" , hot: 90 },
+        { id: 6, name: "传感器" , hot: 60 }
       ],
-      showRecords: [],
-      isPopUp: false,
-      cur: {}
+      humanList: [
+        {
+          id: 1,
+          name: "李国盛",
+          sex: "♂",
+          age: 52,
+          field: "机电一体化技术",
+          school: "哈尔滨工业大学",
+          position: "教授",
+        },
+        {
+          id: 2,
+          name: "陈颖",
+          sex: "♀",
+          age: 36,
+          field: "人工智能",
+          school: "清华大学",
+          position: "副教授",
+        },
+        {
+          id: 3,
+          name: "张大炮",
+          sex: "♂",
+          age: 18,
+          field: "前端",
+          school: "哈佛牛逼大学（俗称哈牛逼大学）",
+          position: "大大大大教授",
+        }
+      ]
     };
   },
-  methods: {
-    search(e) {
-      clearTimeout(this.timer);
-      this.timer = setTimeout(() => {
-        this.showRecords = this.records.filter((item) => {
-        return item.doctor.includes(e.target.value);
-      });        
-      }, 500);
-    },
-    showDetails(item) {
-      this.isPopUp = true
-      this.cur = item;
-    },
-    closePop() {
-      this.isPopUp = false
-    }
-  },
-  created() {
-    this.showRecords = this.records;
-  }
 };
 </script>
 
 <style scoped>
-
 .app {
-  width: 100%;
-  height: 100%;
-  background-color: #f9f9f9;
-}
-.app table {
-  margin-top: 20px;
-  width: 100%;
-  border: 1px solid #ccc;
-  border-collapse: collapse;
-}
-thead {
-  background-color: #ebebeb;
-}
-th,
-td {
-  border: 1px solid #ccc;
-  height: 30px;
+  top: 0;
+  left: 0;
+  width: 400px;
+  height: 900px;
+  padding: 10px 20px;
+  background-color: #f4f6fa;
+  position: absolute;
   text-align: center;
+  box-sizing: border-box;
 }
-/* .app thead {
-  width: 100%;
-} */
-</style>
+</style>>
