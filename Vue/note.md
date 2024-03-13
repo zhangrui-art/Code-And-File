@@ -1,3 +1,7 @@
+版本  Vue2 -> VueRouter3.x -> Vuex 3.x
+
+​	  Vue3 -> VueRouter3.x -> Vuex 4.x
+
 #### 1. 基础（指令+计算属性+侦听器+生命周期）
 
 > 1. v-html="" 可以动态加载html标签
@@ -319,4 +323,46 @@
 >
 >     ```
 >
->     ​
+> 13. 路由
+>
+>     1. 路由使用步骤 5+2
+>
+>        > Vue2下载 3.6.5
+>        >
+>        > 引入包
+>        >
+>        > 安装注册 Vue.use
+>        >
+>        > 创建路由对象
+>        >
+>        > 注入到new Vue中，建立关联
+>
+>        > 创建组件，配置规则（路由规则表）
+>        >
+>        > 配置导航（a标签记得路由前加#/），配置路由出口，router-view(组件展示的位置)
+>
+>     2. router-link取代a标签，可以直接设置高亮样式。 to属性指定路径
+>
+>        > router-link-exact-active  精确匹配   仅仅可以匹配/my
+>        >
+>        > router-link-active  模糊匹配（用的多） eg.可以匹配 /my   /my/a  /my/b..
+>
+>        可以在router里自己定制上述两个类名： linkActiveClass / linkExactActiveClass
+>
+>     3. 路由传参
+>
+>        1. 查询参数
+>
+>           to='/path?参数名=值&参数名1=值1'
+>
+>           template内使用：$route.query.参数名
+>
+>           created中使用：this.$route.query.参数名
+>
+>        2. 动态路由传参
+>
+>           首先配置路由表中动态路由 `path: '/search/:参数'`
+>
+>           配置导航链接： to='/path/参数值'
+>
+>           使用： $route.params.参数名​
