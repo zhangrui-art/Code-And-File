@@ -3,31 +3,20 @@
     <div class="logo-box"></div>
     <div class="search-box">
       <input type="text">
-      <button @click="goSearch">搜索一下</button>
+      <button>搜索一下</button>
     </div>
     <div class="hot-link">
       热门搜索：
-      <router-link to="/search?name=黑马程序员">黑马程序员</router-link>
-      <router-link to="/search/?name=前端培训">前端培训</router-link>
-      <router-link to="/search/?name=如何成为前端大牛">如何成为前端大牛</router-link>
+      <router-link to="/search/黑马程序员">黑马程序员</router-link>
+      <router-link to="/search/前端培训">前端培训</router-link>
+      <router-link to="/search/如何成为前端大牛">如何成为前端大牛</router-link>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'FindMusic',
-  methods: {
-    goSearch () {
-      // this.$router.push('/search')
-      this.$router.push({
-        path: '/search',
-        query: {
-          name: 'Paopao'
-        }        
-      })
-    }
-  }
+  name: 'FindMusic'
 }
 </script>
 

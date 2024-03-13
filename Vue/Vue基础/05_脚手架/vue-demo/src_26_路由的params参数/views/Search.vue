@@ -1,6 +1,6 @@
 <template>
   <div class="search">
-    <p>搜索关键字: {{ $route.query.name }} </p>
+    <p>搜索关键字: {{ $route.params.name }} </p>
     <p>搜索结果: </p>
     <ul>
       <li>.............</li>
@@ -17,7 +17,7 @@ export default {
   created () {
     // 在created中，获取路由参数
     // this.$route.query.参数名 获取
-    // console.log(this.$route.query.key);
+    console.log(this.$route.query.key);
   }
 }
 </script>

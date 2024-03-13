@@ -11,7 +11,7 @@ const router = new VueRouter({
   routes: [
     { path: '/', redirect: '/home' },
     { path: '/home', component: Home },
-    { path: '/search', component: Search },
+    { path: '/search/:name?', component: Search },
     { path: '*', component: NotFound }
   ],
   // 一旦使用history模式，必须要后台配置访问规则
