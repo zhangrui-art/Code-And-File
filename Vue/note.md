@@ -385,5 +385,5 @@
 >     
 >     7. 两种路由跳转
 >     
->        `this.$router.push('路由路径')`
+>        `this.$router.push('路由路径')` 
 
