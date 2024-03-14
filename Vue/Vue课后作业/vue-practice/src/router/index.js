@@ -1,30 +1,46 @@
-import Vue from "vue";
+import Vue from 'vue'
 import VueRouter from "vue-router";
-import Home from '@/views/Home.vue'
-import Search from '@/views/Search.vue'
-import NotFound from '@/views/NotFound.vue'
+import Layout from '@/views/Layout.vue';
+import ArticleDetail from '@/views/ArticleDetail.vue';
+import Article from '@/views/Article.vue';
+import Collect from '@/views/Collect.vue';
+import Like from '@/views/Like.vue';
+import User from '@/views/User.vue';
+Vue.use(VueRouter)
 
-Vue.use(VueRouter);
-
-export default new VueRouter({
+const router = new VueRouter({
   routes: [
     {
       path: '/',
-      redirect: '/home'
+      component: Layout,
+      redirect: '/article',
+      children: [
+        {
+          path: '/article',
+          component: Article
+        },
+        {
+          path: '/collect',
+          component: Collect
+        },
+        {
+          path: '/like',
+          component: Like
+        },
+        {
+          path: '/user',
+          component: User
+        }
+      ]
     },
     {
-      path: '/home',
-      component: Home
-    },
-    {
-      path: '/search/:name?',
-      component: Search
-    },
-    {
-      path: "*",
-      component: NotFound
+      path: '/detail',
+      component: ArticleDetail
     }
   ],
-  mode: 'history'
-
+  mode: 'history',
+  linkActiveClass: 'active',
+  linkExactActiveClass: 'exact-active'
 })
+
+export default router
