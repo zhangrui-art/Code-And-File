@@ -2,6 +2,8 @@
 
 ​	  Vue3 -> VueRouter3.x -> Vuex 4.x
 
+脚手架： npm i 
+
 #### 1. 基础（指令+计算属性+侦听器+生命周期）
 
 > 1. v-html="" 可以动态加载html标签
