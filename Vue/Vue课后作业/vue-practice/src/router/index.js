@@ -1,18 +1,30 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from "vue";
+import VueRouter from "vue-router";
 import Home from '@/views/Home.vue'
 import Search from '@/views/Search.vue'
+import NotFound from '@/views/NotFound.vue'
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
+
 export default new VueRouter({
   routes: [
     {
-      path: '/home',
-      component: Home,
+      path: '/',
+      redirect: '/home'
     },
     {
-      path: '/search',
-      component: Search,
+      path: '/home',
+      component: Home
+    },
+    {
+      path: '/search/:name?',
+      component: Search
+    },
+    {
+      path: "*",
+      component: NotFound
     }
-  ]
+  ],
+  mode: 'history'
+
 })
