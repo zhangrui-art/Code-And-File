@@ -2,7 +2,7 @@
 
 ​	  Vue3 -> VueRouter3.x -> Vuex 4.x
 
-脚手架： npm i 
+脚手架： `npm i @vue/cli -g`   `vue create projName `  -> `Manually select features` ->  `babel router css linter/formatter` -> `ESLint + Standard config`
 
 #### 1. 基础（指令+计算属性+侦听器+生命周期）
 
@@ -461,4 +461,17 @@
 >        max： 最多可以缓存多少组件实例
 >
 >        ！！！！注意的是，组件一旦被缓存了，再回到该组件就不会触发created mounted钩子。离开组件也不会触发destroyed钩子，增加了俩钩子： actived和deactived
+>
+> 14. elint自动规范化代码
+>
+>     vscode安装插件`ESLint`在vscode的设置中，右上角用json格式打开，末尾添加两行
+>
+>     ```json
+>         "editor.codeActionsOnSave": {
+>             "source.fixAll": true
+>         },
+>         "editor.formatOnSave": false
+>     ```
+>
+>     ​
 
