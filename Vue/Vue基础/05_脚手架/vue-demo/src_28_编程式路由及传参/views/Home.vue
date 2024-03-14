@@ -2,7 +2,7 @@
   <div class="home">
     <div class="logo-box"></div>
     <div class="search-box">
-      <input type="text">
+      <input v-model="name" type="text">
       <button @click="goSearch">搜索一下</button>
     </div>
     <div class="hot-link">
@@ -17,15 +17,34 @@
 <script>
 export default {
   name: 'FindMusic',
+  data () {
+    return {
+      name: ''
+    }
+  },
   methods: {
     goSearch () {
+      // 1. 通过path
       // this.$router.push('/search')
-      this.$router.push({
-        path: '/search',
-        query: {
-          name: 'Paopao'
-        }        
-      })
+      // this.$router.push({
+      //   path: '/search'      
+      // })
+
+      // 2. 通过name命名跳转
+      // this.$router.push({
+      //   name: "search"
+      // })
+
+        this.$router.push({
+          name: 'search',
+          // query: {
+          //   name: this.name
+          // }
+          params: {
+            name: this.name
+          }
+        })
+
     }
   }
 }

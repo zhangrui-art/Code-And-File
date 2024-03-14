@@ -1,6 +1,6 @@
 <template>
   <div class="search">
-    <p>搜索关键字: {{ $route.query.name }} </p>
+    <p>搜索关键字: {{ $route.params.name }} </p>
     <p>搜索结果: </p>
     <ul>
       <li>.............</li>

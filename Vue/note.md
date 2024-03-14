@@ -366,24 +366,97 @@
 >           配置导航链接： to='/path/参数值'
 >
 >           使用： $route.params.参数名​
->     
+>
 >     4. redirect重定向
->     
+>
 >        在路由规则表里用redirect可以默认匹配一个
->     
+>
 >     5. 404
->     
+>
 >        当路径找不到匹配时，可以在路由配置的最后添加
->     
+>
 >        `path: '*', component: NotFound`
->     
+>
 >     6. 路由的模式设置
->     
+>
 >        默认是hash路由 即有#的
->     
+>
 >        可以通过在router的配置中设置mode: "history" 来改成history路由 
->     
+>
 >     7. 两种路由跳转
->     
->        `this.$router.push('路由路径')` 
+>
+>        1. path路径跳转
+>
+>           `this.$router.push('路由路径')`  === `this.$router.push({path: '路由路径'})`
+>
+>        2. name命名路由跳转（适合path路径长的场景）
+>
+>     8. 两种路由跳转分别可以使用两种传参
+>
+>        1. path路径跳转
+>
+>           query参数
+>
+>           ```vue
+>           // 简单模式
+>           this.$router.push('/search?参数名1=参数值1&参数名2=参数值2')
+>
+>           // 对象模式
+>           this.$router.push({
+>           	path: '/search',
+>               query: {
+>           		参数名1： 参数值1,
+>           		参数名2： 参数值2,
+>               }
+>           })
+>           ```
+>
+>           params参数
+>
+>           ```vue
+>           this.$router.push('/search/参数值')
+>
+>           this.$router.push({
+>           	path: '/search/参数值'
+>           })
+>           ```
+>
+>           ​
+>
+>        2. name命名路由跳转
+>
+>           query参数
+>
+>           ```vue
+>           this.$router.push({
+>           	name: '路由名',
+>               query: {
+>           		参数名1: 参数值1,
+>           		参数名2: 参数值2,
+>               }
+>           })
+>           ```
+>
+>           params参数
+>
+>           ```vue
+>           this.$router.push({
+>           	name: '路由名',
+>               params: {
+>           		参数名: 参数值,
+>               }
+>           })
+>           ```
+>
+>     9. keep-alive用来缓存动态组件
+>
+>        用法，将动态组件用`<keep-alive></keep-alive>`进行包裹即可缓存动态组件。
+>
+>        配置属性： include / exclude / max
+>
+>        include / exclude ： 组件名（注意，是组件的name属性）数组，匹配的组件都会/不会被缓存
+>
+>        max： 最多可以缓存多少组件实例
+>
+>        ！！！！注意的是，组件一旦被缓存了，再回到该组件就不会触发created mounted钩子。离开组件也不会触发destroyed钩子，增加了俩钩子： actived和deactived
 
