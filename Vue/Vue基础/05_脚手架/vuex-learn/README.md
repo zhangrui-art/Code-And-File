@@ -1,4 +1,4 @@
-# mobile
+# vuex-learn
 
 ## Project setup
 ```
