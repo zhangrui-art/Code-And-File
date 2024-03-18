@@ -25,7 +25,7 @@ export default {
 
 <style lang="less" scoped>
   .app {
-    width: 450px;
+    width: 400px;
     height: auto;
     border: 1px solid #ccc;
     padding: 10px;

@@ -8,14 +8,6 @@
     <button @click="addCountAsync(1)" type="">一秒后+1</button>
     <hr>
     {{ filterList }}
-    <hr>
-    <!-- 访问模块中的state数据 ——根级别映射 -->
-    <div>访问模块中的state数据:根级别映射---{{ user.userInfo.name }} - {{ setting.theme }}</div>
-    <!-- 访问模块中的state数据 ——子模块的映射 -->
-    <div>访问模块中的state数据:子模块的映射---{{ userInfo.name }} - {{ theme }}</div>
-    <hr>
-    <!-- 访问模块中的getters数据 ——子模块的映射 -->
-    <div>访问模块中的getters数据:根级别映射---{{ upperCaseName }}</div>
   </div>
 </template>
 
@@ -24,11 +16,8 @@ import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
 export default {
   name: 'SonTwo',
   computed: {
-    ...mapState(['count', 'user', 'setting']),
-    ...mapState('user', ['userInfo']),
-    ...mapState('setting', ['theme']),
-    ...mapGetters(['filterList']),
-    ...mapGetters('user', ['upperCaseName'])
+    ...mapState(['count']),
+    ...mapGetters(['filterList'])
   },
   methods: {
     ...mapMutations(['addCount']),
@@ -40,7 +29,7 @@ export default {
 <style lang="less" scoped>
   .sonTwo {
     margin: 10px 0;
-    width: 430px;
+    width: 380px;
     height: auto;
     padding: 10px;
     border: 1px solid #ccc;

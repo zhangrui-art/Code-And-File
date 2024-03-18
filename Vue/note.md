@@ -473,5 +473,39 @@
 >         "editor.formatOnSave": false
 >     ```
 >
->     ​
 
+#### 3. Vuex
+
+> 1. Store中存放数据state，全局可以用。可以用mapState()的方式映射
+>
+> 2. mutation修改 —— 参数只能有一个，mutations里都必须是同步的，mapMutations()可以映射mutations里的函数
+>
+>    ```vue
+>    // store.js
+>    mutations: {
+>    	函数名1 (state, 参数) {
+>    		函数内容
+>    	}
+>    }
+>
+>    // 组件内
+>    this.$store.commit('函数名1', 参数)
+>    ```
+>
+> 3. actions中可以处理异步操作，mapActions() 可以映射
+>
+> 4. getters ，mapGetters()可以映射
+>
+> 5. 分模块后，
+>
+>    1. 访问模块中的state方法
+>
+>    > 1. 通过模块名访问 $store.state.模块名.xxx
+>    >
+>    > 2. 通过mapState映射
+>    >
+>    >    默认根级别的映射 mapState(['xxx'])
+>    >
+>    >    子模块的映射 mapState('模块名', ['xxx']) - 需要开启命名空间
+>
+>    2. 访问模块中的getters中的数据
