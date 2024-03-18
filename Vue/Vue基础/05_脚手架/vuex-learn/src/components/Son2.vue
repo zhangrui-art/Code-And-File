@@ -13,6 +13,8 @@
     <div>访问模块中的state数据:根级别映射---{{ user.userInfo.name }} - {{ setting.theme }}</div>
     <!-- 访问模块中的state数据 ——子模块的映射 -->
     <div>访问模块中的state数据:子模块的映射---{{ userInfo.name }} - {{ theme }}</div>
+    <button @click="setUser({name: 'BaoBao', age: 35})">更新用户信息</button> <button @click="setTheme('blue')">更新主题</button>
+    <button @click="setUserAsync({name: 'BaoBao', age: 35})">一秒后更新用户信息</button>
     <hr>
     <!-- 访问模块中的getters数据 ——子模块的映射 -->
     <div>访问模块中的getters数据:根级别映射---{{ upperCaseName }}</div>
@@ -32,7 +34,10 @@ export default {
   },
   methods: {
     ...mapMutations(['addCount']),
-    ...mapActions(['addCountAsync'])
+    ...mapMutations('user', ['setUser']),
+    ...mapMutations('setting', ['setTheme']),
+    ...mapActions(['addCountAsync']),
+    ...mapActions('user', ['setUserAsync'])
   }
 }
 </script>

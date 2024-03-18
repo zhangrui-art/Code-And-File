@@ -423,7 +423,7 @@
 >           })
 >           ```
 >
->           ​
+>           
 >
 >        2. name命名路由跳转
 >
@@ -456,7 +456,7 @@
 >
 >        配置属性： include / exclude / max
 >
->        include / exclude ： 组件名（注意，是组件的name属性）数组，匹配的组件都会/不会被缓存
+>        include / exclude ： 组件名（注意，是组件的name属性）数组，匹配的组件都会/不会被缓存 
 >
 >        max： 最多可以缓存多少组件实例
 >
@@ -517,3 +517,23 @@
 >    >    默认根级别的映射 mapGetters(['xxx'])
 >    >
 >    >    子模块的映射 mapGetters('模块名', ['xxx']) - 需要开启命名空间
+>    
+>    3. 模块中的mutation的调用语法
+>    
+>    > 1. 直接通过store调用 $store.commit('模块名/xx', 额外参数)
+>    >
+>    > 2. 通过mapMutations映射
+>    >
+>    >    默认根级别的映射 mapMutations(['xxx'])
+>    >
+>    >    子模块的映射 mapMutations('模块名', ['xxx']) - 需要开启命名空间
+>    
+>    4. 模块中的action的调用语法
+>    
+>    > 1. 直接通过store调用 $store.dispatch('模块名/xx', 额外参数)
+>    >
+>    > 2. 通过mapActions映射
+>    >
+>    >    默认根级别的映射 mapActions(['xxx'])
+>    >
+>    >    子模块的映射 mapActions('模块名', ['xxx']) - 需要开启命名空间

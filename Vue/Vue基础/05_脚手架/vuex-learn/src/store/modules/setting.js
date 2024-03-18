@@ -5,7 +5,9 @@ export default {
     desc: '测试demo'
   },
   mutations: {
-
+    setTheme (state, payload) {
+      state.theme = payload
+    }
   },
   actions: {
 

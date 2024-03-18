@@ -11,6 +11,10 @@
     <hr>
     <!-- 测试访问模块中的state - 原生-->
     <p>访问模块中的state数据--原生: {{ $store.state.user.userInfo.name }} </p>
+    <button @click="updateUserInfo">更新个人信息</button>
+    <button @click="updateUserInfoAsync">一秒后更新个人信息</button>
+    <p>{{ $store.state.setting.theme }}</p>
+    <button @click="updateTheme">更新主题色</button>
     <hr>
     <!-- 测试访问模块中的getters - 原生-->
     <p>访问模块中的getters数据--原生: {{ $store.getters['user/upperCaseName'] }} </p>
@@ -32,6 +36,15 @@ export default {
     },
     addAsync (n) {
       this.$store.dispatch('addCountAsync', n)
+    },
+    updateUserInfo () {
+      this.$store.commit('user/setUser', { name: 'BaoBao', age: 35 })
+    },
+    updateTheme () {
+      this.$store.commit('setting/setTheme', 'blue')
+    },
+    updateUserInfoAsync () {
+      this.$store.dispatch('user/setUserAsync', { name: 'BaoBao', age: 35 })
     }
   }
 }
