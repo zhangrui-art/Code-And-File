@@ -509,3 +509,11 @@
 >    >    子模块的映射 mapState('模块名', ['xxx']) - 需要开启命名空间
 >
 >    2. 访问模块中的getters中的数据
+>
+>    > 1. 通过模块名访问 $store.getters['模块名/xxx']
+>    >
+>    > 2. 通过mapGetters映射
+>    >
+>    >    默认根级别的映射 mapGetters(['xxx'])
+>    >
+>    >    子模块的映射 mapGetters('模块名', ['xxx']) - 需要开启命名空间
