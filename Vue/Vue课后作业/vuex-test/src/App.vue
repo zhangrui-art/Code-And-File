@@ -1,23 +1,23 @@
 <template>
   <div class="app">
-    <h2>根组件--{{ $store.state.count}}</h2>
-    <input :value="$store.state.count" @input="changeFn" type="text">
-    <SonOne></SonOne>
-    <SonTwo></SonTwo>
+    <h2>{{ $store.state.title }}</h2>
+    <input :value="$store.state.count" @input="changeInput" type="text">
+    <OriginMethod></OriginMethod>
+    <ReflectMethod></ReflectMethod>
   </div>
 </template>
 
 <script>
-import SonOne from '@/components/Son1.vue'
-import SonTwo from '@/components/Son2.vue'
+import OriginMethod from './components/OriginMethod.vue'
+import ReflectMethod from './components/ReflectMethod.vue'
 export default {
   components: {
-    SonOne,
-    SonTwo
+    OriginMethod,
+    ReflectMethod
   },
   methods: {
-    changeFn (e) {
-      this.$store.commit('changeCount', +e.target.value)
+    changeInput (e) {
+      this.$store.commit('changeInput', +e.target.value)
     }
   }
 }
@@ -25,7 +25,7 @@ export default {
 
 <style lang="less" scoped>
   .app {
-    width: 400px;
+    width: 500px;
     height: auto;
     border: 1px solid #ccc;
     padding: 10px;
