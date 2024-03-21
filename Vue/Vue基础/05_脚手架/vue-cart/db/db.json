@@ -1,0 +1,32 @@
+{
+  "cartList": [
+    {
+      "id": 1,
+      "imgUrl": "https://yanxuan-item.nosdn.127.net/3a56a913e687dc2279473e325ea770a9.jpg",
+      "title": "低帮城市休闲户外鞋天然牛皮COOLMAX纤维",
+      "price": "134",
+      "count": -7
+    },
+    {
+      "id": 2,
+      "imgUrl": "https://yanxuan-item.nosdn.127.net/3a56a913e687dc2279473e325ea770a9.jpg",
+      "title": "无敌牛逼帅气北面冲锋衣",
+      "price": "966",
+      "count": 1
+    },
+    {
+      "id": 3,
+      "imgUrl": "https://yanxuan-item.nosdn.127.net/3a56a913e687dc2279473e325ea770a9.jpg",
+      "title": "巨帅安踏水花冲锋衣",
+      "price": "966",
+      "count": 1
+    },
+    {
+      "id": 4,
+      "imgUrl": "https://yanxuan-item.nosdn.127.net/3a56a913e687dc2279473e325ea770a9.jpg",
+      "title": "吊炸天nike dunk sb air 苹果酒配色",
+      "price": "966",
+      "count": 1
+    }
+  ]
+}
