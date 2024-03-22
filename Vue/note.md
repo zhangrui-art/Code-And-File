@@ -4,6 +4,16 @@
 
 脚手架： `npm i @vue/cli -g`   `vue create projName `  -> `Manually select features` ->  `babel router css linter/formatter` -> `ESLint + Standard config`
 
+UI组件库：   
+
+> PC端： element-ui (element-plus)    ant-design-vue
+>
+> 移动端：vant-ui   Mint UI(饿了么)   Cube UI(滴滴)
+
+CSS库：
+
+> postcss 可以实现项目vw适配。写的是px，项目自动编译成vw
+
 #### 1. 基础（指令+计算属性+侦听器+生命周期）
 
 > 1. v-html="" 可以动态加载html标签
@@ -423,7 +433,6 @@
 >           })
 >           ```
 >
->           
 >
 >        2. name命名路由跳转
 >
@@ -438,9 +447,9 @@
 >               }
 >           })
 >           ```
->
+>     
 >           params参数
->
+>     
 >           ```vue
 >           this.$router.push({
 >           	name: '路由名',
@@ -449,17 +458,17 @@
 >               }
 >           })
 >           ```
->
+>     
 >     9. keep-alive用来缓存动态组件
->
+>     
 >        用法，将动态组件用`<keep-alive></keep-alive>`进行包裹即可缓存动态组件。
->
+>     
 >        配置属性： include / exclude / max
->
+>     
 >        include / exclude ： 组件名（注意，是组件的name属性）数组，匹配的组件都会/不会被缓存 
->
+>     
 >        max： 最多可以缓存多少组件实例
->
+>     
 >        ！！！！注意的是，组件一旦被缓存了，再回到该组件就不会触发created mounted钩子。离开组件也不会触发destroyed钩子，增加了俩钩子： actived和deactived
 >
 > 14. elint自动规范化代码
@@ -517,9 +526,9 @@
 >    >    默认根级别的映射 mapGetters(['xxx'])
 >    >
 >    >    子模块的映射 mapGetters('模块名', ['xxx']) - 需要开启命名空间
->    
+>
 >    3. 模块中的mutation的调用语法
->    
+>
 >    > 1. 直接通过store调用 $store.commit('模块名/xx', 额外参数)
 >    >
 >    > 2. 通过mapMutations映射
@@ -527,9 +536,9 @@
 >    >    默认根级别的映射 mapMutations(['xxx'])
 >    >
 >    >    子模块的映射 mapMutations('模块名', ['xxx']) - 需要开启命名空间
->    
+>
 >    4. 模块中的action的调用语法
->    
+>
 >    > 1. 直接通过store调用 $store.dispatch('模块名/xx', 额外参数)
 >    >
 >    > 2. 通过mapActions映射
