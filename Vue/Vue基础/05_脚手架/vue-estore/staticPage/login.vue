@@ -1,10 +1,7 @@
 <template>
   <div>
-    <van-nav-bar
-      title="会员登录"
-      left-arrow
-      @click-left="$router.back()"
-    />
+    <!-- header -->
+    <!-- container -->
     <div class="container">
       <div class="title">
         <h3>手机号登录</h3>
@@ -15,8 +12,8 @@
           <input type="text" placeholder="请输入手机号码">
         </div>
         <div class="form-inp">
-          <input v-model="picCode" type="text" placeholder="请输入图形验证码">
-          <img @click="getPicCode" v-show="picUrl" :src="picUrl" alt="">
+          <input type="text" placeholder="请输入图形验证码">
+          <img src="" alt="">
         </div>
         <div class="form-inp">
           <input type="text" placeholder="请输入短信验证码">
@@ -31,28 +28,8 @@
 </template>
 
 <script>
-import { getPicCode } from '@/api/login'
 export default {
-  name: 'LoginIndex',
-  data () {
-    return {
-      picUrl: '',
-      picCode: '',
-      picKey: ''
-    }
-  },
-  methods: {
-    async getPicCode () {
-      console.log(getPicCode)
-      const { data: { base64, key } } = await getPicCode()
-      this.picUrl = base64
-      this.picKey = key
-      this.$toast.success('获取验证码成功')
-    }
-  },
-  created () {
-    this.getPicCode()
-  }
+  name: 'LoginIndex'
 }
 </script>
 
