@@ -12,7 +12,7 @@
       </div>
       <div class="form">
         <div class="form-inp">
-          <input type="text" placeholder="请输入手机号码">
+          <input v-model="mobile" type="text" placeholder="请输入手机号码">
         </div>
         <div class="form-inp">
           <input v-model="picCode" type="text" placeholder="请输入图形验证码">
@@ -20,7 +20,7 @@
         </div>
         <div class="form-inp">
           <input type="text" placeholder="请输入短信验证码">
-          <button>获取验证码</button>
+          <button @click="getCode">{{ totalSecond === second ? '获取验证码' : second + 's后重新发送' }}</button>
         </div>
       </div>
       <div class="btn">
@@ -31,27 +31,62 @@
 </template>
 
 <script>
-import { getPicCode } from '@/api/login'
+import { getCode, getPicCode } from '@/api/login'
 export default {
   name: 'LoginIndex',
   data () {
     return {
       picUrl: '',
       picCode: '',
-      picKey: ''
+      picKey: '',
+      totalSecond: 60,
+      second: 60,
+      timer: null,
+      mobile: ''
     }
   },
   methods: {
     async getPicCode () {
-      console.log(getPicCode)
       const { data: { base64, key } } = await getPicCode()
       this.picUrl = base64
       this.picKey = key
-      this.$toast.success('获取验证码成功')
+      this.$toast.success('获取图形验证码成功')
+    },
+    async getCode () {
+      if (!this.validFn()) {
+        return
+      }
+      if (!this.timer && this.totalSecond === this.second) {
+        const res = await getCode(this.picCode, this.picKey, this.mobile)
+        this.$toast('短信发送成功，注意查收')
+        console.log(res)
+        this.timer = setInterval(() => {
+          this.second--
+          if (this.second === 0) {
+            this.second = this.totalSecond
+            clearInterval(this.timer)
+            this.timer = null
+          }
+        }, 1000)
+      }
+    },
+    validFn () {
+      if (!/^1[3-9]\d{9}$/.test(this.mobile)) {
+        this.$toast('手机号不正确')
+        return false
+      }
+      if (!/^\w{4}$/.test(this.picCode)) {
+        this.$toast('图形验证码错误')
+        return false
+      }
+      return true
     }
   },
   created () {
     this.getPicCode()
+  },
+  destroyed () {
+    clearInterval(this.timer)
   }
 }
 </script>
@@ -92,8 +127,9 @@ export default {
       button {
         background-color: #fff;
         border: none;
-        width: 23vw;
+        width: auto;
         color: #f7af30;
+        text-align: right;
       }
     }
   }
