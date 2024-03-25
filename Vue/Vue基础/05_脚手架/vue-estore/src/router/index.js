@@ -11,6 +11,7 @@ import Home from '@/views/layout/home'
 import Category from '@/views/layout/category'
 import Cart from '@/views/layout/cart'
 import User from '@/views/layout/user'
+import store from '@/store'
 
 Vue.use(VueRouter)
 
@@ -75,6 +76,16 @@ const router = new VueRouter({
       component: SearchList
     }
   ]
+})
+
+// 定义一个数组，专门用户存放所有需要权限访问的页面
+const authUrls = ['/myorder', '/pay']
+// 全局前置导航守卫
+router.beforeEach((to, from, next) => {
+  if (authUrls.includes(to.path) && !store.getters.token) {
+    next('/login')
+  }
+  next()
 })
 
 export default router

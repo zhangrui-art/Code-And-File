@@ -471,7 +471,17 @@ CSS库：
 >     
 >        ！！！！注意的是，组件一旦被缓存了，再回到该组件就不会触发created mounted钩子。离开组件也不会触发destroyed钩子，增加了俩钩子： actived和deactived
 >
-> 14. elint自动规范化代码
+> 14. 全局路由前置导航守卫
+>
+>     ```vue
+>     router.beforeEach((to, from, next) => {
+>
+>     })
+>     ```
+>
+>     ​
+>
+> 15. elint自动规范化代码
 >
 >     vscode安装插件`ESLint`在vscode的设置中，右上角用json格式打开，末尾添加两行
 >

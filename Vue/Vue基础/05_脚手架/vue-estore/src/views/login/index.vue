@@ -19,19 +19,20 @@
           <img @click="getPicCode" v-show="picUrl" :src="picUrl" alt="">
         </div>
         <div class="form-inp">
-          <input type="text" placeholder="请输入短信验证码">
+          <input v-model="smsCode" type="text" placeholder="请输入短信验证码">
           <button @click="getCode">{{ totalSecond === second ? '获取验证码' : second + 's后重新发送' }}</button>
         </div>
       </div>
       <div class="btn">
-        <button>登录</button>
+        <button @click="codeLogin">登录</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { getCode, getPicCode } from '@/api/login'
+import { getCode, getPicCode, codeLogin } from '@/api/login'
+import { mapMutations, mapState } from 'vuex'
 export default {
   name: 'LoginIndex',
   data () {
@@ -42,24 +43,27 @@ export default {
       totalSecond: 60,
       second: 60,
       timer: null,
-      mobile: ''
+      mobile: '',
+      smsCode: ''
     }
   },
   methods: {
+    ...mapMutations('user', ['setUserInfo']),
+    // 获取图形验证码
     async getPicCode () {
       const { data: { base64, key } } = await getPicCode()
       this.picUrl = base64
       this.picKey = key
       this.$toast.success('获取图形验证码成功')
     },
+    // 获取短信验证码
     async getCode () {
       if (!this.validFn()) {
         return
       }
       if (!this.timer && this.totalSecond === this.second) {
-        const res = await getCode(this.picCode, this.picKey, this.mobile)
+        await getCode(this.picCode, this.picKey, this.mobile)
         this.$toast('短信发送成功，注意查收')
-        console.log(res)
         this.timer = setInterval(() => {
           this.second--
           if (this.second === 0) {
@@ -70,6 +74,7 @@ export default {
         }, 1000)
       }
     },
+    // 验证图形验证码和短信验证码
     validFn () {
       if (!/^1[3-9]\d{9}$/.test(this.mobile)) {
         this.$toast('手机号不正确')
@@ -80,7 +85,27 @@ export default {
         return false
       }
       return true
+    },
+    // 登录
+    async codeLogin () {
+      if (!this.validFn()) {
+        return
+      }
+      if (!/^[0-9]{6}$/.test(this.smsCode)) {
+        this.$toast('短信验证码错误')
+        return
+      }
+      const res = await codeLogin(this.mobile, this.smsCode)
+      this.setUserInfo({ token: res.data.token, userId: res.data.userId })
+      console.log(res)
+      if (res.status === 200) {
+        this.$toast.success('登录成功')
+        this.$router.push('/home')
+      }
     }
+  },
+  computed: {
+    ...mapState('user', ['userInfo'])
   },
   created () {
     this.getPicCode()
