@@ -48,7 +48,7 @@ export default {
     }
   },
   async created () {
-    const res = await getProList({ goodsName: this.querySearch, page: this.page })
+    const res = await getProList({ categoryId: this.$route.query.categoryId, goodsName: this.querySearch, page: this.page })
     this.proList = res.data.list.data
   }
 }
