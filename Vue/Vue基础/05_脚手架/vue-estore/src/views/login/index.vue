@@ -97,11 +97,12 @@ export default {
       }
       const res = await codeLogin(this.mobile, this.smsCode)
       this.setUserInfo({ token: res.data.token, userId: res.data.userId })
-      console.log(res)
-      if (res.status === 200) {
-        this.$toast.success('登录成功')
-        this.$router.push('/home')
-      }
+
+      this.$toast.success('登录成功')
+      // 判断地址栏有无回跳地址
+      // 如果有 => 说明是其他页面拦截到登录来的，需要回跳
+      const url = this.$route.query.backUrl || '/'
+      this.$router.replace(url)
     }
   },
   computed: {
