@@ -13,7 +13,7 @@
     <!-- 购物车列表 -->
     <div class="cart-list">
       <div class="cart-item" v-for="item in cartList" :key="item.goods_id">
-        <van-checkbox></van-checkbox>
+        <van-checkbox :value="item.isChecked" @click="updateCartList(item.goods_id)"></van-checkbox>
         <div class="show">
           <img :src="item.goods.goods_image" alt="">
         </div>
@@ -21,7 +21,7 @@
           <span class="tit text-ellipsis-2">{{ item.goods.goods_name }}</span>
           <span class="bottom">
             <div class="price">¥ <span>{{ item.goods.goods_price_min }}</span></div>
-            <CountBox v-model="item.goods_num"></CountBox>
+            <CountBox :value="item.goods_num"></CountBox>
           </span>
         </div>
       </div>
@@ -29,17 +29,17 @@
 
     <div class="footer-fixed">
       <div  class="all-check">
-        <van-checkbox  icon-size="18"></van-checkbox>
+        <van-checkbox :value="isAllChecked"  icon-size="18"></van-checkbox>
         全选
       </div>
 
       <div class="all-total">
         <div class="price">
           <span>合计：</span>
-          <span>¥ <i class="totalPrice">99.99</i></span>
+          <span>¥ <i class="totalPrice">{{ selPrice.toFixed(2) }}</i></span>
         </div>
-        <div v-if="true" class="goPay">结算(5)</div>
-        <div v-else class="delete">删除</div>
+        <div v-if="true" class="goPay" :class="{disabled: selCount === 0}">结算({{ selCount }})</div>
+        <div v-else class="delete" :class="{disabled: selCount === 0}">删除</div>
       </div>
     </div>
   </div>
@@ -47,20 +47,19 @@
 
 <script>
 import CountBox from '@/components/CountBox'
-import { mapState } from 'vuex'
+import { mapGetters, mapMutations, mapState } from 'vuex'
 export default {
   name: 'CartPage',
   components: {
 
     CountBox
   },
+  methods: {
+    ...mapMutations('cart', ['updateCartList'])
+  },
   computed: {
     ...mapState('cart', ['cartList']),
-    cartTotal () {
-      return this.cartList.reduce((pre, cur) => {
-        return pre + cur.goods_num
-      }, 0)
-    }
+    ...mapGetters('cart', ['cartTotal', 'selCount', 'selPrice', 'isAllChecked'])
   },
   created () {
     if (this.$store.getters.token) {

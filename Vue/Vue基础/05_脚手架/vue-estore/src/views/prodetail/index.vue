@@ -157,7 +157,7 @@ export default {
       showPanel: false,
       mode: 'cart',
       addCount: 1,
-      cartTotal: 1
+      cartTotal: 0
     }
   },
   created () {
