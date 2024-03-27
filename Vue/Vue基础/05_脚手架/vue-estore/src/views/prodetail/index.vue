@@ -122,8 +122,8 @@
           <CountBox v-model="addCount"></CountBox>
         </div>
         <div class="showbtn" v-if="detail.stock_total > 0 ? true : false">
-          <div class="btn" v-if="true" @click="addCart">加入购物车</div>
-          <div class="btn now" v-else>立刻购买</div>
+          <div class="btn" v-if="mode === 'cart'" @click="addCart">加入购物车</div>
+          <div class="btn now" v-else @click="goBuyNow">立刻购买</div>
         </div>
         <div class="btn-none" v-else>该商品已抢完</div>
       </div>
@@ -136,8 +136,10 @@ import { getProComment, getProDetail, getProService } from '@/api/product'
 import CountBox from '@/components/CountBox.vue'
 import { mapGetters } from 'vuex'
 import { addCart } from '@/api/cart'
+import loginConfirm from '@/mixins/loginConfirm'
 export default {
   name: 'ProDetail',
+  mixins: [loginConfirm],
   components: {
     CountBox
   },
@@ -192,30 +194,27 @@ export default {
       this.showPanel = true
     },
     async addCart () {
-      // 判断token是否存在
-      if (!this.token) {
-        this.$dialog.confirm({
-          title: '温馨提示',
-          message: '此时需要先登录才能继续操作',
-          confirmButtonText: '先登录',
-          cancelButtonText: '再逛逛'
-        })
-          .then(() => {
-            // 如果希望跳转登录后能跳回来，需要在跳转去携带参数（当前路径地址）
-            // this.$route.fullPath （会包含查询参数）
-            this.$router.replace({
-              path: '/login',
-              query: { backUrl: this.$route.fullPath }
-            })
-          })
-          .catch(() => {
-          })
-        return
+      if (this.loginConfirm()) {
+        return true
       }
       const res = await addCart(this.goodsId, this.addCount, this.detail.skuList[0].goods_sku_id)
       this.cartTotal = res.data.cartTotal
       this.$toast.success('加入购物车成功')
       this.showPanel = false
+    },
+    goBuyNow () {
+      if (this.loginConfirm()) {
+        return true
+      }
+      this.$router.push({
+        path: '/pay',
+        query: {
+          mode: 'buyNow',
+          goodsId: this.goodsId,
+          goodsSkuId: this.detail.skuList[0].goods_sku_id,
+          goodsNum: this.addCount
+        }
+      })
     }
   },
   computed: {

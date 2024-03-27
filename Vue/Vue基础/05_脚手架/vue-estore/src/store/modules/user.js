@@ -17,5 +17,10 @@ export default {
     }
   },
   actions: {
+    logout (context) {
+      context.commit('setUserInfo', { token: '', userId: '' })
+      // 跨模块调用
+      context.commit('cart/setCartList', [], { root: true })
+    }
   }
 }

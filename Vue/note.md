@@ -556,3 +556,30 @@ CSS库：
 >    >    默认根级别的映射 mapActions(['xxx'])
 >    >
 >    >    子模块的映射 mapActions('模块名', ['xxx']) - 需要开启命名空间
+
+#### 4. 打包
+
+> 1. `npm run build `即可 如果需要配置相对路径（或者本地点击index.html可以打开），需要在vue.config.js中配置publicPath项
+>
+> ```vue
+> const { defineConfig } = require('@vue/cli-service')
+> module.exports = defineConfig({
+>   transpileDependencies: true,
+>   publicPath: './',  // 配置相对路径
+>   devServer: {
+>     port: 5000  // 配置开发端口
+>   }
+> })
+>
+> ```
+>
+> 2. 路由懒加载
+>
+>    1. 异步组件改造
+>
+>       ``` vu
+>       const ProDetail = () => import('@/views/prodetail')
+>       ...
+>       ```
+>
+>       ​

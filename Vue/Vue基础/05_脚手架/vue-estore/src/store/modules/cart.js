@@ -1,4 +1,5 @@
-import { getCartList } from '@/api/cart'
+import { getCartList, changeCount, delSelect } from '@/api/cart'
+import { Toast } from 'vant'
 
 export default {
   namespaced: true,
@@ -44,6 +45,22 @@ export default {
         }
         return item
       })
+    },
+    handleAllCheck (state, payload) {
+      state.cartList = state.cartList.map(item => {
+        return {
+          ...item,
+          isChecked: payload
+        }
+      })
+    },
+    changeCount (state, payload) {
+      const goods = state.cartList.find(item => item.goods_id === payload.goodsId)
+      goods.goods_num = payload.goodsNum
+    },
+    delSelect (state, payload) {
+      console.log(payload)
+      state.cartList = state.cartList.filter(item => !payload.includes(item.id))
     }
   },
   actions: {
@@ -56,6 +73,16 @@ export default {
         }
       })
       context.commit('getCartList', newList)
+    },
+    async changeCountAction (context, payload) {
+      context.commit('changeCount', payload)
+      await changeCount(payload.goodsId, payload.goodsNum, payload.goodsSkuId)
+    },
+    async delSelectAction (context, payload) {
+      console.log(context)
+      context.commit('delSelect', payload)
+      await delSelect(payload)
+      Toast.success('删除成功')
     }
   }
 }
