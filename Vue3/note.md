@@ -9,7 +9,7 @@
 >     3. 更高效的组件初始化
 > 3. 更小的体积
 >     1.  良好的treeshaking
->     2. 按需引入
+>     2.  按需引入
 > 4. 更优的数据响应式
 >     1. Proxy
 
@@ -23,7 +23,7 @@
 >    >
 >    > ref 处理简单类型的或对象类型的（本质，是在原有传入的数据的基础上，外层包了一层对象。包成了复杂类型。底层实现是包成复杂类型后，再借助reactive实现的响应式）
 >    >
->    > 注意： ref在脚本中访问数据需要.value 在template中， .value不需要加
+>    > 注意： ref在脚本中访问数据需要.value ;在template中， .value不需要加
 >
 >    推荐：以后声明数据，统一用ref
 >
@@ -72,7 +72,40 @@
 >    })
 >    ```
 >
-> 5. 通过ref绑定拿到dom和组件实例
+> 5. 父子通信
+>
+>    通过defineProps和defineEmits
+>
+>    ```vue
+>    // 父组件
+>    const money = ref(100_000_000)
+>    const costMoney = (newVal) => {
+>      money.value = newVal
+>    }
+>        <SonCom 
+>          car="小米su7" 
+>          :money="money"
+>          @costMoney="costMoney"
+>        ></SonCom>
+>
+>    // 子组件
+>    const props = defineProps({
+>      car: {
+>        type: String,
+>        default: '拉法'
+>      },
+>      money: Number
+>    })
+>    console.log(props);
+>    const emit = defineEmits(['costMoney'])
+>    const buy = () => {
+>      emit('costMoney', 1000)
+>    }
+>    ```
+>
+>    ​
+>
+> 6. 通过ref绑定拿到dom和组件实例
 >
 >    ref对象必须在渲染完成后才能拿到，所以要放入onMounted中
 >
@@ -110,7 +143,7 @@
 >    })
 >    ```
 >
-> 6. provider 和inject
+> 7. provider 和inject
 >
 >    骚的是可以传函数，然后操纵数据
 >
@@ -126,12 +159,31 @@
 >    const changeKeyValue = injuect('changeKeyValue')
 >    ```
 >
-> 7. 写其他配置项
+> 8. 写其他配置项
 >
 >    ```vue
 >    defineOptions({
 >    	name: 'FullName'
 >    })
+>    ```
+>
+> 9. defineModel
+>
+>    ```vue
+>    v2中v-model 相当于 :value 和 @input的组合
+>    v3中v-model 相当于 :modelValue 和 @update:modelValue=""的组合
+>
+>    defineModel可以大大减轻v-model的工作量
+>    // 父组件
+>        <MyInput
+>          v-model="inpVal"
+>        ></MyInput>
+>        <div>{{inpVal}}</div>
+>    // 子组件
+>    const modelValue = defineModel()
+>      <div>
+>        <input type="text" :value="modelValue" @input="e => modelValue = e.target.value">
+>      </div>
 >    ```
 >
 >    ​

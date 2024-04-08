@@ -1,16 +1,16 @@
 <script setup>
-import MyInput  from '@/components/my-input.vue'
+import TestSon from '@/components/test-son.vue'
 import { ref, defineOptions } from 'vue'
 defineOptions({
   name: 'FullApp'
 })
-const inpVal = ref('4789')
+const inpVal = ref('123')
 </script>
 <template>
   <div>
-    <MyInput
+    <TestSon
       v-model="inpVal"
-    ></MyInput>
+    ></TestSon>
     <div>{{inpVal}}</div>
   </div>
 </template>
