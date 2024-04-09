@@ -17,6 +17,8 @@
 
 > 1. 使用``npm init vue@latest` 创建脚手架 （需要nodejs为16.0.0以上版本）
 >
+>    `npm create vue@latest`
+>
 > 2. 数据中需要响应式
 >
 >    > reactive 处理对象类型的
@@ -186,4 +188,102 @@
 >      </div>
 >    ```
 >
->    ​
+
+#### 3. Pinia
+
+> 使用组合式
+>
+> ```vue
+> 在main.js中注册pinia
+>
+> import { createPinia } from 'pinia'
+> const pinia = createPinia() 
+> app.use(pinia).mount('#app')
+> ```
+>
+> 使用：
+>
+> 1.声明注册对应模块
+>
+> ```vue
+> import { defineStore } from "pinia";
+> import { ref, computed } from 'vue'
+> export const useCounterStore = defineStore('counter', () => {
+>   // 声明state
+>   const count = ref(100)
+>   // 声明操作数据的方法
+>   const addCount = () => {
+>     count.value++
+>   }
+>   const subCount = () => {
+>     count.value--
+>   }
+>   // 声明基于数据的计算属性
+>   const doubleCount = computed(() => count.value * 2)
+>   const msg = ref('我是Vu3的pinia使用')
+>
+>   return {
+>     count,
+>     addCount,
+>     subCount,
+>     doubleCount,
+>     msg
+>   }
+> })
+> ```
+>
+> 2.在组件中使用
+>
+> ```vue
+> import { useCounterStore } from '@/store/counter';
+> const counterStore = useCounterStore();
+>
+> <h3>App.vue根 - {{ counterStore.msg }} -- {{ counterStore.count }}</h3>
+> ```
+>
+> 3.在使用store的时候不可直接进行结构赋值，可调用storeToRefs()函数
+>
+> 但是store里的函数可以直接结构
+>
+> ```vue
+> import { useCounterStore } from '@/store/counter';
+> import { storeToRefs } from 'pinia';
+>
+> const counterStore = useCounterStore();
+> const { msg, count } = storeToRefs(counterStore)
+> <h3>App.vue根 - {{ msg }} -- {{ count }}</h3>
+> ```
+>
+> 
+>
+> 4.pinia持久化
+>
+> 安装插件`npm i pinia-plugin-persistedstate`
+>
+> 将插件添加到pinia实例上
+>
+> ```
+> import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+>
+> app.use(pinia.use(piniaPluginPersistedstate)).mount('#app')
+> ```
+>
+> 使用时需要在store模块中defineStore的第三个参数中添加` {persist: true}`
+>
+> defineStore('模块名',() => {}, {persist: true})
+>
+> `https://prazdevs.github.io/pinia-plugin-persistedstate/zh/guide/`
+
+#### 4. 大事件管理系统
+
+> pnpm 包管理升级
+>
+> Eslint + prettier 更规范的配置
+>
+> husky (Git hooks工具) 代码提交之前，进行校验
+
+> 在线演示： https://fe-bigevent-web.itheima.net/login
+>
+> 接口文档：https://apifox.com/apidoc/shared-26c67aee-0233-4d23-aab7-08448fdf95ff/api-93850835
+>
+> 基地址：http://big-event-vue-api-t.itheima.net
