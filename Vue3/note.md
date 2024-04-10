@@ -287,3 +287,72 @@
 > 接口文档：https://apifox.com/apidoc/shared-26c67aee-0233-4d23-aab7-08448fdf95ff/api-93850835
 >
 > 基地址：http://big-event-vue-api-t.itheima.net
+
+> 1. 修改项目中eslint+prettier规范
+>
+> ```vue
+> 在.eslintrc.cjs文件中添加
+>
+>   rules: {
+>     // 1. 禁用格式化插件prettier  format on save 关闭
+>     // 2. 安装eslint 插件，并配置保存时自动修复
+>     'prettier/prettier': [
+>       'warn',
+>       {
+>         singleQuote: true, // 单引号
+>         semi: false, // 无分号
+>         printWidth: 80, // 每行宽度至多80字符
+>         trailingComma: 'none', // 不加对象|数组最后逗号
+>         endOfLine: 'auto' // 换行符号不限制（win mac 不一致）
+>       }
+>     ],
+>     'vue/multi-word-component-names': [
+>       'warn',
+>       {
+>         ignores: ['index'] // vue组件名称多单词组成（忽略index.vue）
+>       }
+>     ],
+>     'vue/no-setup-props-destructure': ['off'], // 关闭 props 解构的校验
+>     // 💡 添加未定义变量错误提示，create-vue@3.6.3 关闭，这里加上是为了支持下一个章节演示。
+>     'no-undef': 'error'
+>   }
+>
+> ```
+>
+> 2. 提交前做代码检查
+>
+> ```vue
+> 1. git初始化 git init
+> 2. 初始化 husky 工具配置  https://typicode.github.io/husky/
+> pnpm dlx husky-init && pnpm install
+> 3. 修改 .husky/pre-commit 文件
+> pnpm lint
+> ```
+>
+> 但是全局做检查耗时还可能会有问题
+>
+> 3. 暂存区eslint校验
+>
+> ```vue
+> 1. 安装 pnpm i lint-staged -D
+> 2. 配置package.json
+> {
+>   // ... 省略 ...
+>   "lint-staged": {
+>     "*.{js,ts,vue}": [
+>       "eslint --fix"
+>     ]
+>   }
+> }
+>
+> {
+>   "scripts": {
+>     // ... 省略 ...
+>     "lint-staged": "lint-staged"
+>   }
+> }
+> 3. 修改.husky/pre-commit文件
+> pnpm lint-staged
+> ```
+>
+> 
