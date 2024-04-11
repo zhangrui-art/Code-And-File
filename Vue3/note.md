@@ -381,4 +381,15 @@ Element-plus
 >
 > 图标库的安装 `pnpm i @element-plus/icons-vue`
 >
-> 
+> ```vue
+> 使用图标库的时候需要全局注册
+> import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+>
+> const app = createApp(App)
+> for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+>   app.component(key, component)
+> }
+> ```
+>
+> $!!!!在input中使用图标库时无需: $
+
