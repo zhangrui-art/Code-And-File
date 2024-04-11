@@ -374,4 +374,11 @@ Vue-router 4
 >
 > ```
 >
+
+Element-plus
+
+> https://element-plus.org/zh-CN/component/message.html
+>
+> 图标库的安装 `pnpm i @element-plus/icons-vue`
+>
 > 
