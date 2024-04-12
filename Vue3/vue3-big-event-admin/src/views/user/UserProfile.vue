@@ -4,4 +4,4 @@
   <div>用户文档页</div>
 </template>
 
-<style scoped="scss"></style>
+<style scoped lang="scss"></style>

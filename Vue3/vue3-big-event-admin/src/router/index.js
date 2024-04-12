@@ -1,3 +1,4 @@
+import { useUserStore } from '@/stores'
 import { createRouter, createWebHistory } from 'vue-router'
 
 // createRouter 创建路由实例
@@ -40,6 +41,17 @@ const router = createRouter({
       component: () => import('@/views/login/LoginPage.vue')
     }
   ]
+})
+
+// 登录访问拦截 => 默认直接放行
+// 返回值：
+// 1. undefined / true 放行
+// 2. false 拦截回from的地址页面
+// 3. 具体路径或者路径对象，拦截到对应的地址
+//    eg. '/login'  { name: 'login' }  { path: '/login' } 后面两种可以传参
+router.beforeEach((to) => {
+  const userStore = useUserStore()
+  if (!userStore.token && to.path !== '/login') return '/login'
 })
 
 export default router
