@@ -58,7 +58,6 @@ const loginFormModel = ref({
   username: '',
   password: ''
 })
-
 const userStore = useUserStore()
 const router = useRouter()
 const login = async () => {

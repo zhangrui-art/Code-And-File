@@ -12,15 +12,15 @@ const router = createRouter({
     {
       path: '/',
       component: () => import('@/views/layout/LayoutContainer.vue'),
-      redirect: '/article/manage',
+      redirect: '/article/channel',
       children: [
-        {
-          path: '/article/manage',
-          component: () => import('@/views/article/ArticleManage.vue')
-        },
         {
           path: '/article/channel',
           component: () => import('@/views/article/ArticleChannel.vue')
+        },
+        {
+          path: '/article/manage',
+          component: () => import('@/views/article/ArticleManage.vue')
         },
         {
           path: '/user/profile',
