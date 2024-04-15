@@ -3,7 +3,6 @@ import { artDeleteChannelsService, artGetChannelsService } from '@/api/article'
 import { ref, onMounted } from 'vue'
 import { Edit, Delete } from '@element-plus/icons-vue'
 import ChannelEdit from './components/ChannelEdit.vue'
-import { ElDialog } from 'element-plus'
 const channelList = ref([])
 const getChannelList = async () => {
   loading.value = true
