@@ -184,7 +184,7 @@
 >    // 子组件
 >    const modelValue = defineModel()
 >      <div>
->        <input type="text" :value="modelValue" @input="e => modelValue = e.target.value">
+>        <input type="text" :modelValue="modelValue" @input="e => modelValue = e.target.value">
 >      </div>
 >    ```
 >
@@ -392,4 +392,38 @@ Element-plus
 > ```
 >
 > $!!!!在input中使用图标库时无需: $
+>
+> 修改样式颜色使用vue提供的 v-deep，或者 `:()deep {}` 
+>
+>  也可以使用 `>>>`操作符，但是scss无法解析，可以使用`/deep/`
+>
+> ```vue
+> // v-deep
+> .el-pagination {
+>   ::v-deep .is-active {
+>     background-color: #005795 !important;
+>   }
+> }
+> // :()deep {}
+> .avatar-uploader {
+>   :deep() {
+>     .avatar {
+>       width: 178px;
+>       height: 178px;
+>       display: block;
+>     }
+> }
+> // >>> （必须是css）
+> .el-pagination >>> .is-active {
+>   background-color: #005795 !important;
+> }
+> // /deep/  (尝试后发现vue3会报错)
+> .el-pagination {
+>   /deep/ .is-active {
+>     background-color: #005795 !important;
+>   }
+> }
+> ```
+>
+> 富文本编辑器：vue-quill
 

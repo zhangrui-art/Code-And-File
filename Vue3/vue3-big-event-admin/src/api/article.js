@@ -21,3 +21,13 @@ export const artDeleteChannelsService = (id) =>
       id
     }
   })
+
+export const artGetListService = ({ pagenum, pagesize, cate_id, state }) =>
+  request.get('/my/article/list', {
+    params: {
+      pagenum,
+      pagesize,
+      cate_id,
+      state
+    }
+  })
