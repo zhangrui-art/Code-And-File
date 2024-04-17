@@ -2,7 +2,7 @@
 import ChannelSelect from './components/ChannelSelect.vue'
 import ArticleEdit from './components/ArticleEdit.vue'
 import { formatTime } from '@/utils/format'
-import { artGetListService } from '@/api/article'
+import { artDeleteInfoService, artGetListService } from '@/api/article'
 import { ref } from 'vue'
 import { Edit, Delete } from '@element-plus/icons-vue'
 
@@ -21,7 +21,6 @@ const getArticleList = async () => {
   const res = await artGetListService(params.value)
   articleList.value = res.data.data
   total.value = res.data.total
-  console.log(articleList.value)
   loading.value = false
 }
 getArticleList()
@@ -56,8 +55,25 @@ const onAddArticle = () => {
 const onEditArticle = (row) => {
   articleRef.value.open(row)
 }
-const onDeleteArticle = () => {
-  console.log('删除')
+// 删除逻辑
+const onDeleteArticle = async (row) => {
+  // 提示用户是否要删除
+  await ElMessageBox.confirm('是否要删除该文章?', '提示', {
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    type: 'warning'
+  })
+  await artDeleteInfoService(row.id)
+  ElMessage.success('删除成功')
+  getArticleList()
+}
+
+const onSuccess = (msg) => {
+  if (msg === 'add') {
+    const lastPage = Math.ceil((total.value + 1) / params.value.pagesize)
+    params.value.pagenum = lastPage
+  }
+  getArticleList()
 }
 </script>
 
@@ -130,7 +146,7 @@ const onDeleteArticle = () => {
     />
 
     <!-- 抽屉 -->
-    <ArticleEdit ref="articleRef" />
+    <ArticleEdit ref="articleRef" @success="onSuccess" />
   </PageContainer>
 </template>
 

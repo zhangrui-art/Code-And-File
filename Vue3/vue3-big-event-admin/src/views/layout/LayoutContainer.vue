@@ -84,7 +84,7 @@ const handleCommand = (command) => {
       <el-header>
         <div>
           黑马程序员：<strong>{{
-            userStore.user.nickName || userStore.user.username
+            userStore.user.nickname || userStore.user.username
           }}</strong>
         </div>
         <el-dropdown placement="bottom-end" @command="handleCommand">

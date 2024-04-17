@@ -31,3 +31,22 @@ export const artGetListService = ({ pagenum, pagesize, cate_id, state }) =>
       state
     }
   })
+
+export const artAddListService = (data) => request.post('/my/article/add', data)
+
+export const artUpdateListService = (data) =>
+  request.put('/my/article/info', data)
+
+export const artGetArticleInfoService = (id) =>
+  request.get('/my/article/info', {
+    params: {
+      id
+    }
+  })
+
+export const artDeleteInfoService = (id) =>
+  request.delete('/my/article/info', {
+    params: {
+      id
+    }
+  })
